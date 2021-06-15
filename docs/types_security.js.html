@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>structures/folder.js - Documentation</title>
+    <title>types/security.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">structures/folder.js</h1>
+    <h1 class="page-title">types/security.js</h1>
     
 
     
@@ -42,34 +42,15 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const {getFiles} = require('../utilities/folder.js');
+            <pre class="prettyprint source linenums"><code>/**
+ * @typedef {object} securityResult security check results
+ * @property {missingPermissions} missingPermissions array of missing permissions
+ * @property {boolean} pass if user passed security check
+ */
 
-
-class Folder {
-
-  /**
-   * Folder structure
-   * @param {folderPath} [dir] path from root leading to folder
-   */
-  constructor(dir = "./") {
-
-    this.directory = dir;
-  }
-
-
-  /**
-   * Get exports from file
-   * @param {fileName} [name] file name
-   * @returns {fileData|folderData} exports from file
-   */
-  async get(name = null) {
-
-    const files = getFiles(this.directory, name);
-    return files;
-  }
-}
-
-module.exports = Folder;</code></pre>
+/**
+ * @typedef {array&lt;string>} missingPermissions array of missing permissions
+ */</code></pre>
         </article>
     </section>
 

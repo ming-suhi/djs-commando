@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>structures/folder.js - Documentation</title>
+    <title>structures/command.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">structures/folder.js</h1>
+    <h1 class="page-title">structures/command.js</h1>
     
 
     
@@ -42,34 +42,31 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const {getFiles} = require('../utilities/folder.js');
-
-
-class Folder {
+            <pre class="prettyprint source linenums"><code>class Command{
 
   /**
-   * Folder structure
-   * @param {folderPath} [dir] path from root leading to folder
+   * Command Structure
    */
-  constructor(dir = "./") {
-
-    this.directory = dir;
+  constructor() {
   }
 
 
   /**
-   * Get exports from file
-   * @param {fileName} [name] file name
-   * @returns {fileData|folderData} exports from file
+   * Check user permissions
+   * @param {Discord.GuildMember} user guild member to check
+   * @returns {securityResult}  
    */
-  async get(name = null) {
-
-    const files = getFiles(this.directory, name);
-    return files;
+  security(user) {
+    const missingPermissions = (this.permissions || ['SEND_MESSAGES']).filter(p => !user.hasPermission(p))
+    if (missingPermissions.length === 0) {
+      return {missingPermissions: null, pass: true};
+    } else {
+      return {missingPermissions: missingPermissions, pass: false};
+    }
   }
 }
 
-module.exports = Folder;</code></pre>
+module.exports = Command;</code></pre>
         </article>
     </section>
 
