@@ -1,6 +1,8 @@
 const Command = require('./command.js');
 
+
 class GlobalCommand extends Command{
+
   /**
    * Global Command Structure
    * @augments Command
