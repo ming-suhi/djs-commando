@@ -1,7 +1,7 @@
 const CommandsManager = require('./managers/commands-manager.js');
 const dotenv = require('dotenv');
 
-class Client {
+class LocalClient {
 
   /**
    * Client for managing local
@@ -34,4 +34,4 @@ class Client {
   }
 }
 
-module.exports = Client;
+module.exports = LocalClient;

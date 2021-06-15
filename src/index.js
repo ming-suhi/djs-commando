@@ -1,2 +1,2 @@
 // client
-exports.Client = require('./client.js');
+exports.LocalClient = require('./local-client.js');
