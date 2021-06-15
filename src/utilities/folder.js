@@ -1,7 +1,8 @@
 const fs = require('fs');
 
+
 function getFiles(dir, name = null) {
-   
+
   if (name == null) {
     const files = [];
     for (let file of fs.readdirSync(`${dir}`)) {
@@ -13,4 +14,4 @@ function getFiles(dir, name = null) {
   }
 }
 
-exports.getFiles = getFiles
+exports.getFiles = getFiles;
