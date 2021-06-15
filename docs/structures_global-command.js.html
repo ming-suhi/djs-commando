@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>client.js - Documentation</title>
+    <title>structures/global-command.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">client.js</h1>
+    <h1 class="page-title">structures/global-command.js</h1>
     
 
     
@@ -42,21 +42,21 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const CommandsManager = require('./managers/commands-manager.js');
-const dotenv = require('dotenv');
+            <pre class="prettyprint source linenums"><code>const Command = require('./command.js');
 
-class Client {
-
+class GlobalCommand extends Command{
   /**
-   * Client for managing local
+   * Global Command Structure
+   * @augments Command
+   * @param {command} data command data
    */
-  constructor() {
-    dotenv.config();
-    this.commands = new CommandsManager(process.env.COMMANDS_FOLDER);
+  constructor(data) {
+    super();
+    Object.assign(this, data);
   }
 }
 
-module.exports = Client;</code></pre>
+module.exports = GlobalCommand;</code></pre>
         </article>
     </section>
 

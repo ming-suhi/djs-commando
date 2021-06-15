@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Folder - Documentation</title>
+    <title>GlobalCommand - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Folder</h1>
+    <h1 class="page-title">GlobalCommand</h1>
     
 
     
@@ -45,7 +45,7 @@
 <header>
     
         <h2>
-        Folder
+        GlobalCommand
         </h2>
         
     
@@ -59,7 +59,7 @@
 
     
 
-    <h4 class="name" id="Folder"><span class="type-signature"></span>new Folder<span class="signature">(dir<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="GlobalCommand"><span class="type-signature"></span>new GlobalCommand<span class="signature">(data)</span><span class="type-signature"></span></h4>
 
     
 
@@ -71,7 +71,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="structures_folder.js.html">structures/folder.js</a>, <a href="structures_folder.js.html#line10">line 10</a>
+        <a href="structures_global-command.js.html">structures/global-command.js</a>, <a href="structures_global-command.js.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -111,7 +111,7 @@
 
 
 <div class="description usertext">
-    <p>Folder structure</p>
+    <p>Global Command Structure</p>
 </div>
 
 
@@ -137,11 +137,7 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
-        
-        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -153,39 +149,23 @@
 
         <tr>
             
-                <td class="name"><code>dir</code></td>
+                <td class="name"><code>data</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#folderPath">folderPath</a></span>
+<span class="param-type">command</span>
 
 
             
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
-                <td class="default">
-                
-                    <code>./</code>
-                
-                </td>
-            
 
-            <td class="description last"><p>path from root leading to folder</p></td>
+            <td class="description last"><p>command data</p></td>
         </tr>
 
     
@@ -215,6 +195,17 @@
     
 
     
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li><a href="Command.html">Command</a></li>
+    </ul>
+
+
+    
 
     
 
@@ -236,7 +227,7 @@
 
     
 
-    <h4 class="name" id="get"><span class="type-signature">(async) </span>get<span class="signature">(name<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="global.html#fileData">fileData</a>|<a href="global.html#folderData">folderData</a>}</span></h4>
+    <h4 class="name" id="security"><span class="type-signature"></span>security<span class="signature">(user)</span><span class="type-signature"> &rarr; {<a href="global.html#securityResult">securityResult</a>}</span></h4>
 
     
 
@@ -248,7 +239,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="structures_folder.js.html">structures/folder.js</a>, <a href="structures_folder.js.html#line21">line 21</a>
+        <a href="structures_command.js.html">structures/command.js</a>, <a href="structures_command.js.html#line15">line 15</a>
     </li></ul></dd>
     
 
@@ -256,6 +247,11 @@
 
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Command.html#security">Command#security</a>
+    </li></ul></dd>
     
 
     
@@ -288,7 +284,7 @@
 
 
 <div class="description usertext">
-    <p>Get exports from file</p>
+    <p>Check user permissions</p>
 </div>
 
 
@@ -314,11 +310,7 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
-        
-        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -330,39 +322,23 @@
 
         <tr>
             
-                <td class="name"><code>name</code></td>
+                <td class="name"><code>user</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#fileName">fileName</a></span>
+<span class="param-type">Discord.GuildMember</span>
 
 
             
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
-                <td class="default">
-                
-                    <code>null</code>
-                
-                </td>
-            
 
-            <td class="description last"><p>file name</p></td>
+            <td class="description last"><p>guild member to check</p></td>
         </tr>
 
     
@@ -387,10 +363,6 @@
 <h5>Returns:</h5>
 
         
-<div class="param-desc">
-    <p>exports from file</p>
-</div>
-
 
 
 <dl class="param-type">
@@ -399,10 +371,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="global.html#fileData">fileData</a></span>
-|
-
-<span class="param-type"><a href="global.html#folderData">folderData</a></span>
+<span class="param-type"><a href="global.html#securityResult">securityResult</a></span>
 
 
     </dd>
