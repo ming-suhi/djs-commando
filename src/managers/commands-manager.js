@@ -12,6 +12,25 @@ class CommandsManager extends Folder {
   constructor(path) {
     super(path);
   }
+
+
+  /**
+   * Finds requested command
+   * @param {Interaction} interaction interaction 
+   */
+   async match(interaction){
+    const command = await this.get(interaction.request.data.name);
+    const security = command.security(await interaction.author());
+    switch (security.pass) {
+      case true:
+      command.execute(interaction);
+      break;
+    
+      case false:
+      interaction.responseType = 3;
+      interaction.sendEphemeral(`You are missing permissions to run this command: \`${security.missingPermissions.join(' | ').replace(/_/g, ' ')}\``);
+    }
+  }
 }
 
 module.exports = CommandsManager;

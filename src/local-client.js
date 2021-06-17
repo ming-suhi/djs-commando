@@ -20,17 +20,7 @@ class LocalClient {
    * @param {Interaction} interaction interaction 
    */
   async matchCommand(interaction){
-    const command = await this.commands.get(interaction.request.data.name);
-    const security = command.security(await interaction.author());
-    switch (security.pass) {
-      case true:
-      command.execute(interaction);
-      break;
-    
-      case false:
-      interaction.responseType = 3;
-      interaction.sendEphemeral(`You are missing permissions to run this command: \`${security.missingPermissions.join(' | ').replace(/_/g, ' ')}\``);
-    }
+    await this.commands.match(interaction);
   }
 }
 
