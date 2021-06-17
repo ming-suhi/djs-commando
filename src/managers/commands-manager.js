@@ -31,6 +31,28 @@ class CommandsManager extends Folder {
       interaction.sendEphemeral(`You are missing permissions to run this command: \`${security.missingPermissions.join(' | ').replace(/_/g, ' ')}\``);
     }
   }
+
+
+  /**
+   * Sync Discord with local commands
+   * @param {Discord.Client} client discord client 
+   */
+  async sync(client) {
+    const commands = await this.local.commands.get();
+    for (let command of commands) {
+      command.post(client);
+    }
+
+    const globalCommands = await client.api.applications(client.user.id).commands.get();
+    for (let command of globalCommands){
+      const match = await this.local.commands.get(command.name);
+      if (match === undefined) {
+        const commandRef = new GlobalCommand(command);
+        await commandRef.get(client);
+        await commandRef.delete(client);
+      };
+    }
+  }
 }
 
 module.exports = CommandsManager;

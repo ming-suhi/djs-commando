@@ -22,6 +22,15 @@ class LocalClient {
   async matchCommand(interaction){
     await this.commands.match(interaction);
   }
+
+
+  /**
+   * Sync Discord with local commands
+   * @param {Discord.Client} client discord client 
+   */
+  async syncCommands(client) {
+    await this.commands.sync(client);
+  }
 }
 
 module.exports = LocalClient;
