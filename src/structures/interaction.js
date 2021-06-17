@@ -107,7 +107,7 @@ class Interaction{
     const type = this.responseType;
     const data = {
       type: type,
-      data: await createAPIMessage(embed)
+      data: await createAPIMessage(client, request, embed)
     }
     client.api.interactions(request.id, request.token).callback.post({data});
   }
