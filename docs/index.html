@@ -56,6 +56,119 @@
 
 
 
+    <section class="readme usertext">
+        <article><p align="center">
+  <img src="https://raw.githubusercontent.com/ming-suhi/djs-local-manager/master/assets/logo.svg" width="250" align="center" />
+</p>
+<p align="center">
+  <a href="https://github.com/ming-suhi/djs-local-manager" target="_blank">
+    <strong>@ming-suhi/djs-local-manager</strong>
+  </a>
+</p>
+<p align="center">Powered by Discord.js</p>
+<h2>I. About</h2>
+<p>A package for managing Discord Slash Commands. For an in-depth documentation visit the <a href="https://ming-suhi.github.io/djs-local-manager/" target="_blank">official website</a>. For users who want to opt for a similar package with a database manager, check out <a href="https://github.com/ming-suhi/djs-manager" target="_blank">@ming-suhi/djs-manager</a> from the same developer.</p>
+<h2>II. Getting Started</h2>
+<h2>A. Installation</h2>
+<h5>Run npm install on the command line or terminal.</h5>
+<pre class="prettyprint source"><code>npm install @ming-suhi/djs-local-manager
+</code></pre>
+<h5>Run npm ci to install dependencies.</h5>
+<pre class="prettyprint source"><code>npm ci
+</code></pre>
+<h2>B. Setting environment</h2>
+<ol>
+<li>Create a <code>.env</code> file in the root directory</li>
+</ol>
+<pre class="prettyprint source lang-env"><code>BOT_TOKEN = 
+
+COMMANDS_FOLDER =
+</code></pre>
+<ol start="2">
+<li>
+<p>Get the Discord bot's token and store it as <code>BOT_TOKEN</code>.</p>
+</li>
+<li>
+<p>Create a folder to hold command files. Store the folder path from the root as <code>COMMANDS_FOLDER</code>.</p>
+</li>
+</ol>
+<h2>C. Setting bot</h2>
+<ol>
+<li>Create an instance of Discord Client</li>
+</ol>
+<pre class="prettyprint source lang-js"><code>const Discord = require('discord.js');
+const client = new Discord.Client();
+</code></pre>
+<ol start="2">
+<li>Attach an instance of Manager Client</li>
+</ol>
+<pre class="prettyprint source lang-js"><code>const Manager = require('@ming-suhi/djs-local-manager');
+client.msdm = new Manager.LocalClient();
+</code></pre>
+<ol start="3">
+<li>Login bot</li>
+</ol>
+<pre class="prettyprint source lang-js"><code>client.login(client.msdm.token);
+</code></pre>
+<h2>D. Creating commands</h2>
+<ol>
+<li>
+<p>Create a file inside the commands folder</p>
+</li>
+<li>
+<p>Require/import <code>@ming-suhi/djs-local-manager</code></p>
+</li>
+</ol>
+<pre class="prettyprint source lang-js"><code>const Manager = require('@ming-suhi/djs-local-manager');
+</code></pre>
+<ol start="3">
+<li>Create and export instance of GlobalCommand</li>
+</ol>
+<pre class="prettyprint source lang-js"><code>module.exports = new Manager.GlobalCommand(commandData);
+</code></pre>
+<p>Example</p>
+<pre class="prettyprint source lang-js"><code>const Manager = require('@ming-suhi/djs-local-manager');
+
+module.exports = new Manager.GlobalCommand({
+  name: 'ping',
+  description: 'pings bot to get latency',
+  permissions: [&quot;SEND_MESSAGES&quot;],
+  async execute(interaction) {
+    //send latency to channel
+    interaction.sendMessage(`Bot ping is: ${Math.round(interaction.client.ws.ping)}ms`);
+  }
+});
+</code></pre>
+<h2>E. Handling commands</h2>
+<ol>
+<li>Listen to <code>INTERACTION_CREATE</code></li>
+</ol>
+<pre class="prettyprint source lang-js"><code>//Triggered on Slash Commands
+client.ws.on('INTERACTION_CREATE', async request => {
+  //code here
+})
+</code></pre>
+<ol start="2">
+<li>Create an instance of Manager Interaction</li>
+</ol>
+<pre class="prettyprint source lang-js"><code>const interaction = new Manager.Interaction(client, request);
+</code></pre>
+<p><strong>3. Execute requested command</strong></p>
+<pre class="prettyprint source lang-js"><code>client.msdm.matchCommand(interaction);
+</code></pre>
+<h2>F. Accessing Manager through interaction</h2>
+<ol>
+<li>Access Discord Client instance through the client property of interaction</li>
+</ol>
+<pre class="prettyprint source lang-js"><code>const client = interaction.client;
+</code></pre>
+<ol start="2">
+<li>Access manager through the property which you have attached it to(refer to C.2)</li>
+</ol>
+<pre class="prettyprint source lang-js"><code>const manager = client.msdm;
+</code></pre></article>
+    </section>
+
 
 
 
