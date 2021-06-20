@@ -87,11 +87,9 @@ h4 {
 }
 
 h4.name {
+  border-radius: 7px;
   color: #fff;
   background: #6d426d;
-  box-shadow: 0 .25em .5em #d3d3d3;
-  border-top: 1px solid #d3d3d3;
-  border-bottom: 1px solid #d3d3d3;
   margin: 1.5em 0 0.5em;
   padding: .75em 0 .75em 10px;
 }
@@ -213,6 +211,12 @@ nav {
   overflow: auto;
   position: fixed;
   height: 100%;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+nav::-webkit-scrollbar {
+  display: none;
 }
 
 nav #nav-search{
@@ -393,6 +397,7 @@ footer {
 }
 
 .prettyprint.source {
+  border-radius: 7px;
   width: inherit;
   line-height: 18px;
   display: block;

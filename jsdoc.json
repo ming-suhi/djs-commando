@@ -6,6 +6,9 @@
   },
   "plugins": ["plugins/markdown"],
   "templates": {
+    "default": {
+      "includeDate": false
+    },
     "cleverLinks": true,
     "monospaceLinks":true
   },
