@@ -1,4 +1,5 @@
 const Folder = require('../structures/folder.js');
+const GlobalCommand = require('../structures/global-command.js')
 
 
 class CommandsManager extends Folder {
@@ -38,19 +39,20 @@ class CommandsManager extends Folder {
    * @param {Discord.Client} client discord client 
    */
   async sync(client) {
-    const commands = await this.local.commands.get();
+    const commands = await this.get();
     for (let command of commands) {
       command.post(client);
     }
 
     const globalCommands = await client.api.applications(client.user.id).commands.get();
     for (let command of globalCommands){
-      const match = await this.local.commands.get(command.name);
-      if (match === undefined) {
+      try {
+        const match = await this.get(command.name);
+      }catch {
         const commandRef = new GlobalCommand(command);
         await commandRef.get(client);
         await commandRef.delete(client);
-      };
+      }
     }
   }
 }
