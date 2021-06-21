@@ -95,7 +95,23 @@ module.exports = new Manager.GlobalCommand({
 ```
 
 
-## E. Handling commands
+## E. Registering commands
+
+1. Listen to `ready`
+```js
+//Triggers on ready
+client.on('ready', async() => {
+  //code here
+});
+```
+
+2. Sync commands
+```js
+client.msdm.syncCommands(client);
+```
+
+
+## F. Handling commands
 
 1. Listen to `INTERACTION_CREATE`
 ```js
@@ -116,7 +132,7 @@ client.msdm.matchCommand(interaction);
 ```
 
 
-## F. Accessing Manager through interaction
+## G. Accessing Manager through interaction
 
 1. Access Discord Client instance through the client property of interaction
 ```js
@@ -127,3 +143,28 @@ const client = interaction.client;
 ```js
 const manager = client.msdm;
 ```
+
+
+## III. Contributing
+## A. Issues
+This project uses GitHub Issues to track bugs and feature requests. Please search the existing issues before filing new issues to avoid duplicates. For new issues, file your bug or feature request as a new issue.
+
+For help and questions about using this project, please open a GitHub issue.
+
+## B. Pull requests
+
+1. Fork the project.
+
+2. Create a topic branch from master.
+
+3. Make some commits to improve the project.
+
+4. Push this branch to your GitHub project.
+
+5. Open a Pull Request on GitHub.
+
+6. Discuss, and optionally continue committing.
+
+
+## IV. License
+MIT © 明suhi
