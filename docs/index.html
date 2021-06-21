@@ -139,7 +139,21 @@ module.exports = new Manager.GlobalCommand({
   }
 });
 </code></pre>
-<h2>E. Handling commands</h2>
+<h2>E. Registering commands</h2>
+<ol>
+<li>Listen to <code>ready</code></li>
+</ol>
+<pre class="prettyprint source lang-js"><code>//Triggers on ready
+client.on('ready', async() => {
+  //code here
+});
+</code></pre>
+<ol start="2">
+<li>Sync commands</li>
+</ol>
+<pre class="prettyprint source lang-js"><code>client.msdm.syncCommands(client);
+</code></pre>
+<h2>F. Handling commands</h2>
 <ol>
 <li>Listen to <code>INTERACTION_CREATE</code></li>
 </ol>
@@ -156,7 +170,7 @@ client.ws.on('INTERACTION_CREATE', async request => {
 <p><strong>3. Execute requested command</strong></p>
 <pre class="prettyprint source lang-js"><code>client.msdm.matchCommand(interaction);
 </code></pre>
-<h2>F. Accessing Manager through interaction</h2>
+<h2>G. Accessing Manager through interaction</h2>
 <ol>
 <li>Access Discord Client instance through the client property of interaction</li>
 </ol>
@@ -166,7 +180,34 @@ client.ws.on('INTERACTION_CREATE', async request => {
 <li>Access manager through the property which you have attached it to(refer to C.2)</li>
 </ol>
 <pre class="prettyprint source lang-js"><code>const manager = client.msdm;
-</code></pre></article>
+</code></pre>
+<h2>III. Contributing</h2>
+<h2>A. Issues</h2>
+<p>This project uses GitHub Issues to track bugs and feature requests. Please search the existing issues before filing new issues to avoid duplicates. For new issues, file your bug or feature request as a new issue.</p>
+<p>For help and questions about using this project, please open a GitHub issue.</p>
+<h2>B. Pull requests</h2>
+<ol>
+<li>
+<p>Fork the project.</p>
+</li>
+<li>
+<p>Create a topic branch from master.</p>
+</li>
+<li>
+<p>Make some commits to improve the project.</p>
+</li>
+<li>
+<p>Push this branch to your GitHub project.</p>
+</li>
+<li>
+<p>Open a Pull Request on GitHub.</p>
+</li>
+<li>
+<p>Discuss, and optionally continue committing.</p>
+</li>
+</ol>
+<h2>IV. License</h2>
+<p>MIT © 明suhi</p></article>
     </section>
 
 
