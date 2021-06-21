@@ -24,11 +24,6 @@ A package for managing Discord Slash Commands. For an in-depth documentation vis
 npm install @ming-suhi/djs-local-manager
 ```
 
-##### Run npm ci to install dependencies.
-```
-npm ci
-```
-
 
 ## B. Setting environment
 

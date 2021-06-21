@@ -7,7 +7,8 @@
   "plugins": ["plugins/markdown"],
   "templates": {
     "default": {
-      "includeDate": false
+      "includeDate": false,
+      "outputSourceFiles": false
     },
     "cleverLinks": true,
     "monospaceLinks":true
