@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ming-suhi/djs-local-manager/master/assets/logo.svg" width="250" align="center" />
+  <img src="https://raw.githubusercontent.com/ming-suhi/ming-suhi/master/djs-manager.svg" width="100" align="center" />
 </p>
 
 <p align="center">
