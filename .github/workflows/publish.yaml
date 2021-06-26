@@ -22,17 +22,17 @@ jobs:
           scope: '@ming-suhi'
       
       - name: Publish to NPM Registry
-      - run: npm publish --access public
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           
       - name: Setup Node for Github Registry
-      - uses: actions/setup-node@v2
+        uses: actions/setup-node@v2
         with:
           registry-url: 'https://npm.pkg.github.com'
           scope: '@ming-suhi'
           
       - name: Publish to Github Registry
-      - run: npm publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.PAT_TOKEN }}
