@@ -5,7 +5,7 @@ const client = new Discord.Client();
 client.slash = new LocalClient();
 
 const commandObject = {
-  name: 'ping',
+  name: 'ping2',
   description: 'pings bot to get latency'
 }
 
@@ -13,10 +13,12 @@ test('post command', async() => {
 
   //login
   await client.login(client.slash.token);
+  
+  //post
+  const command = new GlobalCommand(commandObject);
+  await command.post(client);
 
   //get
-  const command = client.slash.commands.get(commandObject.name);
-  await command.post(client);
   const commands = await client.api.applications(client.user.id).commands.get();
 
   //test
@@ -26,3 +28,7 @@ test('post command', async() => {
   //close
   client.destroy();
 })
+
+afterAll(async () => {
+	await new Promise(resolve => setTimeout(() => resolve(), 500)); // avoid jest open handle error
+});

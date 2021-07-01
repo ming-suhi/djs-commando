@@ -1,23 +1,20 @@
 const Discord = require('discord.js');
-const {LocalClient} = require('../../src/index.js');
+const {LocalClient, GlobalCommand} = require('../../src/index.js');
 
 const client = new Discord.Client();
 client.slash = new LocalClient();
 
 const commandObject = {
-  name: 'ping',
+  name: 'ping2',
   description: 'pings bot to get latency'
 }
 
 test('delete command', async() => {
-  
   //login
   await client.login(client.slash.token);
 
   //get
-  const command = client.slash.commands.get(commandObject.name);
-
-  //clean
+  const command = new GlobalCommand(commandObject);
   await command.get(client);
   await command.delete(client);
 
@@ -28,3 +25,7 @@ test('delete command', async() => {
   //close
   client.destroy();
 })
+
+afterAll(async () => {
+	await new Promise(resolve => setTimeout(() => resolve(), 500)); // avoid jest open handle error
+});
