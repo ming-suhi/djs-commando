@@ -1,0 +1,28 @@
+name: 🧪 SDK Extension Testing
+
+on: [push, pull_request, workflow_dispatch]
+
+env: ${{ secrets }}
+
+jobs:
+
+  GuildsManager:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup Node
+      uses: actions/setup-node@v2
+      
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: get method
+      run: npm run test tests/commands-manager/get
+      
+    - name: post method
+      run: npm run test tests/commands-manager/post
+      
+    - name: delete method
+      run: npm run test tests/commands-manager/delete

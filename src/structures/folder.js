@@ -18,7 +18,7 @@ class Folder {
    * @param {fileName} [name] file name
    * @returns {fileData|folderData} exports from file
    */
-  async get(name = null) {
+  get(name = null) {
 
     const files = getFiles(this.directory, name);
     return files;
