@@ -1,15 +1,15 @@
 const Discord = require('discord.js');
 const {LocalClient, GlobalCommand} = require('../../src/index.js');
 
-const client = new Discord.Client();
-client.slash = new LocalClient();
-
 const commandObject = {
   name: 'ping',
   description: 'pings bot to get latency'
 }
 
 test('post command', async() => {
+  const client = new Discord.Client();
+  client.slash = new LocalClient();
+
   await client.login(client.slash.token);
   const command = client.slash.commands.get(commandObject.name);
   await command.get(client);
