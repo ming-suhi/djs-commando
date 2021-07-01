@@ -16,4 +16,5 @@ test('post command', async() => {
   await command.delete(client);
   const commands = await client.api.applications(client.user.id).commands.get();
   expect(commands[0]).toEqual(undefined);
+  client.destroy();
 })

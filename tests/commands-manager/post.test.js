@@ -16,4 +16,5 @@ test('post command', async() => {
   const commands = await client.api.applications(client.user.id).commands.get();
   expect(commands[0]).toHaveProperty("name", commandObject.name);
   expect(commands[0]).toHaveProperty("description", commandObject.description);
+  client.destroy();
 })
