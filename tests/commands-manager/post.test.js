@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const {LocalClient, GlobalCommand} = require('@ming-suhi/djs-local-manager');
+const {LocalClient, GlobalCommand} = require('../../src/index.js');
 
 const client = new Discord.Client();
 client.slash = new LocalClient();
