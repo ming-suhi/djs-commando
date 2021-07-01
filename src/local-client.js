@@ -20,7 +20,11 @@ class LocalClient {
    * @param {Interaction} interaction interaction 
    */
   async matchCommand(interaction){
-    await this.commands.match(interaction);
+    if (interaction.request.type == 2) {
+      await this.commands.match(interaction);
+    } else if (interaction.request.type == 3) {
+      console.log("Buttons not supported yet");
+    }
   }
 
 
