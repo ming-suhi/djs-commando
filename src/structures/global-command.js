@@ -6,7 +6,7 @@ class GlobalCommand extends Command{
   /**
    * Global Command Structure
    * @augments Command
-   * @param {command} data command data
+   * @param {commandObject} data command data
    */
   constructor(data) {
     super();
