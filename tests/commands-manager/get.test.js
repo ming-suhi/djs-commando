@@ -1,11 +1,6 @@
 const {LocalClient, GlobalCommand} = require('../../src/index.js');
 
-slash = new LocalClient();
-
-const request = {
-  type: 2,
-  data: { name: 'ping', id: '837977489711431740' }
-}
+const slash = new LocalClient();
 
 const commandObject = {
   name: 'ping',
@@ -14,7 +9,11 @@ const commandObject = {
 }
 
 test('get commands', async() => {
+
+  //get
   const command = slash.commands.get(commandObject.name);
+
+  //test
   expect(command).toBeInstanceOf(GlobalCommand);
   expect(command).toHaveProperty('name', commandObject.name);
   expect(command).toHaveProperty('description', commandObject.description);
