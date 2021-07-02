@@ -45,10 +45,10 @@ class CommandsManager extends Folder {
     }
 
     const globalCommands = await client.api.applications(client.user.id).commands.get();
-    for (let command of globalCommands){
+    for (let command of globalCommands) {
       try {
         const match = await this.get(command.name);
-      }catch {
+      }catch{
         const commandRef = new GlobalCommand(command);
         await commandRef.get(client);
         await commandRef.delete(client);
