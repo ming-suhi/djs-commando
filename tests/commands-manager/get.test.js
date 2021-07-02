@@ -8,14 +8,26 @@ const commandObject = {
   permissions: ["SEND_MESSAGES"],
 }
 
-test('get commands', async() => {
+describe('get commands', () => {
 
-  //get
-  const command = slash.commands.get(commandObject.name);
+  test('gets all commands', () => {
 
-  //test
-  expect(command).toBeInstanceOf(GlobalCommand);
-  expect(command).toHaveProperty('name', commandObject.name);
-  expect(command).toHaveProperty('description', commandObject.description);
-  expect(command).toHaveProperty('permissions');
-})
+    //test
+    const commands = slash.commands.get();
+
+    //check
+    expect(commands).toBeInstanceOf(Array);
+  });
+
+  test('gets a specific command', async() => {
+    
+    //test
+    const command = slash.commands.get(commandObject.name);
+
+    //check
+    expect(command).toBeInstanceOf(GlobalCommand);
+    expect(command).toHaveProperty('name', commandObject.name);
+    expect(command).toHaveProperty('description', commandObject.description);
+    expect(command).toHaveProperty('permissions');
+  });
+});

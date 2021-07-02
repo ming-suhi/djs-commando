@@ -10,15 +10,16 @@ const commandObject = {
 }
 
 test('delete command', async() => {
-  //login
+
+  //setup
   await client.login(client.slash.token);
 
-  //get
+  //test
   var command = new GlobalCommand(commandObject);
   await command.get(client);
   await command.delete(client);
 
-  //test
+  //check
   const commands = await client.api.applications(client.user.id).commands.get();
   var command = commands.find(command => command.name == commandObject.name);
   expect(command).toEqual(undefined);

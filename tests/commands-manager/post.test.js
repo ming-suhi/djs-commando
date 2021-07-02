@@ -11,22 +11,19 @@ const commandObject = {
 
 test('post command', async() => {
 
-  //login
+  //setup
   await client.login(client.slash.token);
-  
-  //post
-  var command = new GlobalCommand(commandObject);
-  await command.post(client);
-
-  //get
-  const commands = await client.api.applications(client.user.id).commands.get();
-  var command = commands.find(command => command.name == commandObject.name);
 
   //test
+  await new GlobalCommand(commandObject).post(client);
+
+  //check
+  const commands = await client.api.applications(client.user.id).commands.get();
+  const command = commands.find(command => command.name == commandObject.name);
   expect(command).toHaveProperty("name", commandObject.name);
   expect(command).toHaveProperty("description", commandObject.description);
 
-  //close
+  //cleanup
   client.destroy();
 })
 
