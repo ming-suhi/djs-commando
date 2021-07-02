@@ -116,14 +116,9 @@ client.ws.on('INTERACTION_CREATE', async request => {
 })
 ```
 
-2. Create an instance of Manager Interaction
+2. Execute requested command
 ```js
-const interaction = new Manager.Interaction(client, request);
-```
-
-**3. Execute requested command**
-```js
-client.msdm.matchCommand(interaction);
+client.msdm.matchCommand(client, request);
 ```
 
 

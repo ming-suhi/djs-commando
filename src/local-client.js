@@ -1,4 +1,5 @@
 const CommandsManager = require('./managers/commands-manager.js');
+const Interaction = require('./structures/interaction.js');
 const dotenv = require('dotenv');
 
 class LocalClient {
@@ -17,12 +18,18 @@ class LocalClient {
 
   /**
    * Finds requested command
-   * @param {Interaction} interaction interaction 
+   * @param {Discord.client} client instance of discord client 
+   * @param {request} request user request
    */
-  async matchCommand(interaction){
-    if (interaction.request.type == 2) {
+  async matchCommand(client, request){
+    const interaction = new Interaction(client, request);
+
+    switch(request.type) {
+      case 2:
       await this.commands.match(interaction);
-    } else if (interaction.request.type == 3) {
+      break;
+
+      case 3:
       console.log("Buttons not supported yet");
     }
   }

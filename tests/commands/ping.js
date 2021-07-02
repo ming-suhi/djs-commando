@@ -12,6 +12,6 @@ module.exports = new GlobalCommand({
       return;
     };
     
-    //interaction.sendMessage(`:ping_pong: Bot ping is: ${Math.round(interaction.client.ws.ping)}ms`);
+    interaction.sendMessage(`Pong`);
   }
 });
