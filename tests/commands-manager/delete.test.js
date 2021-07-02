@@ -14,13 +14,14 @@ test('delete command', async() => {
   await client.login(client.slash.token);
 
   //get
-  const command = new GlobalCommand(commandObject);
+  var command = new GlobalCommand(commandObject);
   await command.get(client);
   await command.delete(client);
 
   //test
   const commands = await client.api.applications(client.user.id).commands.get();
-  expect(commands[0]).toEqual(undefined);
+  var command = commands.find(command => command.name == commandObject.name);
+  expect(command).toEqual(undefined);
 
   //close
   client.destroy();

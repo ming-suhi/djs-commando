@@ -20,17 +20,18 @@ test('sync commands', async() => {
   await client.login(client.slash.token);
   
   //post
-  const command = new GlobalCommand(commandObject2);
+  var command = new GlobalCommand(commandObject2);
   await command.post(client);
 
   //get
   await client.slash.syncCommands(client);
   const commands = await client.api.applications(client.user.id).commands.get();
+  var command = commands.find(command => command.name == commandObject.name);
 
   //test
   expect(commands.length).toEqual(1);
-  expect(commands[0]).toHaveProperty("name", commandObject.name);
-  expect(commands[0]).toHaveProperty("description", commandObject.description);
+  expect(command).toHaveProperty("name", commandObject.name);
+  expect(command).toHaveProperty("description", commandObject.description);
 
   //close
   client.destroy();
