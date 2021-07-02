@@ -26,3 +26,6 @@ jobs:
       
     - name: delete method
       run: npm run test tests/commands-manager/delete
+
+    - name: sync method
+      run: npm run test tests/commands-manager/sync
