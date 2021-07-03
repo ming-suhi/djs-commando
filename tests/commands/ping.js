@@ -30,7 +30,7 @@ class Ping extends Command {
     }
   }
 
-  async onSubmit(service) {
+  async onSelect(service) {
     try {
       await this.botCheck(service);
       await this.interactCheck(service);
