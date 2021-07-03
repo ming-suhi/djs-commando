@@ -33,12 +33,6 @@ class Command{
     }
   }
 
-  async getID(client) {
-    const commands = await client.api.applications(client.user.id).commands.get();
-    const command = commands.find(command => command.name === this.name);
-    return command.id;
-  }
-
   async post(client) {
     const data = {
       name: this.name,
@@ -46,11 +40,6 @@ class Command{
       options: this.options
     }
     await client.api.applications(client.user.id).commands.post({data: data});
-  }
-
-  async delete(client) {
-    const id = await this.getID(client);
-    await client.api.applications(client.user.id).commands(id).delete();
   }
 }
 

@@ -30,6 +30,22 @@ class CommandsManager extends Folder {
       } 
     }
   }
+
+  async sync(client){
+    var commands = this.get();
+    for (let command of commands) {
+      new command().post(client);
+    }
+
+    var commands = await client.api.applications(client.user.id).commands.get();
+    for (let command of commands) {
+      try {
+        this.get(command.name);
+      }catch{
+        await client.api.applications(client.user.id).commands(command.id).delete();
+      }
+    }
+  }
 }
 
 module.exports = CommandsManager;

@@ -1,5 +1,5 @@
 module.exports = {
-  "InteractionsManager": require('./managers/commands-manager.js'),
+  "CommandsManager": require('./managers/commands-manager.js'),
   "Command": require('./structures/command.js'),
   "Folder": require('./structures/folder.js'),
   "InteractionService": require('./structures/interaction-service.js'),
