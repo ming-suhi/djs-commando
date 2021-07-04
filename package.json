@@ -1,15 +1,16 @@
 {
   "name": "@ming-suhi/djs-local-manager",
-  "version": "1.0.0",
-  "description": "Manage Discord Slash Commands in an organized, consistent, and structured manner",
+  "version": "2.0.0",
+  "description": "Manage all Discord Interactions; Slash Commands, Button, and Select Menus",
   "main": "src/index.js",
   "keywords": [
-    "discord-slash-commands",
     "discord",
+    "discord-interactions",
     "discord-slash",
-    "slash-commands",
+    "discord-buttons",
+    "discord-select-menus",
     "discord-slash-commands",
-    "discord-commands"
+    "discord-manager"
   ],
   "dependencies": {
     "discord.js": "^12.5.3",
