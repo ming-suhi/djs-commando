@@ -27,7 +27,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h3>Tutorials</h3><ul><li><a href="tutorial-getting-started.html">Getting Started</a></li><li><a href="tutorial-managing-commands.html">Managing Commands</a></li></ul><h3>Classes</h3><ul><li><a href="Command.html">Command</a><ul class='methods'><li data-type='method'><a href="Command.html#security">security</a></li></ul></li><li><a href="CommandsManager.html">CommandsManager</a><ul class='methods'><li data-type='method'><a href="CommandsManager.html#get">get</a></li><li data-type='method'><a href="CommandsManager.html#match">match</a></li><li data-type='method'><a href="CommandsManager.html#sync">sync</a></li></ul></li><li><a href="Folder.html">Folder</a><ul class='methods'><li data-type='method'><a href="Folder.html#get">get</a></li></ul></li><li><a href="GlobalCommand.html">GlobalCommand</a><ul class='methods'><li data-type='method'><a href="GlobalCommand.html#delete">delete</a></li><li data-type='method'><a href="GlobalCommand.html#get">get</a></li><li data-type='method'><a href="GlobalCommand.html#post">post</a></li><li data-type='method'><a href="GlobalCommand.html#security">security</a></li></ul></li><li><a href="Interaction.html">Interaction</a><ul class='methods'><li data-type='method'><a href="Interaction.html#author">author</a></li><li data-type='method'><a href="Interaction.html#bot">bot</a></li><li data-type='method'><a href="Interaction.html#channel">channel</a></li><li data-type='method'><a href="Interaction.html#guild">guild</a></li><li data-type='method'><a href="Interaction.html#sendEmbed">sendEmbed</a></li><li data-type='method'><a href="Interaction.html#sendEphemeral">sendEphemeral</a></li><li data-type='method'><a href="Interaction.html#sendMessage">sendMessage</a></li></ul></li><li><a href="LocalClient.html">LocalClient</a><ul class='methods'><li data-type='method'><a href="LocalClient.html#matchCommand">matchCommand</a></li><li data-type='method'><a href="LocalClient.html#syncCommands">syncCommands</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#commandObject">commandObject</a></li><li><a href="global.html#commandOption">commandOption</a></li><li><a href="global.html#fileData">fileData</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#folderData">folderData</a></li><li><a href="global.html#folderPath">folderPath</a></li><li><a href="global.html#missingPermissions">missingPermissions</a></li><li><a href="global.html#securityResult">securityResult</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Tutorials</h3><ul><li><a href="tutorial-command_.html">Working with Commands</a></li><li><a href="tutorial-components.html">Working with Components</a></li><li><a href="tutorial-security.html">Setting Up Security</a></li><li><a href="tutorial-setup.html">Setting Up</a></li><li><a href="tutorial-sync.html">Synching Command</a></li></ul><h3>Classes</h3><ul><li><a href="Command.html">Command</a><ul class='methods'><li data-type='method'><a href="Command.html#botCheck">botCheck</a></li><li data-type='method'><a href="Command.html#executeCheck">executeCheck</a></li><li data-type='method'><a href="Command.html#interactCheck">interactCheck</a></li><li data-type='method'><a href="Command.html#post">post</a></li></ul></li><li><a href="CommandsManager.html">CommandsManager</a><ul class='methods'><li data-type='method'><a href="CommandsManager.html#get">get</a></li><li data-type='method'><a href="CommandsManager.html#match">match</a></li><li data-type='method'><a href="CommandsManager.html#sync">sync</a></li></ul></li><li><a href="Folder.html">Folder</a><ul class='methods'><li data-type='method'><a href="Folder.html#get">get</a></li></ul></li><li><a href="InteractionService.html">InteractionService</a><ul class='methods'><li data-type='method'><a href="InteractionService.html#sendEmbed">sendEmbed</a></li><li data-type='method'><a href="InteractionService.html#sendEphemeral">sendEphemeral</a></li><li data-type='method'><a href="InteractionService.html#sendMessage">sendMessage</a></li></ul></li><li><a href="LocalClient.html">LocalClient</a><ul class='methods'><li data-type='method'><a href="LocalClient.html#handleInteraction">handleInteraction</a></li><li data-type='method'><a href="LocalClient.html#syncCommands">syncCommands</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#fileExport">fileExport</a></li><li><a href="global.html#folderExports">folderExports</a></li><li><a href="global.html#folderPath">folderPath</a></li></ul>
 </nav>
 
 <div id="main">
@@ -67,7 +67,7 @@
 </p>
 <p align="center">Powered by Discord.js</p>
 <h2>I. About</h2>
-<p>A package for managing Discord Slash Commands. For an in-depth documentation visit the <a href="https://ming-suhi.github.io/djs-local-manager/" target="_blank">official website</a>. For users who want to opt for a similar package with a database manager, check out <a href="https://github.com/ming-suhi/djs-manager" target="_blank">@ming-suhi/djs-manager</a> from the same developer.</p>
+<p>A package for managing Discord Interaction; Slash Commands, Button, and Select Menus. For an in-depth documentation visit the <a href="https://ming-suhi.github.io/djs-local-manager/" target="_blank">official website</a>. For users who want to opt for a similar package with a database manager, check out <a href="https://github.com/ming-suhi/djs-manager" target="_blank">@ming-suhi/djs-manager</a> from the same developer.</p>
 <h2>II. Getting Started</h2>
 <h2>A. Installation</h2>
 <h5>Run npm install on the command line or terminal.</h5>
@@ -75,13 +75,13 @@
 </code></pre>
 <h2>B. Setting environment</h2>
 <ol>
-<li>Create a <code>.env</code> file in the root directory</li>
-</ol>
+<li>
+<p>Create a <code>.env</code> file in the root directory</p>
 <pre class="prettyprint source lang-env"><code>BOT_TOKEN = 
 
 COMMANDS_FOLDER =
 </code></pre>
-<ol start="2">
+</li>
 <li>
 <p>Get the Discord bot's token and store it as <code>BOT_TOKEN</code>.</p>
 </li>
@@ -91,92 +91,91 @@ COMMANDS_FOLDER =
 </ol>
 <h2>C. Setting bot</h2>
 <ol>
-<li>Create an instance of Discord Client</li>
-</ol>
+<li>
+<p>Create an instance of Discord Client</p>
 <pre class="prettyprint source lang-js"><code>const Discord = require('discord.js');
 const client = new Discord.Client();
 </code></pre>
-<ol start="2">
-<li>Attach an instance of Manager Client</li>
-</ol>
+</li>
+<li>
+<p>Attach an instance of Manager Client</p>
 <pre class="prettyprint source lang-js"><code>const Manager = require('@ming-suhi/djs-local-manager');
 client.msdm = new Manager.LocalClient();
 </code></pre>
-<ol start="3">
-<li>Login bot</li>
-</ol>
+</li>
+<li>
+<p>Login bot</p>
 <pre class="prettyprint source lang-js"><code>client.login(client.msdm.token);
 </code></pre>
+</li>
+</ol>
 <h2>D. Creating commands</h2>
 <ol>
 <li>
-<p>Create a file inside the commands folder</p>
+<p>Create a file inside the commands folder, file name must be the same as command name</p>
 </li>
 <li>
-<p>Require/import <code>@ming-suhi/djs-local-manager</code></p>
-</li>
-</ol>
-<pre class="prettyprint source lang-js"><code>const Manager = require('@ming-suhi/djs-local-manager');
+<p>Require/import <code>Command</code></p>
+<pre class="prettyprint source lang-js"><code>const {Command} = require('@ming-suhi/djs-local-manager');
 </code></pre>
-<ol start="3">
-<li>Create and export instance of GlobalCommand</li>
-</ol>
-<pre class="prettyprint source lang-js"><code>module.exports = new Manager.GlobalCommand(commandData);
+</li>
+<li>
+<p>Extend <code>Command</code></p>
+<pre class="prettyprint source lang-js"><code>class MyCommand extends Command {
+  constructor() {
+    super();
+    // Properties here
+  }
+}
+</code></pre>
+</li>
+<li>
+<p>Set class properties</p>
+<pre class="prettyprint source lang-js"><code>this.name = &quot;mycommand&quot;;
+this.description = 'my custom command';
+</code></pre>
+</li>
+<li>
+<p>Create <code>execute</code> method</p>
+<pre class="prettyprint source lang-js"><code>async execute(service) {
+  await service.sendMessage('Your command has been heard');
+}
+</code></pre>
+</li>
+<li>
+<p>Export created class</p>
+<pre class="prettyprint source lang-js"><code>module.exports = MyCommand;
 </code></pre>
 <p>Example</p>
-<pre class="prettyprint source lang-js"><code>const Manager = require('@ming-suhi/djs-local-manager');
+<pre class="prettyprint source lang-js"><code>const {Command} = require('@ming-suhi/djs-local-manager');
 
-module.exports = new Manager.GlobalCommand({
-  name: 'ping',
-  description: 'pings bot to get latency',
-  permissions: [&quot;SEND_MESSAGES&quot;],
-  async execute(interaction) {
-    //send latency to channel
-    interaction.sendMessage(`Bot ping is: ${Math.round(interaction.client.ws.ping)}ms`);
+class Ping extends Command {
+  constructor() {
+    super();
+    this.name = &quot;ping&quot;;
+    this.description = 'pings bot to get latency';
   }
+
+  async execute(service) {
+    await service.sendMessage('Pong');
+  }
+}
+
+module.exports = Ping;
+</code></pre>
+</li>
+</ol>
+<h2>E. Synching commands</h2>
+<p>It is suggested to sync commands on client ready. To sync commands just simply call on <code>syncCommands</code> method.</p>
+<pre class="prettyprint source lang-js"><code>client.on('ready', async() => {
+  client.msdm.syncCommands(client);
 });
 </code></pre>
-<h2>E. Registering commands</h2>
-<ol>
-<li>Listen to <code>ready</code></li>
-</ol>
-<pre class="prettyprint source lang-js"><code>//Triggers on ready
-client.on('ready', async() => {
-  //code here
-});
-</code></pre>
-<ol start="2">
-<li>Sync commands</li>
-</ol>
-<pre class="prettyprint source lang-js"><code>client.msdm.syncCommands(client);
-</code></pre>
-<h2>F. Handling commands</h2>
-<ol>
-<li>Listen to <code>INTERACTION_CREATE</code></li>
-</ol>
-<pre class="prettyprint source lang-js"><code>//Triggered on Slash Commands
-client.ws.on('INTERACTION_CREATE', async request => {
-  //code here
+<h2>F. Setting interaction handler</h2>
+<p>This step setups an interaction handler that finds the corresponding file for the requested command. Upon receiving a slash command it calls on the executes method of that command. Upon receiving a button interaction it executes the onPress method, while receiving a select menu interaction executes the onSelect method.</p>
+<pre class="prettyprint source lang-js"><code>client.ws.on('INTERACTION_CREATE', async interaction => {
+  client.msdm.handleInteraction(client, interaction);
 })
-</code></pre>
-<ol start="2">
-<li>Create an instance of Manager Interaction</li>
-</ol>
-<pre class="prettyprint source lang-js"><code>const interaction = new Manager.Interaction(client, request);
-</code></pre>
-<p><strong>3. Execute requested command</strong></p>
-<pre class="prettyprint source lang-js"><code>client.msdm.matchCommand(interaction);
-</code></pre>
-<h2>G. Accessing Manager through interaction</h2>
-<ol>
-<li>Access Discord Client instance through the client property of interaction</li>
-</ol>
-<pre class="prettyprint source lang-js"><code>const client = interaction.client;
-</code></pre>
-<ol start="2">
-<li>Access manager through the property which you have attached it to(refer to C.2)</li>
-</ol>
-<pre class="prettyprint source lang-js"><code>const manager = client.msdm;
 </code></pre>
 <h2>III. Contributing</h2>
 <h2>A. Issues</h2>

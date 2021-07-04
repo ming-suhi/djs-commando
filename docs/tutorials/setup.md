@@ -1,9 +1,10 @@
-## A. Installing
+## A. Installation
 
 ##### Run npm install on the command line or terminal.
 ```
 npm install @ming-suhi/djs-local-manager
 ```
+
 
 ## B. Setting environment
 
@@ -19,6 +20,7 @@ npm install @ming-suhi/djs-local-manager
 
 3. Create a folder to hold command files. Store the folder path from the root as `COMMANDS_FOLDER`.
 
+
 ## C. Setting bot
 
 1. Create an instance of Discord Client
@@ -27,14 +29,9 @@ npm install @ming-suhi/djs-local-manager
     const client = new Discord.Client();
     ```
 
-2. Attach an instance of Manager Client to a Discord Client instance property
-
-    Note: chosen property must not be taken
-
-    Quick Info: `msdm` is an acronym for Ming Suhi Discord Manager
-
+2. Attach an instance of Manager Client
     ```js
-    const Manager = require('@ming-suhi/djs-manager');
+    const Manager = require('@ming-suhi/djs-local-manager');
     client.msdm = new Manager.LocalClient();
     ```
 
@@ -42,3 +39,13 @@ npm install @ming-suhi/djs-local-manager
     ```js
     client.login(client.msdm.token);
     ```
+
+## D. Setting interaction handler
+
+This step setups an interaction handler that finds the corresponding file for the requested command. Upon receiving a slash command it calls on the executes method of that command. Upon receiving a button interaction it executes the onPress method, while receiving a select menu interaction executes the onSelect method.
+
+```js
+client.ws.on('INTERACTION_CREATE', async interaction => {
+  client.msdm.handleInteraction(client, interaction);
+})
+```

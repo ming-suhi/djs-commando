@@ -1,14 +1,15 @@
 const Folder = require('../structures/folder.js');
-const GlobalCommand = require('../structures/global-command.js')
+const InteractionService = require('../structures/interaction-service.js');
 
 
 class CommandsManager extends Folder {
 
+
   /**
-   * Manages the commands folder
-   * Path: local/{path}
+   * Main class for managing commands
+   * @param {folderPath} path absolute path to folder
+   * @property {folderPath} path absolute path to folder
    * @augments Folder
-   * @param {folderPath} path path from root leading to folder
    */
   constructor(path) {
     super(path);
@@ -16,42 +17,59 @@ class CommandsManager extends Folder {
 
 
   /**
-   * Finds requested command
-   * @param {Interaction} interaction interaction 
+   * Handles interactions
+   * @param {Discord.Client} client instance of Discord Client 
+   * @param {Discord.Interaction} interaction interaction object
    */
-   async match(interaction){
-    const command = await this.get(interaction.request.data.name);
-    const security = command.security(await interaction.author());
-    switch (security.pass) {
-      case true:
-      command.execute(interaction);
+  async match(client, interaction){
+
+    var service = new InteractionService(client, interaction);
+
+    switch(interaction.type) {
+
+      // Handle commands
+      case 2:
+      var command = this.get(interaction.data.name);
+      await new command().execute(service);
       break;
-    
-      case false:
-      interaction.responseType = 3;
-      interaction.sendEphemeral(`You are missing permissions to run this command: \`${security.missingPermissions.join(' | ').replace(/_/g, ' ')}\``);
+
+      // Handle components
+      case 3:
+      var command = this.get(interaction.message.interaction.name);
+      switch(interaction.data.component_type) {
+
+        // Handle buttons
+        case 2:
+        await new command().onPress(service);
+        break;
+
+        // Handle select menus
+        case 3:
+        await new command().onSelect(service);
+      } 
     }
   }
 
 
   /**
-   * Sync Discord with local commands
-   * @param {Discord.Client} client discord client 
+   * Sync commands in commands folder with Discord
+   * @param {Discord.Client} client instance of Discord Client
    */
-  async sync(client) {
-    const commands = await this.get();
+  async sync(client){
+
+    // Post all commands in commandsFolder
+    var commands = this.get();
     for (let command of commands) {
-      command.post(client);
+      new command().post(client);
     }
 
-    const globalCommands = await client.api.applications(client.user.id).commands.get();
-    for (let command of globalCommands) {
+    // Delete from Discord unexisting commands
+    var commands = await client.api.applications(client.user.id).commands.get();
+    for (let command of commands) {
       try {
-        const match = await this.get(command.name);
+        this.get(command.name);
       }catch{
-        const commandRef = new GlobalCommand(command);
-        await commandRef.get(client);
-        await commandRef.delete(client);
+        await client.api.applications(client.user.id).commands(command.id).delete();
       }
     }
   }

@@ -12,7 +12,7 @@
 
 
 ## I. About
-A package for managing Discord Slash Commands. For an in-depth documentation visit the <a href="https://ming-suhi.github.io/djs-local-manager/" target="_blank">official website</a>. For users who want to opt for a similar package with a database manager, check out <a href="https://github.com/ming-suhi/djs-manager" target="_blank">@ming-suhi/djs-manager</a> from the same developer. 
+A package for managing Discord Interaction; Slash Commands, Button, and Select Menus. For an in-depth documentation visit the <a href="https://ming-suhi.github.io/djs-local-manager/" target="_blank">official website</a>. For users who want to opt for a similar package with a database manager, check out <a href="https://github.com/ming-suhi/djs-manager" target="_blank">@ming-suhi/djs-manager</a> from the same developer. 
 
 
 ## II. Getting Started
@@ -29,11 +29,11 @@ npm install @ming-suhi/djs-local-manager
 
 1. Create a `.env` file in the root directory
 
-```env
-BOT_TOKEN = 
+    ```env
+    BOT_TOKEN = 
 
-COMMANDS_FOLDER =
-```
+    COMMANDS_FOLDER =
+    ```
 
 2. Get the Discord bot's token and store it as `BOT_TOKEN`.
 
@@ -43,95 +43,98 @@ COMMANDS_FOLDER =
 ## C. Setting bot
 
 1. Create an instance of Discord Client
-```js
-const Discord = require('discord.js');
-const client = new Discord.Client();
-```
+    ```js
+    const Discord = require('discord.js');
+    const client = new Discord.Client();
+    ```
 
 2. Attach an instance of Manager Client
-```js
-const Manager = require('@ming-suhi/djs-local-manager');
-client.msdm = new Manager.LocalClient();
-```
+    ```js
+    const Manager = require('@ming-suhi/djs-local-manager');
+    client.msdm = new Manager.LocalClient();
+    ```
 
 3. Login bot
-```js
-client.login(client.msdm.token);
-```
-
+    ```js
+    client.login(client.msdm.token);
+    ```
 
 ## D. Creating commands
 
-1. Create a file inside the commands folder
+1. Create a file inside the commands folder, file name must be the same as command name
 
-2. Require/import `@ming-suhi/djs-local-manager`
+2. Require/import `Command`
+    ```js
+    const {Command} = require('@ming-suhi/djs-local-manager');
+    ```
+
+3. Extend `Command`
+    ```js
+    class MyCommand extends Command {
+      constructor() {
+        super();
+        // Properties here
+      }
+    }
+    ```
+
+4. Set class properties
+    ```js
+    this.name = "mycommand";
+    this.description = 'my custom command';
+    ```
+
+5. Create `execute` method
+    ```js
+    async execute(service) {
+      await service.sendMessage('Your command has been heard');
+    }
+    ```
+
+6. Export created class
+    ```js
+    module.exports = MyCommand;
+    ```
+
+    Example
+    ```js
+    const {Command} = require('@ming-suhi/djs-local-manager');
+
+    class Ping extends Command {
+      constructor() {
+        super();
+        this.name = "ping";
+        this.description = 'pings bot to get latency';
+      }
+
+      async execute(service) {
+        await service.sendMessage('Pong');
+      }
+    }
+
+    module.exports = Ping;
+    ```
+
+
+## E. Synching commands
+
+It is suggested to sync commands on client ready. To sync commands just simply call on `syncCommands` method.
+
 ```js
-const Manager = require('@ming-suhi/djs-local-manager');
-```
-
-3. Create and export instance of GlobalCommand
-```js
-module.exports = new Manager.GlobalCommand(commandData);
-```
-
-Example
-```js
-const Manager = require('@ming-suhi/djs-local-manager');
-
-module.exports = new Manager.GlobalCommand({
-  name: 'ping',
-  description: 'pings bot to get latency',
-  permissions: ["SEND_MESSAGES"],
-  async execute(interaction) {
-    //send latency to channel
-    interaction.sendMessage(`Bot ping is: ${Math.round(interaction.client.ws.ping)}ms`);
-  }
-});
-```
-
-
-## E. Registering commands
-
-1. Listen to `ready`
-```js
-//Triggers on ready
 client.on('ready', async() => {
-  //code here
+  client.msdm.syncCommands(client);
 });
 ```
 
-2. Sync commands
+
+## F. Setting interaction handler
+
+This step setups an interaction handler that finds the corresponding file for the requested command. Upon receiving a slash command it calls on the executes method of that command. Upon receiving a button interaction it executes the onPress method, while receiving a select menu interaction executes the onSelect method.
+
 ```js
-client.msdm.syncCommands(client);
-```
-
-
-## F. Handling commands
-
-1. Listen to `INTERACTION_CREATE`
-```js
-//Triggered on Slash Commands
-client.ws.on('INTERACTION_CREATE', async request => {
-  //code here
+client.ws.on('INTERACTION_CREATE', async interaction => {
+  client.msdm.handleInteraction(client, interaction);
 })
-```
-
-2. Execute requested command
-```js
-client.msdm.matchCommand(client, request);
-```
-
-
-## G. Accessing Manager through interaction
-
-1. Access Discord Client instance through the client property of interaction
-```js
-const client = interaction.client;
-```
-
-2. Access manager through the property which you have attached it to(refer to C.2)
-```js
-const manager = client.msdm;
 ```
 
 

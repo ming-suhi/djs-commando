@@ -27,7 +27,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h3>Tutorials</h3><ul><li><a href="tutorial-getting-started.html">Getting Started</a></li><li><a href="tutorial-managing-commands.html">Managing Commands</a></li></ul><h3>Classes</h3><ul><li><a href="Command.html">Command</a><ul class='methods'><li data-type='method'><a href="Command.html#security">security</a></li></ul></li><li><a href="CommandsManager.html">CommandsManager</a><ul class='methods'><li data-type='method'><a href="CommandsManager.html#get">get</a></li><li data-type='method'><a href="CommandsManager.html#match">match</a></li><li data-type='method'><a href="CommandsManager.html#sync">sync</a></li></ul></li><li><a href="Folder.html">Folder</a><ul class='methods'><li data-type='method'><a href="Folder.html#get">get</a></li></ul></li><li><a href="GlobalCommand.html">GlobalCommand</a><ul class='methods'><li data-type='method'><a href="GlobalCommand.html#delete">delete</a></li><li data-type='method'><a href="GlobalCommand.html#get">get</a></li><li data-type='method'><a href="GlobalCommand.html#post">post</a></li><li data-type='method'><a href="GlobalCommand.html#security">security</a></li></ul></li><li><a href="Interaction.html">Interaction</a><ul class='methods'><li data-type='method'><a href="Interaction.html#author">author</a></li><li data-type='method'><a href="Interaction.html#bot">bot</a></li><li data-type='method'><a href="Interaction.html#channel">channel</a></li><li data-type='method'><a href="Interaction.html#guild">guild</a></li><li data-type='method'><a href="Interaction.html#sendEmbed">sendEmbed</a></li><li data-type='method'><a href="Interaction.html#sendEphemeral">sendEphemeral</a></li><li data-type='method'><a href="Interaction.html#sendMessage">sendMessage</a></li></ul></li><li><a href="LocalClient.html">LocalClient</a><ul class='methods'><li data-type='method'><a href="LocalClient.html#matchCommand">matchCommand</a></li><li data-type='method'><a href="LocalClient.html#syncCommands">syncCommands</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#commandObject">commandObject</a></li><li><a href="global.html#commandOption">commandOption</a></li><li><a href="global.html#fileData">fileData</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#folderData">folderData</a></li><li><a href="global.html#folderPath">folderPath</a></li><li><a href="global.html#missingPermissions">missingPermissions</a></li><li><a href="global.html#securityResult">securityResult</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Tutorials</h3><ul><li><a href="tutorial-command_.html">Working with Commands</a></li><li><a href="tutorial-components.html">Working with Components</a></li><li><a href="tutorial-security.html">Setting Up Security</a></li><li><a href="tutorial-setup.html">Setting Up</a></li><li><a href="tutorial-sync.html">Synching Command</a></li></ul><h3>Classes</h3><ul><li><a href="Command.html">Command</a><ul class='methods'><li data-type='method'><a href="Command.html#botCheck">botCheck</a></li><li data-type='method'><a href="Command.html#executeCheck">executeCheck</a></li><li data-type='method'><a href="Command.html#interactCheck">interactCheck</a></li><li data-type='method'><a href="Command.html#post">post</a></li></ul></li><li><a href="CommandsManager.html">CommandsManager</a><ul class='methods'><li data-type='method'><a href="CommandsManager.html#get">get</a></li><li data-type='method'><a href="CommandsManager.html#match">match</a></li><li data-type='method'><a href="CommandsManager.html#sync">sync</a></li></ul></li><li><a href="Folder.html">Folder</a><ul class='methods'><li data-type='method'><a href="Folder.html#get">get</a></li></ul></li><li><a href="InteractionService.html">InteractionService</a><ul class='methods'><li data-type='method'><a href="InteractionService.html#sendEmbed">sendEmbed</a></li><li data-type='method'><a href="InteractionService.html#sendEphemeral">sendEphemeral</a></li><li data-type='method'><a href="InteractionService.html#sendMessage">sendMessage</a></li></ul></li><li><a href="LocalClient.html">LocalClient</a><ul class='methods'><li data-type='method'><a href="LocalClient.html#handleInteraction">handleInteraction</a></li><li data-type='method'><a href="LocalClient.html#syncCommands">syncCommands</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#fileExport">fileExport</a></li><li><a href="global.html#folderExports">folderExports</a></li><li><a href="global.html#folderPath">folderPath</a></li></ul>
 </nav>
 
 <div id="main">
@@ -106,7 +106,7 @@
 
 
 <div class="description usertext">
-    <p>Command Structure</p>
+    <p>Structure for commands</p>
 </div>
 
 
@@ -162,7 +162,7 @@
 
     
 
-    <h4 class="name" id="security"><span class="type-signature"></span>security<span class="signature">(user)</span><span class="type-signature"> &rarr; {<a href="global.html#securityResult">securityResult</a>}</span></h4>
+    <h4 class="name" id="botCheck"><span class="type-signature">(async) </span>botCheck<span class="signature">(service)</span><span class="type-signature"></span></h4>
 
     
 
@@ -209,7 +209,7 @@
 
 
 <div class="description usertext">
-    <p>Check user permissions</p>
+    <p>Verify bot permissions</p>
 </div>
 
 
@@ -247,13 +247,13 @@
 
         <tr>
             
-                <td class="name"><code>user</code></td>
+                <td class="name"><code>service</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Discord.GuildMember</span>
+<span class="param-type"><a href="InteractionService.html">InteractionService</a></span>
 
 
             
@@ -263,7 +263,7 @@
 
             
 
-            <td class="description last"><p>guild member to check</p></td>
+            <td class="description last"><p>instance of InteractionService</p></td>
         </tr>
 
     
@@ -285,24 +285,399 @@
 
 
 
-<h5>Returns:</h5>
+
+
 
         
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="global.html#securityResult">securityResult</a></span>
-
-
-    </dd>
-</dl>
+            
 
     
+
+    <h4 class="name" id="executeCheck"><span class="type-signature">(async) </span>executeCheck<span class="signature">(service)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Verify user permissions</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>service</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="InteractionService.html">InteractionService</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>instance of InteractionService</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="interactCheck"><span class="type-signature">(async) </span>interactCheck<span class="signature">(service)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Verify user permissions</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>service</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="InteractionService.html">InteractionService</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>instance of InteractionService</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="post"><span class="type-signature">(async) </span>post<span class="signature">(client)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Post command to Discord</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>client</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Discord.Client</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>instance of Discord Client</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -3,23 +3,23 @@ const {getFiles} = require('../utilities/folder.js');
 
 class Folder {
 
-  /**
-   * Folder structure
-   * @param {folderPath} [dir] path from root leading to folder
-   */
-  constructor(dir = "./") {
 
+  /**
+   * Structure for folder
+   * @param {folderPath} dir absolute path to folder
+   * @property {folderPath} dir absolute path to folder
+   */
+  constructor(dir) {
     this.directory = dir;
   }
 
 
   /**
-   * Get exports from file
-   * @param {fileName} [name] file name
-   * @returns {fileData|folderData} exports from file
+   * Get file, get files if no file name is passed
+   * @param {string} name name of file to get
+   * @return {folderExports | fileExport}
    */
   get(name = null) {
-
     const files = getFiles(this.directory, name);
     return files;
   }

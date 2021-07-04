@@ -23,9 +23,6 @@ jobs:
       
     - name: post method
       run: npm run test tests/commands-manager/post
-      
-    - name: delete method
-      run: npm run test tests/commands-manager/delete
 
     - name: sync method
       run: npm run test tests/commands-manager/sync

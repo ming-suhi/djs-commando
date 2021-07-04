@@ -1,6 +1,5 @@
 const fs = require('fs');
 
-
 function getFiles(dir, name = null) {
   if (name == null) {
     const files = [];

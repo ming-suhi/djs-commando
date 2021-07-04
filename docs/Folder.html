@@ -27,7 +27,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h3>Tutorials</h3><ul><li><a href="tutorial-getting-started.html">Getting Started</a></li><li><a href="tutorial-managing-commands.html">Managing Commands</a></li></ul><h3>Classes</h3><ul><li><a href="Command.html">Command</a><ul class='methods'><li data-type='method'><a href="Command.html#security">security</a></li></ul></li><li><a href="CommandsManager.html">CommandsManager</a><ul class='methods'><li data-type='method'><a href="CommandsManager.html#get">get</a></li><li data-type='method'><a href="CommandsManager.html#match">match</a></li><li data-type='method'><a href="CommandsManager.html#sync">sync</a></li></ul></li><li><a href="Folder.html">Folder</a><ul class='methods'><li data-type='method'><a href="Folder.html#get">get</a></li></ul></li><li><a href="GlobalCommand.html">GlobalCommand</a><ul class='methods'><li data-type='method'><a href="GlobalCommand.html#delete">delete</a></li><li data-type='method'><a href="GlobalCommand.html#get">get</a></li><li data-type='method'><a href="GlobalCommand.html#post">post</a></li><li data-type='method'><a href="GlobalCommand.html#security">security</a></li></ul></li><li><a href="Interaction.html">Interaction</a><ul class='methods'><li data-type='method'><a href="Interaction.html#author">author</a></li><li data-type='method'><a href="Interaction.html#bot">bot</a></li><li data-type='method'><a href="Interaction.html#channel">channel</a></li><li data-type='method'><a href="Interaction.html#guild">guild</a></li><li data-type='method'><a href="Interaction.html#sendEmbed">sendEmbed</a></li><li data-type='method'><a href="Interaction.html#sendEphemeral">sendEphemeral</a></li><li data-type='method'><a href="Interaction.html#sendMessage">sendMessage</a></li></ul></li><li><a href="LocalClient.html">LocalClient</a><ul class='methods'><li data-type='method'><a href="LocalClient.html#matchCommand">matchCommand</a></li><li data-type='method'><a href="LocalClient.html#syncCommands">syncCommands</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#commandObject">commandObject</a></li><li><a href="global.html#commandOption">commandOption</a></li><li><a href="global.html#fileData">fileData</a></li><li><a href="global.html#fileName">fileName</a></li><li><a href="global.html#folderData">folderData</a></li><li><a href="global.html#folderPath">folderPath</a></li><li><a href="global.html#missingPermissions">missingPermissions</a></li><li><a href="global.html#securityResult">securityResult</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Tutorials</h3><ul><li><a href="tutorial-command_.html">Working with Commands</a></li><li><a href="tutorial-components.html">Working with Components</a></li><li><a href="tutorial-security.html">Setting Up Security</a></li><li><a href="tutorial-setup.html">Setting Up</a></li><li><a href="tutorial-sync.html">Synching Command</a></li></ul><h3>Classes</h3><ul><li><a href="Command.html">Command</a><ul class='methods'><li data-type='method'><a href="Command.html#botCheck">botCheck</a></li><li data-type='method'><a href="Command.html#executeCheck">executeCheck</a></li><li data-type='method'><a href="Command.html#interactCheck">interactCheck</a></li><li data-type='method'><a href="Command.html#post">post</a></li></ul></li><li><a href="CommandsManager.html">CommandsManager</a><ul class='methods'><li data-type='method'><a href="CommandsManager.html#get">get</a></li><li data-type='method'><a href="CommandsManager.html#match">match</a></li><li data-type='method'><a href="CommandsManager.html#sync">sync</a></li></ul></li><li><a href="Folder.html">Folder</a><ul class='methods'><li data-type='method'><a href="Folder.html#get">get</a></li></ul></li><li><a href="InteractionService.html">InteractionService</a><ul class='methods'><li data-type='method'><a href="InteractionService.html#sendEmbed">sendEmbed</a></li><li data-type='method'><a href="InteractionService.html#sendEphemeral">sendEphemeral</a></li><li data-type='method'><a href="InteractionService.html#sendMessage">sendMessage</a></li></ul></li><li><a href="LocalClient.html">LocalClient</a><ul class='methods'><li data-type='method'><a href="LocalClient.html#handleInteraction">handleInteraction</a></li><li data-type='method'><a href="LocalClient.html#syncCommands">syncCommands</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#fileExport">fileExport</a></li><li><a href="global.html#folderExports">folderExports</a></li><li><a href="global.html#folderPath">folderPath</a></li></ul>
 </nav>
 
 <div id="main">
@@ -59,7 +59,7 @@
 
     
 
-    <h4 class="name" id="Folder"><span class="type-signature"></span>new Folder<span class="signature">(dir<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Folder"><span class="type-signature"></span>new Folder<span class="signature">(dir)</span><span class="type-signature"></span></h4>
 
     
 
@@ -103,10 +103,62 @@
 
 
 
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dir</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#folderPath">folderPath</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>absolute path to folder</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
 
 
 <div class="description usertext">
-    <p>Folder structure</p>
+    <p>Structure for folder</p>
 </div>
 
 
@@ -132,11 +184,7 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
-        
-        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -161,26 +209,10 @@
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
-                <td class="default">
-                
-                    <code>./</code>
-                
-                </td>
-            
 
-            <td class="description last"><p>path from root leading to folder</p></td>
+            <td class="description last"><p>absolute path to folder</p></td>
         </tr>
 
     
@@ -231,7 +263,7 @@
 
     
 
-    <h4 class="name" id="get"><span class="type-signature"></span>get<span class="signature">(name<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="global.html#fileData">fileData</a>|<a href="global.html#folderData">folderData</a>}</span></h4>
+    <h4 class="name" id="get"><span class="type-signature"></span>get<span class="signature">(name)</span><span class="type-signature"> &rarr; {<a href="global.html#folderExports">folderExports</a>|<a href="global.html#fileExport">fileExport</a>}</span></h4>
 
     
 
@@ -278,7 +310,7 @@
 
 
 <div class="description usertext">
-    <p>Get exports from file</p>
+    <p>Get file, get files if no file name is passed</p>
 </div>
 
 
@@ -304,8 +336,6 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
         
         <th>Default</th>
@@ -326,22 +356,12 @@
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#fileName">fileName</a></span>
+<span class="param-type">string</span>
 
 
             
             </td>
 
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
             
 
             
@@ -352,7 +372,7 @@
                 </td>
             
 
-            <td class="description last"><p>file name</p></td>
+            <td class="description last"><p>name of file to get</p></td>
         </tr>
 
     
@@ -377,10 +397,6 @@
 <h5>Returns:</h5>
 
         
-<div class="param-desc">
-    <p>exports from file</p>
-</div>
-
 
 
 <dl class="param-type">
@@ -389,10 +405,10 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="global.html#fileData">fileData</a></span>
+<span class="param-type"><a href="global.html#folderExports">folderExports</a></span>
 |
 
-<span class="param-type"><a href="global.html#folderData">folderData</a></span>
+<span class="param-type"><a href="global.html#fileExport">fileExport</a></span>
 
 
     </dd>

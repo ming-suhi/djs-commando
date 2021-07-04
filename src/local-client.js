@@ -1,12 +1,13 @@
 const CommandsManager = require('./managers/commands-manager.js');
-const Interaction = require('./structures/interaction.js');
 const dotenv = require('dotenv');
+
 
 class LocalClient {
 
+
   /**
-   * Client for managing local
-   * @property {CommandsManager} commands manage commands
+   * Main class for managing interactions
+   * @property {CommandsManager} commands handle commands
    * @property {string} token bot token
    */
   constructor() {
@@ -17,27 +18,18 @@ class LocalClient {
 
 
   /**
-   * Finds requested command
-   * @param {Discord.client} client instance of discord client 
-   * @param {request} request user request
+   * Handles interactions
+   * @param {Discord.Client} client instance of Discord Client 
+   * @param {Discord.Interaction} interaction interaction object
    */
-  async matchCommand(client, request){
-    const interaction = new Interaction(client, request);
-
-    switch(request.type) {
-      case 2:
-      await this.commands.match(interaction);
-      break;
-
-      case 3:
-      console.log("Buttons not supported yet");
-    }
+  async handleInteraction(client, interaction){
+    await this.commands.match(client, interaction);
   }
 
 
   /**
-   * Sync Discord with local commands
-   * @param {Discord.Client} client discord client 
+   * Sync commands in commands folder with Discord
+   * @param {Discord.Client} client instance of Discord Client
    */
   async syncCommands(client) {
     await this.commands.sync(client);

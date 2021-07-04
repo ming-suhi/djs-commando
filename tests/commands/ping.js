@@ -1,17 +1,44 @@
-const {GlobalCommand} = require('../../src/index.js');
+const {Command} = require('../../src/index.js');
 
-module.exports = new GlobalCommand({
-  name: 'ping',
-  description: 'pings bot to get latency',
-  permissions: ["SEND_MESSAGES"],
-  async execute(interaction) {
-    const bot = await interaction.bot();
-
-    if (!bot.hasPermission('SEND_MESSAGES')) {
-      interaction.sendEphemeral(`Bot has no permission: \`SEND_MESSAGES\``);
-      return;
-    };
-    
-    interaction.sendMessage(`Pong`);
+class Ping extends Command {
+  constructor() {
+    super();
+    this.name = "ping";
+    this.description = 'pings bot to get latency';
+    this.botPermissions = ["SEND_MESSAGES"];
+    this.executePermissions = ["SEND_MESSAGES"];
+    this.interactPermissions = ["SEND_MESSAGES"];
   }
-});
+
+  async execute(service) {
+    try {
+      await this.botCheck(service);
+      await this.executeCheck(service);
+      await service.sendMessage('Pong');
+    } catch(e) {
+      await service.sendEphemeral(e);
+    }
+  }
+
+  async onPress(service) {
+    try {
+      await this.botCheck(service);
+      await this.interactCheck(service);
+      await service.sendEphemeral(`Pong`);
+    } catch(e) {
+      await service.sendEphemeral(e);
+    }
+  }
+
+  async onSelect(service) {
+    try {
+      await this.botCheck(service);
+      await this.interactCheck(service);
+      await service.sendEphemeral(`Pong`);
+    } catch(e) {
+      await service.sendEphemeral(e);
+    }
+  }
+}
+
+module.exports = Ping;
