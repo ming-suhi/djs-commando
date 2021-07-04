@@ -9,7 +9,7 @@ class Folder {
    * @param {folderPath} dir absolute path to folder
    * @property {folderPath} dir absolute path to folder
    */
-  constructor(dir = "./") {
+  constructor(dir) {
     this.directory = dir;
   }
 

@@ -1,0 +1,17 @@
+{
+  "setup": {
+    "title": "Setting Up"
+  },
+  "command": {
+    "title": "Working with Commands"
+  },
+  "sync": {
+    "title": "Synching Command"
+  },
+  "components": {
+    "title": "Working with Components"
+  },
+  "security": {
+    "title": "Setting Up Security"
+  }
+}
