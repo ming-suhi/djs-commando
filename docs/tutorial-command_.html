@@ -108,17 +108,9 @@ module.exports = Ping;
 <p>Use <code>service</code> to access datas on subcommand groups and subcommands. Refer to Discord Developer portal to know more about the structure of the interaction object.</p>
 <h2>Stating a response type</h2>
 <p>responseType property defaults to 4 (respond with a message)</p>
-<ol>
-<li>
-<p>Simply access responseType through service parameter and edit it</p>
-</li>
-<li>
-<p>To acknowledge a ping, just send an empty message</p>
-<pre class="prettyprint source lang-js"><code>service.responseType = 1;
-await service.sendMessage();
+<p>To state a response type simply access responseType through service parameter</p>
+<pre class="prettyprint source lang-js"><code>service.responseType = 5
 </code></pre>
-</li>
-</ol>
 </article>
 
 </section>

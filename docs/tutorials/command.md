@@ -70,10 +70,8 @@ Use `service` to access datas on subcommand groups and subcommands. Refer to Dis
 
 responseType property defaults to 4 (respond with a message)
 
-1. Simply access responseType through service parameter and edit it
+To state a response type simply access responseType through service parameter
 
-2. To acknowledge a ping, just send an empty message
-    ```js
-    service.responseType = 1;
-    await service.sendMessage();
-    ```
+```js
+service.responseType = 5
+```
