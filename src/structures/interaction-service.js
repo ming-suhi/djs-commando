@@ -52,12 +52,10 @@ class InteractionService{
   /**
    * Send embed
    * @param {Discord.Embed} embed embed to send
-   * @param {Discord.Component} [components] component object
    */
-  async sendEmbed(embed, components) {
+  async sendEmbed(embed) {
     const data = {
       type: this.responseType,
-      components: components,
       data: await createAPIMessage(this.client, this.channel_id, embed)
     }
     this.client.api.interactions(this.id, this.token).callback.post({data});

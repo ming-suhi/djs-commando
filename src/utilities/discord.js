@@ -1,3 +1,5 @@
+const Discord = require('discord.js');
+
 async function createAPIMessage(client, channel_id, embed) {
   const apiMessage = await Discord.APIMessage.create(client.channels.resolve(channel_id), embed)
     .resolveData()

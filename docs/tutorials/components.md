@@ -1,7 +1,7 @@
 ## Adding Components
 
-To add components simply pass the component object as a second argument to the sendMessage method, or the sendEmbed method. 
-Components on ephemeral message and ephemeral embed are currently not supported. 
+To add components simply pass the component object as a second argument to the sendMessage method. 
+Components on ephemeral message and embed are currently not supported. 
 Refer to Discord Developer Portal for an in-depth guide on making component objects.
 
 Example
