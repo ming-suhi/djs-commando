@@ -25,8 +25,8 @@ describe('get commands', () => {
     var command = slash.commands.get(commandObject.name);
 
     //check
-    expect(new command()).toBeInstanceOf(Command);
-    expect(new command()).toHaveProperty('name', commandObject.name);
-    expect(new command()).toHaveProperty('description', commandObject.description);
+    expect(command).toBeInstanceOf(Command);
+    expect(command).toHaveProperty('name', commandObject.name);
+    expect(command).toHaveProperty('description', commandObject.description);
   });
 });

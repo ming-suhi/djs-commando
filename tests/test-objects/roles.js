@@ -39,5 +39,3 @@ const roles = new class extends Command {
 }
 
 module.exports = roles;
-//roles.options.find(option => option.name == "manager")
-console.log(roles.data);
