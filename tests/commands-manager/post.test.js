@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const {LocalClient} = require('../../src/index.js');
-const CommandClassInstance = require('../test-objects/ping2.js');
+const ping2 = require('../test-objects/ping2.js');
 
 const client = new Discord.Client();
 client.slash = new LocalClient();
@@ -12,13 +12,13 @@ test('post command', async() => {
   await client.login(client.slash.token);
 
   //test
-  await new CommandClassInstance().post(client);
+  await ping2.post(client);
 
   //check
   const commands = await client.api.applications(client.user.id).commands.get();
-  const command = commands.find(command => command.name == new CommandClassInstance().name);
-  expect(command).toHaveProperty("name", new CommandClassInstance().name);
-  expect(command).toHaveProperty("description", new CommandClassInstance().description);
+  const command = commands.find(command => command.name == ping2.name);
+  expect(command).toHaveProperty("name", ping2.name);
+  expect(command).toHaveProperty("description", ping2.description);
 
   //clean
   client.destroy();

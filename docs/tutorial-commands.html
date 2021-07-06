@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Tutorial: Setting Up - Documentation</title>
+    <title>Tutorial: Working with Commands - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Tutorial: Setting Up</h1>
+    <h1 class="page-title">Tutorial: Working with Commands</h1>
     
 
     <section>
@@ -40,55 +40,72 @@
 <header>
     
 
-    <h2>Setting Up</h2>
+    <h2>Working with Commands</h2>
 </header>
 
 <article>
-    <h2>A. Installation</h2>
-<h5>Run npm install on the command line or terminal.</h5>
-<pre class="prettyprint source"><code>npm install @ming-suhi/djs-local-manager
-</code></pre>
-<h2>B. Setting environment</h2>
+    <h2>Creating basic commands</h2>
 <ol>
 <li>
-<p>Create a <code>.env</code> file in the root directory</p>
-<pre class="prettyprint source lang-env"><code>BOT_TOKEN = 
+<p>Create a file inside the commands folder, file name must be the same as command name</p>
+</li>
+<li>
+<p>Require/import <code>Command</code></p>
+<pre class="prettyprint source lang-js"><code>const {Command} = require('@ming-suhi/djs-local-manager');
+</code></pre>
+</li>
+<li>
+<p>Extend <code>Command</code></p>
+<pre class="prettyprint source lang-js"><code>const myCommand = new class extends Command {
+  constructor() {
+    super();
+    // Properties here
+  }
+}
+</code></pre>
+</li>
+<li>
+<p>Set class properties</p>
+<pre class="prettyprint source lang-js"><code>this.name = &quot;mycommand&quot;;
+this.description = 'my custom command';
+</code></pre>
+</li>
+<li>
+<p>Create <code>execute</code> method</p>
+<pre class="prettyprint source lang-js"><code>async execute(service) {
+  await service.sendMessage('Your command has been heard');
+}
+</code></pre>
+</li>
+<li>
+<p>Export created class</p>
+<pre class="prettyprint source lang-js"><code>module.exports = myCommand;
+</code></pre>
+<p>Example</p>
+<pre class="prettyprint source lang-js"><code>const {Command} = require('@ming-suhi/djs-local-manager');
 
-COMMANDS_FOLDER =
-</code></pre>
-</li>
-<li>
-<p>Get the Discord bot's token and store it as <code>BOT_TOKEN</code>.</p>
-</li>
-<li>
-<p>Create a folder to hold command files. Store the folder path from the root as <code>COMMANDS_FOLDER</code>.</p>
-</li>
-</ol>
-<h2>C. Setting bot</h2>
-<ol>
-<li>
-<p>Create an instance of Discord Client</p>
-<pre class="prettyprint source lang-js"><code>const Discord = require('discord.js');
-const client = new Discord.Client();
-</code></pre>
-</li>
-<li>
-<p>Attach an instance of Manager Client</p>
-<pre class="prettyprint source lang-js"><code>const Manager = require('@ming-suhi/djs-local-manager');
-client.msdm = new Manager.LocalClient();
-</code></pre>
-</li>
-<li>
-<p>Login bot</p>
-<pre class="prettyprint source lang-js"><code>client.login(client.msdm.token);
+const ping = new class extends Command {
+  constructor() {
+    super();
+    this.name = &quot;ping&quot;;
+    this.description = 'pings bot to get latency';
+  }
+
+  async execute(service) {
+    await service.sendMessage('Pong');
+  }
+}
+
+module.exports = ping;
 </code></pre>
 </li>
 </ol>
-<h2>D. Setting interaction handler</h2>
-<p>This step setups an interaction handler that finds the corresponding file for the requested command. Upon receiving a slash command it calls on the executes method of that command. Upon receiving a button interaction it executes the onPress method, while receiving a select menu interaction executes the onSelect method.</p>
-<pre class="prettyprint source lang-js"><code>client.ws.on('INTERACTION_CREATE', async interaction => {
-  client.msdm.handleInteraction(client, interaction);
-})
+<h2>Understanding service parameter</h2>
+<p><code>service</code> is a copy of interaction object, with added tools to aid in interacting with Discord. You can look up for InteractionService class here to know more about the tools it can offer. You can look up interaction object in Discord Developer portal to know more about the properties.</p>
+<h2>Stating a response type</h2>
+<p>responseType property defaults to 4 (respond with a message)</p>
+<p>To state a response type simply access responseType through service parameter</p>
+<pre class="prettyprint source lang-js"><code>service.responseType = 5
 </code></pre>
 </article>
 

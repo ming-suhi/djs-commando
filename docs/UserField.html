@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Tutorial: Setting Up - Documentation</title>
+    <title>UserField - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,67 +32,234 @@
 
 <div id="main">
     
-    <h1 class="page-title">Tutorial: Setting Up</h1>
+    <h1 class="page-title">UserField</h1>
     
 
-    <section>
+    
+
+
+
+
+<section>
 
 <header>
     
-
-    <h2>Setting Up</h2>
+        <h2>
+        UserField
+        </h2>
+        
+    
 </header>
 
 <article>
-    <h2>A. Installation</h2>
-<h5>Run npm install on the command line or terminal.</h5>
-<pre class="prettyprint source"><code>npm install @ming-suhi/djs-local-manager
-</code></pre>
-<h2>B. Setting environment</h2>
-<ol>
-<li>
-<p>Create a <code>.env</code> file in the root directory</p>
-<pre class="prettyprint source lang-env"><code>BOT_TOKEN = 
+    
+        <div class="container-overview">
+        
+            
 
-COMMANDS_FOLDER =
-</code></pre>
-</li>
-<li>
-<p>Get the Discord bot's token and store it as <code>BOT_TOKEN</code>.</p>
-</li>
-<li>
-<p>Create a folder to hold command files. Store the folder path from the root as <code>COMMANDS_FOLDER</code>.</p>
-</li>
-</ol>
-<h2>C. Setting bot</h2>
-<ol>
-<li>
-<p>Create an instance of Discord Client</p>
-<pre class="prettyprint source lang-js"><code>const Discord = require('discord.js');
-const client = new Discord.Client();
-</code></pre>
-</li>
-<li>
-<p>Attach an instance of Manager Client</p>
-<pre class="prettyprint source lang-js"><code>const Manager = require('@ming-suhi/djs-local-manager');
-client.msdm = new Manager.LocalClient();
-</code></pre>
-</li>
-<li>
-<p>Login bot</p>
-<pre class="prettyprint source lang-js"><code>client.login(client.msdm.token);
-</code></pre>
-</li>
-</ol>
-<h2>D. Setting interaction handler</h2>
-<p>This step setups an interaction handler that finds the corresponding file for the requested command. Upon receiving a slash command it calls on the executes method of that command. Upon receiving a button interaction it executes the onPress method, while receiving a select menu interaction executes the onSelect method.</p>
-<pre class="prettyprint source lang-js"><code>client.ws.on('INTERACTION_CREATE', async interaction => {
-  client.msdm.handleInteraction(client, interaction);
-})
-</code></pre>
+    
+
+    <h4 class="name" id="UserField"><span class="type-signature"></span>new UserField<span class="signature">(name, description, required)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>User field structure</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>field name</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>description</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>field description</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>required</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>if required</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
 </article>
 
 </section>
+
+
+
 
     
     

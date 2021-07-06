@@ -70,7 +70,7 @@ npm install @ming-suhi/djs-local-manager
 
 3. Extend `Command`
     ```js
-    class MyCommand extends Command {
+    const myCommand = new class extends Command {
       constructor() {
         super();
         // Properties here
@@ -93,14 +93,14 @@ npm install @ming-suhi/djs-local-manager
 
 6. Export created class
     ```js
-    module.exports = MyCommand;
+    module.exports = myCommand;
     ```
 
     Example
     ```js
     const {Command} = require('@ming-suhi/djs-local-manager');
 
-    class Ping extends Command {
+    const ping = new class extends Command {
       constructor() {
         super();
         this.name = "ping";
@@ -112,7 +112,7 @@ npm install @ming-suhi/djs-local-manager
       }
     }
 
-    module.exports = Ping;
+    module.exports = ping;
     ```
 
 

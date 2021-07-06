@@ -1,12 +1,12 @@
 const {Options} = require('../utilities/command.js');
 
-class Command {
+class SubCommand {
 
   /**
-   * Command structure
-   * @param {array<SubCommand|SubCommand|Field>} [options] command options
-   * @property {string} name command name
-   * @property {string} description command description
+   * Sub command structure
+   * @param {array<Field>} [options] subcommand options
+   * @property {string} name subcommand name
+   * @property {string} description subcommand description
    */
   constructor(options) {
     this.options = options;
@@ -68,20 +68,16 @@ class Command {
   }
 
 
-  // Get as object
+  // Returns class as object
   get data() {
     return({
       name: this.name,
       description: this.description,
+      type: 1,
       options: this._options.data
     })
   }
-
-
-  // Post to Discord
-  async post(client) {
-    await client.api.applications(client.user.id).commands.post({data: this.data});
-  }
 }
 
-module.exports = Command;
+
+module.exports = SubCommand;

@@ -27,7 +27,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h3>Tutorials</h3><ul><li><a href="tutorial-command_.html">Working with Commands</a></li><li><a href="tutorial-components.html">Working with Components</a></li><li><a href="tutorial-security.html">Setting Up Security</a></li><li><a href="tutorial-setup.html">Setting Up</a></li><li><a href="tutorial-sync.html">Synching Command</a></li></ul><h3>Classes</h3><ul><li><a href="Command.html">Command</a><ul class='methods'><li data-type='method'><a href="Command.html#botCheck">botCheck</a></li><li data-type='method'><a href="Command.html#executeCheck">executeCheck</a></li><li data-type='method'><a href="Command.html#interactCheck">interactCheck</a></li><li data-type='method'><a href="Command.html#post">post</a></li></ul></li><li><a href="CommandsManager.html">CommandsManager</a><ul class='methods'><li data-type='method'><a href="CommandsManager.html#get">get</a></li><li data-type='method'><a href="CommandsManager.html#match">match</a></li><li data-type='method'><a href="CommandsManager.html#sync">sync</a></li></ul></li><li><a href="Folder.html">Folder</a><ul class='methods'><li data-type='method'><a href="Folder.html#get">get</a></li></ul></li><li><a href="InteractionService.html">InteractionService</a><ul class='methods'><li data-type='method'><a href="InteractionService.html#sendEmbed">sendEmbed</a></li><li data-type='method'><a href="InteractionService.html#sendEphemeral">sendEphemeral</a></li><li data-type='method'><a href="InteractionService.html#sendMessage">sendMessage</a></li></ul></li><li><a href="LocalClient.html">LocalClient</a><ul class='methods'><li data-type='method'><a href="LocalClient.html#handleInteraction">handleInteraction</a></li><li data-type='method'><a href="LocalClient.html#syncCommands">syncCommands</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#fileExport">fileExport</a></li><li><a href="global.html#folderExports">folderExports</a></li><li><a href="global.html#folderPath">folderPath</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Tutorials</h3><ul><li><a href="tutorial-commands.html">Working with Commands</a></li><li><a href="tutorial-components.html">Working with Components</a></li><li><a href="tutorial-fields.html">Command Fields</a></li><li><a href="tutorial-security.html">Setting Up Security</a></li><li><a href="tutorial-setup.html">Setting Up</a></li><li><a href="tutorial-subcommand_.html">Subcommands</a></li><li><a href="tutorial-subcommandgroup_.html">Subcommand Groups</a></li><li><a href="tutorial-sync.html">Synching Command</a></li></ul><h3>Classes</h3><ul><li><a href="BooleanField.html">BooleanField</a></li><li><a href="ChannelField.html">ChannelField</a></li><li><a href="Command.html">Command</a><ul class='methods'><li data-type='method'><a href="Command.html#botCheck">botCheck</a></li><li data-type='method'><a href="Command.html#executeCheck">executeCheck</a></li><li data-type='method'><a href="Command.html#interactCheck">interactCheck</a></li></ul></li><li><a href="CommandsManager.html">CommandsManager</a><ul class='methods'><li data-type='method'><a href="CommandsManager.html#get">get</a></li><li data-type='method'><a href="CommandsManager.html#match">match</a></li><li data-type='method'><a href="CommandsManager.html#sync">sync</a></li></ul></li><li><a href="Folder.html">Folder</a><ul class='methods'><li data-type='method'><a href="Folder.html#get">get</a></li></ul></li><li><a href="IntegerField.html">IntegerField</a></li><li><a href="InteractionService.html">InteractionService</a><ul class='methods'><li data-type='method'><a href="InteractionService.html#sendEmbed">sendEmbed</a></li><li data-type='method'><a href="InteractionService.html#sendEphemeral">sendEphemeral</a></li><li data-type='method'><a href="InteractionService.html#sendMessage">sendMessage</a></li></ul></li><li><a href="LocalClient.html">LocalClient</a><ul class='methods'><li data-type='method'><a href="LocalClient.html#handleInteraction">handleInteraction</a></li><li data-type='method'><a href="LocalClient.html#syncCommands">syncCommands</a></li></ul></li><li><a href="MentionableField.html">MentionableField</a></li><li><a href="RoleField.html">RoleField</a></li><li><a href="StringField.html">StringField</a></li><li><a href="SubCommand.html">SubCommand</a><ul class='methods'><li data-type='method'><a href="SubCommand.html#botCheck">botCheck</a></li><li data-type='method'><a href="SubCommand.html#executeCheck">executeCheck</a></li><li data-type='method'><a href="SubCommand.html#interactCheck">interactCheck</a></li></ul></li><li><a href="SubCommandGroup.html">SubCommandGroup</a></li><li><a href="UserField.html">UserField</a></li></ul><h3>Global</h3><ul><li><a href="global.html#fileExport">fileExport</a></li><li><a href="global.html#folderExports">folderExports</a></li><li><a href="global.html#folderPath">folderPath</a></li></ul>
 </nav>
 
 <div id="main">
@@ -44,14 +44,14 @@
 </header>
 
 <article>
-    <h2>Adding Components</h2>
+    <h2>Adding components</h2>
 <p>To add components simply pass the component object as a second argument to the sendMessage method.
 Components on ephemeral message and embed are currently not supported.
 Refer to Discord Developer Portal for an in-depth guide on making component objects.</p>
 <p>Example</p>
 <pre class="prettyprint source lang-js"><code>const {Command} = require('@ming-suhi/djs-local-manager');
 
-class Compliment extends Command {
+const compliment = new class extends Command {
   constructor() {
     super();
     this.name = &quot;compliment&quot;;
@@ -80,7 +80,7 @@ class Compliment extends Command {
   }
 }
 
-module.exports = Compliment;
+module.exports = compliment;
 </code></pre>
 <h2>Handling multiple buttons</h2>
 <p>onPress receives all button interaction in that command. In the case of multiple buttons, you can handle it by accessing the button's custom_id. You can access it through <code>service.data.custom_id</code>.</p>

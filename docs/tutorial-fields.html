@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Tutorial: Setting Up - Documentation</title>
+    <title>Tutorial: Command Fields - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Tutorial: Setting Up</h1>
+    <h1 class="page-title">Tutorial: Command Fields</h1>
     
 
     <section>
@@ -40,56 +40,52 @@
 <header>
     
 
-    <h2>Setting Up</h2>
+    <h2>Command Fields</h2>
 </header>
 
 <article>
-    <h2>A. Installation</h2>
-<h5>Run npm install on the command line or terminal.</h5>
-<pre class="prettyprint source"><code>npm install @ming-suhi/djs-local-manager
-</code></pre>
-<h2>B. Setting environment</h2>
+    <h2>Command Fields</h2>
+<p>Command fields is used to ask for user input on slash command</p>
+<h2>Creating a command with a command field</h2>
 <ol>
 <li>
-<p>Create a <code>.env</code> file in the root directory</p>
-<pre class="prettyprint source lang-env"><code>BOT_TOKEN = 
-
-COMMANDS_FOLDER =
+<p>Create a file with the same name as the command.</p>
+</li>
+<li>
+<p>Require/import <code>Command</code> and chosen <code>Field</code> class</p>
+<pre class="prettyprint source lang-js"><code>const {Command, StringField} = require('@ming-suhi/djs-local-manager');
 </code></pre>
 </li>
 <li>
-<p>Get the Discord bot's token and store it as <code>BOT_TOKEN</code>.</p>
+<p>Create an instance of the chosen <code>Field</code> class</p>
+<pre class="prettyprint source lang-js"><code>const content = new StringField('content', 'string to echo', true);
+</code></pre>
 </li>
 <li>
-<p>Create a folder to hold command files. Store the folder path from the root as <code>COMMANDS_FOLDER</code>.</p>
+<p>Extend <code>Command</code> to create command</p>
+<pre class="prettyprint source lang-js"><code>const echo = new class extends Command {
+  constructor() {
+  }
+}
+</code></pre>
+</li>
+<li>
+<p>Pass on field instance inside an array to <code>super</code></p>
+<pre class="prettyprint source lang-js"><code>super([content]);
+</code></pre>
+</li>
+<li>
+<p>Define command required properties</p>
+<pre class="prettyprint source lang-js"><code>this.name = 'echo'
+this.description = 'echos content'
+</code></pre>
+</li>
+<li>
+<p>Export command</p>
+<pre class="prettyprint source lang-js"><code>module.exports = echo;
+</code></pre>
 </li>
 </ol>
-<h2>C. Setting bot</h2>
-<ol>
-<li>
-<p>Create an instance of Discord Client</p>
-<pre class="prettyprint source lang-js"><code>const Discord = require('discord.js');
-const client = new Discord.Client();
-</code></pre>
-</li>
-<li>
-<p>Attach an instance of Manager Client</p>
-<pre class="prettyprint source lang-js"><code>const Manager = require('@ming-suhi/djs-local-manager');
-client.msdm = new Manager.LocalClient();
-</code></pre>
-</li>
-<li>
-<p>Login bot</p>
-<pre class="prettyprint source lang-js"><code>client.login(client.msdm.token);
-</code></pre>
-</li>
-</ol>
-<h2>D. Setting interaction handler</h2>
-<p>This step setups an interaction handler that finds the corresponding file for the requested command. Upon receiving a slash command it calls on the executes method of that command. Upon receiving a button interaction it executes the onPress method, while receiving a select menu interaction executes the onSelect method.</p>
-<pre class="prettyprint source lang-js"><code>client.ws.on('INTERACTION_CREATE', async interaction => {
-  client.msdm.handleInteraction(client, interaction);
-})
-</code></pre>
 </article>
 
 </section>

@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Tutorial: Setting Up - Documentation</title>
+    <title>Tutorial: Subcommands - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Tutorial: Setting Up</h1>
+    <h1 class="page-title">Tutorial: Subcommands</h1>
     
 
     <section>
@@ -40,56 +40,71 @@
 <header>
     
 
-    <h2>Setting Up</h2>
+    <h2>Subcommands</h2>
 </header>
 
 <article>
-    <h2>A. Installation</h2>
-<h5>Run npm install on the command line or terminal.</h5>
-<pre class="prettyprint source"><code>npm install @ming-suhi/djs-local-manager
-</code></pre>
-<h2>B. Setting environment</h2>
+    <h2>Subcommand structure</h2>
+<ul>
+<li>
+<p>Subcommands does not inherit anything from the main command</p>
+</li>
+<li>
+<p>It has a separate security</p>
+</li>
+<li>
+<p>Subcommands have their own <code>execute</code>, <code>onPress</code>, and <code>onSelect</code> methods</p>
+</li>
+</ul>
+<h2>Creating a command with a subcommand</h2>
 <ol>
 <li>
-<p>Create a <code>.env</code> file in the root directory</p>
-<pre class="prettyprint source lang-env"><code>BOT_TOKEN = 
-
-COMMANDS_FOLDER =
+<p>Create a file with the same name as the command(not subcommand).</p>
+</li>
+<li>
+<p>Require/import <code>Command</code> and <code>SubCommand</code></p>
+<pre class="prettyprint source lang-js"><code>const {Command, SubCommand} = require('@ming-suhi/djs-local-manager');
 </code></pre>
 </li>
 <li>
-<p>Get the Discord bot's token and store it as <code>BOT_TOKEN</code>.</p>
+<p>Extend <code>SubCommand</code> to create a subcommand</p>
+<pre class="prettyprint source lang-js"><code>const add = new class extends SubCommand {
+  constructor() {
+  }
+}
+</code></pre>
 </li>
 <li>
-<p>Create a folder to hold command files. Store the folder path from the root as <code>COMMANDS_FOLDER</code>.</p>
+<p>Define subcommand required properties.</p>
+<pre class="prettyprint source lang-js"><code>this.name = &quot;add&quot;;
+this.description = &quot;adds role to member&quot;;
+</code></pre>
+</li>
+<li>
+<p>Extend <code>Command</code> to create command</p>
+<pre class="prettyprint source lang-js"><code>const role = new class extends Command {
+  constructor() {
+  }
+}
+</code></pre>
+</li>
+<li>
+<p>Pass on subcommand inside an array to <code>super</code></p>
+<pre class="prettyprint source lang-js"><code>super([add]);
+</code></pre>
+</li>
+<li>
+<p>Define command required properties.</p>
+<pre class="prettyprint source lang-js"><code>this.name = &quot;role&quot;;
+this.description = &quot;manage role&quot;;
+</code></pre>
+</li>
+<li>
+<p>Export command(not subcommand)</p>
+<pre class="prettyprint source lang-js"><code>module.exports = role;
+</code></pre>
 </li>
 </ol>
-<h2>C. Setting bot</h2>
-<ol>
-<li>
-<p>Create an instance of Discord Client</p>
-<pre class="prettyprint source lang-js"><code>const Discord = require('discord.js');
-const client = new Discord.Client();
-</code></pre>
-</li>
-<li>
-<p>Attach an instance of Manager Client</p>
-<pre class="prettyprint source lang-js"><code>const Manager = require('@ming-suhi/djs-local-manager');
-client.msdm = new Manager.LocalClient();
-</code></pre>
-</li>
-<li>
-<p>Login bot</p>
-<pre class="prettyprint source lang-js"><code>client.login(client.msdm.token);
-</code></pre>
-</li>
-</ol>
-<h2>D. Setting interaction handler</h2>
-<p>This step setups an interaction handler that finds the corresponding file for the requested command. Upon receiving a slash command it calls on the executes method of that command. Upon receiving a button interaction it executes the onPress method, while receiving a select menu interaction executes the onSelect method.</p>
-<pre class="prettyprint source lang-js"><code>client.ws.on('INTERACTION_CREATE', async interaction => {
-  client.msdm.handleInteraction(client, interaction);
-})
-</code></pre>
 </article>
 
 </section>

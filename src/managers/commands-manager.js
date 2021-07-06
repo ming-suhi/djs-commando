@@ -1,5 +1,6 @@
 const Folder = require('../structures/folder.js');
 const InteractionService = require('../structures/interaction-service.js');
+const {commandType} = require('../utilities/command.js');
 
 
 class CommandsManager extends Folder {
@@ -21,32 +22,83 @@ class CommandsManager extends Folder {
    * @param {Discord.Client} client instance of Discord Client 
    * @param {Discord.Interaction} interaction interaction object
    */
+
   async match(client, interaction){
 
     var service = new InteractionService(client, interaction);
-
     switch(interaction.type) {
 
-      // Handle commands
+      // Slash Commands
       case 2:
-      var command = this.get(interaction.data.name);
-      await new command().execute(service);
-      break;
+      switch(commandType(interaction)) {
 
-      // Handle components
-      case 3:
-      var command = this.get(interaction.message.interaction.name);
-      switch(interaction.data.component_type) {
-
-        // Handle buttons
-        case 2:
-        await new command().onPress(service);
+        // Command
+        case 0:
+        var command = this.get(interaction.data.name);
+        await command.execute(service);
         break;
 
-        // Handle select menus
-        case 3:
-        await new command().onSelect(service);
-      } 
+        // SubCommand
+        case 1:
+        var command = this.get(interaction.data.name);
+        var subcommand = command.options.find(option => option.name == interaction.data.options[0].name);
+        await subcommand.execute(service);
+        break;
+
+        // SubCommand inside SubCommandGroup
+        case 2:
+        var command = this.get(interaction.data.name);
+        var subcommandgroup = command.options.find(option => option.name == interaction.data.options[0].name);
+        var subcommand = subcommandgroup.options.find(option => option.name == interaction.data.options[0].options[0].name);
+        await subcommand.execute(service);
+      }
+      break;
+
+      // Message Components
+      case 3:
+      switch(commandType(interaction)) {
+
+        // Command
+        case 0:
+        var command = this.get(interaction.data.name);
+        switch (interaction.data.component_type) {
+          case 2:
+          await command.onPress(service);
+          break;
+
+          case 3:
+          await command.onSelect(service);
+        }
+        break;
+
+        // SubCommand
+        case 1:
+        var command = this.get(interaction.data.name);
+        var subcommand = command.options.find(option => option.name == interaction.data.options[0].name);
+        switch (interaction.data.component_type) {
+          case 2:
+          await subcommand.onPress(service);
+          break;
+
+          case 3:
+          await subcommand.onSelect(service);
+        }
+        break;
+
+        // SubCommand inside SubCommandGroup
+        case 2:
+        var command = this.get(interaction.data.name);
+        var subcommandgroup = command.options.find(option => option.name == interaction.data.options[0].name);
+        var subcommand = subcommandgroup.options.find(option => option.name == interaction.data.options[0].options[0].name);
+        switch (interaction.data.component_type) {
+          case 2:
+          await subcommand.onPress(service);
+          break;
+
+          case 3:
+          await subcommand.onSelect(service);
+        }
+      }
     }
   }
 
@@ -60,7 +112,7 @@ class CommandsManager extends Folder {
     // Post all commands in commandsFolder
     var commands = this.get();
     for (let command of commands) {
-      new command().post(client);
+      command.post(client);
     }
 
     // Delete from Discord unexisting commands

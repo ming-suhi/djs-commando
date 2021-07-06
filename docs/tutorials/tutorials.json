@@ -2,8 +2,17 @@
   "setup": {
     "title": "Setting Up"
   },
-  "command": {
+  "commands": {
     "title": "Working with Commands"
+  },
+  "fields": {
+    "title": "Command Fields"
+  },
+  "subcommand": {
+    "title": "Subcommands"
+  },
+  "subcommandgroup": {
+    "title": "Subcommand Groups"
   },
   "sync": {
     "title": "Synching Command"

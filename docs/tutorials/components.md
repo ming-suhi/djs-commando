@@ -1,4 +1,4 @@
-## Adding Components
+## Adding components
 
 To add components simply pass the component object as a second argument to the sendMessage method. 
 Components on ephemeral message and embed are currently not supported. 
@@ -8,7 +8,7 @@ Example
 ```js
 const {Command} = require('@ming-suhi/djs-local-manager');
 
-class Compliment extends Command {
+const compliment = new class extends Command {
   constructor() {
     super();
     this.name = "compliment";
@@ -37,7 +37,7 @@ class Compliment extends Command {
   }
 }
 
-module.exports = Compliment;
+module.exports = compliment;
 ```
 
 ## Handling multiple buttons

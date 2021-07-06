@@ -1,6 +1,6 @@
 const {Command} = require('../../src/index.js');
 
-class Ping2 extends Command {
+const ping2 = new class extends Command {
   constructor() {
     super();
     this.name = "ping2";
@@ -8,4 +8,4 @@ class Ping2 extends Command {
   }
 }
 
-module.exports = Ping2;
+module.exports = ping2;
