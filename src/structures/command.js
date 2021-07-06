@@ -1,10 +1,13 @@
-class Command{
+const Options = require('../utilities/command.js');
 
+class Command {
 
   /**
-   * Structure for commands
+   * Command structure
+   * @param {array<SubCommand|SubCommand|Field>} [options] command options
    */
-  constructor() {
+  constructor(options) {
+    this.options = new Options(options);
   }
 
 
@@ -12,7 +15,7 @@ class Command{
    * Verify bot permissions
    * @param {InteractionService} service instance of InteractionService
    */
-  async botCheck(service) {
+   async botCheck(service) {
 
     // Verify bot permissions
     const guild = await service.client.guilds.fetch(service.guild_id);
@@ -62,17 +65,18 @@ class Command{
   }
 
 
-  /**
-   * Post command to Discord
-   * @param {Discord.Client} client instance of Discord Client 
-   */
-  async post(client) {
-    const data = {
+  get data() {
+    return({
       name: this.name,
       description: this.description,
-      options: this.options
-    }
-    await client.api.applications(client.user.id).commands.post({data: data});
+      options: this.options.data
+    })
+  }
+
+
+  async post(client) {
+    console.log(this.data);
+    //await client.api.applications(client.user.id).commands.post({data: this.data});
   }
 }
 
