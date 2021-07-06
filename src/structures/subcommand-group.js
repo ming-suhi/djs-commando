@@ -1,4 +1,4 @@
-const Options = require('../utilities/command.js');
+const {Options} = require('../utilities/command.js');
 
 class SubCommandGroup {
 
@@ -7,7 +7,8 @@ class SubCommandGroup {
    * @param {array<SubCommand>} options subcommand group options
    */
   constructor(options) {
-    this.options = new Options(options);
+    this.options = options;
+    this._options = new Options(options);
   }
 
 
@@ -17,7 +18,7 @@ class SubCommandGroup {
       name: this.name,
       description: this.description,
       type: 2,
-      options: this.options.data
+      options: this._options.data
     })
   }
 }

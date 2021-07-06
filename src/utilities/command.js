@@ -16,4 +16,22 @@ class Options {
   }
 }
 
-module.exports = Options;
+function commandType(interaction){
+  switch (interaction.data.options) {
+    case undefined:
+    return 0;
+    break;
+
+    default:
+      switch (interaction.data.options[0].type) {
+      case 1:
+      return 1;
+      break;
+
+      case 2:
+      return 2;
+    }
+  }
+}
+
+module.exports = {Options, commandType};

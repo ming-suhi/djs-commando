@@ -1,4 +1,4 @@
-const Options = require('../utilities/command.js');
+const {Options} = require('../utilities/command.js');
 
 class Command {
 
@@ -7,7 +7,8 @@ class Command {
    * @param {array<SubCommand|SubCommand|Field>} [options] command options
    */
   constructor(options) {
-    this.options = new Options(options);
+    this.options = options;
+    this._options = new Options(options);
   }
 
 
@@ -65,18 +66,19 @@ class Command {
   }
 
 
+  // Get as object
   get data() {
     return({
       name: this.name,
       description: this.description,
-      options: this.options.data
+      options: this._options.data
     })
   }
 
 
+  // Post to Discord
   async post(client) {
-    console.log(this.data);
-    //await client.api.applications(client.user.id).commands.post({data: this.data});
+    await client.api.applications(client.user.id).commands.post({data: this.data});
   }
 }
 
