@@ -5,5 +5,6 @@ module.exports = {
   "Command": require('./structures/command.js'),
   "SubCommand": require('./structures/subcommand.js'),
   "SubCommandGroup": require('./structures/subcommand-group.js'),
+  "Button": require('./structures/button.js'),
   ...Fields
 }
