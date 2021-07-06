@@ -5,6 +5,8 @@ class SubCommandGroup {
   /**
    * Sub command group structure
    * @param {array<SubCommand>} options subcommand group options
+   * @property {string} name subcommand group name
+   * @property {string} description subcommand group description
    */
   constructor(options) {
     this.options = options;

@@ -9,7 +9,7 @@
 
 3. Extend `Command`
     ```js
-    class MyCommand extends Command {
+    const myCommand = new class extends Command {
       constructor() {
         super();
         // Properties here
@@ -32,14 +32,14 @@
 
 6. Export created class
     ```js
-    module.exports = MyCommand;
+    module.exports = myCommand;
     ```
 
     Example
     ```js
     const {Command} = require('@ming-suhi/djs-local-manager');
 
-    class Ping extends Command {
+    const ping = new class extends Command {
       constructor() {
         super();
         this.name = "ping";
@@ -51,20 +51,12 @@
       }
     }
 
-    module.exports = Ping;
+    module.exports = ping;
     ```
 
 ## Understanding service parameter
 
-`service` is a copy of interaction object, with added tools to aid in interacting with Discord. You can look up for InteractionService class to know more about the tools it can offer. You can look up interaction object in Discord Developer portal to know more about the properties.
-
-## Adding command options
-
-Simply add options to options property. Refer to Discord Developer Portal to create command options object.
-
-## Handling subcommand groups and subcommands
-
-Use `service` to access datas on subcommand groups and subcommands. Refer to Discord Developer portal to know more about the structure of the interaction object.
+`service` is a copy of interaction object, with added tools to aid in interacting with Discord. You can look up for InteractionService class here to know more about the tools it can offer. You can look up interaction object in Discord Developer portal to know more about the properties.
 
 ## Stating a response type
 

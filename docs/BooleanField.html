@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Folder - Documentation</title>
+    <title>BooleanField - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Folder</h1>
+    <h1 class="page-title">BooleanField</h1>
     
 
     
@@ -45,7 +45,7 @@
 <header>
     
         <h2>
-        Folder
+        BooleanField
         </h2>
         
     
@@ -59,7 +59,7 @@
 
     
 
-    <h4 class="name" id="Folder"><span class="type-signature"></span>new Folder<span class="signature">(dir)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="BooleanField"><span class="type-signature"></span>new BooleanField<span class="signature">(name, description, required)</span><span class="type-signature"></span></h4>
 
     
 
@@ -103,62 +103,10 @@
 
 
 
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>dir</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#folderPath">folderPath</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>absolute path to folder</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
 
 
 <div class="description usertext">
-    <p>Structure for folder</p>
+    <p>Boolean field structure</p>
 </div>
 
 
@@ -196,13 +144,13 @@
 
         <tr>
             
-                <td class="name"><code>dir</code></td>
+                <td class="name"><code>name</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#folderPath">folderPath</a></span>
+<span class="param-type">string</span>
 
 
             
@@ -212,7 +160,53 @@
 
             
 
-            <td class="description last"><p>absolute path to folder</p></td>
+            <td class="description last"><p>field name</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>description</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>field description</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>required</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>if required</p></td>
         </tr>
 
     
@@ -255,170 +249,6 @@
 
     
 
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="get"><span class="type-signature"></span>get<span class="signature">(name)</span><span class="type-signature"> &rarr; {<a href="global.html#folderExports">folderExports</a>|<a href="global.html#fileExport">fileExport</a>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    <p>Get file, get files if no file name is passed</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>name</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    <code>null</code>
-                
-                </td>
-            
-
-            <td class="description last"><p>name of file to get</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="global.html#folderExports">folderExports</a></span>
-|
-
-<span class="param-type"><a href="global.html#fileExport">fileExport</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
     
 
     

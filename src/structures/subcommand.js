@@ -5,6 +5,8 @@ class SubCommand {
   /**
    * Sub command structure
    * @param {array<Field>} [options] subcommand options
+   * @property {string} name subcommand name
+   * @property {string} description subcommand description
    */
   constructor(options) {
     this.options = options;
