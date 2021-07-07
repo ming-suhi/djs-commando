@@ -9,7 +9,7 @@ class SelectMenu {
     this.max_values = max_values;
     this.disabled = disabled;
     this.options = options;
-    this._options = Options(options);
+    this._options = new Options(options);
   }
 
   get data() {
