@@ -3,7 +3,7 @@ const {Options} = require('../utilities/command.js');
 class ActionRow {
   constructor(components) {
     this.components = components;
-    this._components = Options(components);
+    this._components = new Options(components);
   }
 
   get data() {

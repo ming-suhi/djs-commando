@@ -79,11 +79,11 @@ class SubCommand {
   }
 
   get buttons() {
-    buttons = []
-    for (let row in this.components){
-      for (let component in row.components) {
+    var buttons = []
+    for (let row of this.components){
+      for (let component of row.components) {
         if (component.type == 2) {
-          this.buttons.push(component);
+          buttons.push(component);
         }
       }
     }
@@ -91,11 +91,11 @@ class SubCommand {
   }
 
   get menus() {
-    menus = []
-    for (let row in this.components){
-      for (let component in row.components) {
+    var menus = []
+    for (let row of this.components){
+      for (let component of row.components) {
         if (component.type == 3) {
-          this.menus.push(component);
+          menus.push(component);
         }
       }
     }

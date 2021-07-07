@@ -9,5 +9,6 @@ module.exports = {
   "ActionRow": require('./structures/action-row.js'),
   "SelectMenu": require('./structures/select-menu.js'),
   "SelectOption": require('./structures/select-option.js'),
+  "Options": require('./utilities/command.js').Options,
   ...Fields
 }

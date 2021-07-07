@@ -74,8 +74,8 @@ class CommandsManager extends Folder {
             // SubCommand
             case 1:
             for (let subcommand of command.options) {
-              for (let button in subcommand.buttons) {
-                if (interaction.data.custom_id == subcommand.buttons[button].custom_id) {
+              for (let button of subcommand.buttons) {
+                if (interaction.data.custom_id == button.custom_id) {
                   await subcommand.onPress(service);
                 }
               }
@@ -85,8 +85,8 @@ class CommandsManager extends Folder {
             case 2:
             for (let subcommandgroup of command.options) {
               for (let subcommand of subcommandgroup.options) {
-                for (let button in subcommand.buttons) {
-                  if (interaction.data.custom_id == subcommand.buttons[button].custom_id) {
+                for (let button of subcommand.buttons) {
+                  if (interaction.data.custom_id == button.custom_id) {
                     await subcommand.onPress(service);
                   }
                 }
@@ -111,8 +111,8 @@ class CommandsManager extends Folder {
             // SubCommand
             case 1:
             for (let subcommand of command.options) {
-              for (let menu in subcommand.menus) {
-                if (interaction.data.custom_id == subcommand.menus[menu].custom_id) {
+              for (let menu of subcommand.menus) {
+                if (interaction.data.custom_id == menu.custom_id) {
                   await subcommand.onSelect(service);
                 }
               }
@@ -122,8 +122,8 @@ class CommandsManager extends Folder {
             case 2:
             for (let subcommandgroup of command.options) {
               for (let subcommand of subcommandgroup.options) {
-                for (let menu in subcommand.menus) {
-                  if (interaction.data.custom_id == subcommand.menus[menu].custom_id) {
+                for (let menu of subcommand.menus) {
+                  if (interaction.data.custom_id == menu.custom_id) {
                     await subcommand.onSelect(service);
                   }
                 }
