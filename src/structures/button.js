@@ -1,4 +1,13 @@
 class Button {
+  /**
+   * Button structure
+   * @param {object} properties button properties
+   * @param {int} properties.style button style
+   * @param {string} properties.label button label
+   * @param {object} properties.emoji button emoji
+   * @param {string} properties.url button url
+   * @param {boolean} properties.disabled if disables 
+   */
   constructor({style, label, emoji, custom_id, url, disabled}) {
     this.type = 2;
     this.style = style;
@@ -9,6 +18,8 @@ class Button {
     this.disabled = disabled;
   }
 
+
+  // Get as object
   get data(){
     return({
       type: this.type,

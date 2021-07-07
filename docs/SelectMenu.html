@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Tutorial: Synching Command - Documentation</title>
+    <title>SelectMenu - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,28 +32,352 @@
 
 <div id="main">
     
-    <h1 class="page-title">Tutorial: Synching Command</h1>
+    <h1 class="page-title">SelectMenu</h1>
     
 
-    <section>
+    
+
+
+
+
+<section>
 
 <header>
     
-
-    <h2>Synching Command</h2>
+        <h2>
+        SelectMenu
+        </h2>
+        
+    
 </header>
 
 <article>
-    <h2>Synching commands</h2>
-<p>Sync commands posts to Discord all commands on the commands folder. To prevent errors, sync commands also deletes from Discord, commands that dont have files in the commands folder.</p>
-<p>It is suggested to sync commands on client ready. To sync commands just simply call on <code>syncCommands</code> method.</p>
-<pre class="prettyprint source lang-js"><code>client.on('ready', async() => {
-  client.msdm.syncCommands(client);
-});
-</code></pre>
+    
+        <div class="container-overview">
+        
+            
+
+    
+
+    <h4 class="name" id="SelectMenu"><span class="type-signature"></span>new SelectMenu<span class="signature">(options, properties)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Select menu structure</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array.&lt;<a href="SelectOption.html">SelectOption</a>></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>select menu choices</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>properties</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">options</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>select menu properties</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>custom_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>select menu custom id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>placeholder</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>select menu placeholder</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>min_values</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>select menu min value</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>max_values</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>select menu max value</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>disabled</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>if disabled</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
 </article>
 
 </section>
+
+
+
 
     
     

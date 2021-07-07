@@ -1,43 +1,63 @@
-## Adding components
+## Creating buttons
 
-To add components simply pass the component object as a second argument to the sendMessage method. 
 Components on ephemeral message and embed are currently not supported. 
 Refer to Discord Developer Portal for an in-depth guide on making component objects.
 
-Example
+1. Require/import necessary structures
+    ```js
+    const {Button, ActionRow} = require('@ming-suhi/djs-local-manager');
+    ```
+
+2. Create a button by extending `Button`
+    ```js
+    const male = new Button({label: "male", custom_id: "12232123", style: 1});
+    ```
+
+3. Create an action row by extending `ActionRow`. Pass the buttons in the row in an array.
+    ```js
+    const firstRow = new ActionRow([male, female, nonBinary]);
+    ```
+
+4. Register all buttons and menus by registering action row in components properties of the command that will generate it.
+    Make sure that there is no duplicate custom_id within the command. 
+    ```js
+    //inside command constructor
+    this.components = [firstRow, secondRow];
+    ```
+
+## Creating select menus
+
+1. Require/import necessary structures
+    ```js
+    const {ActionRow, SelectMenu, SelectOption} = require('@ming-suhi/djs-local-manager');
+    ```
+
+2. Create a select option by extending `SelectOption`
+    ```js
+    const male = new SelectOption({label: "male", value: "123"});
+    ```
+
+3. Create a select menu by extending `SelectMenu`
+    ```js
+    const gender = new SelectMenu([male, female, nonBinary], {placeholder: "Select gender role"});
+    ```
+
+4. Create an action row by extending `ActionRow`. Pass the select menu in the row in an array.
+    ```js
+    const firstRow = new ActionRow([gender]);
+    ```
+
+5. Register all buttons and menus by registering action row in components properties of the command that will generate it.
+    ```js
+    //inside command constructor
+    this.components = [firstRow, secondRow];
+    ```
+
+## Sending components
+
+Simply access the data property of the class. 
 ```js
-const {Command} = require('@ming-suhi/djs-local-manager');
-
-const compliment = new class extends Command {
-  constructor() {
-    super();
-    this.name = "compliment";
-    this.description = 'bot compliments user';
-  }
-
-  async execute(service) {
-    const button = [
-      {
-        "type": 1,
-        "components": [
-          {
-            "type": 2,
-            "label": "Thank me!",
-            "style": 1,
-            "custom_id": "string_id_here"
-          }
-        ]
-      }
-    ]
-    await service.sendMessage('You are great', button);
-  }
-
-  async onPress(service) {
-    await service.sendMessage('You are welcome!');
-  }
-}
-
-module.exports = compliment;
+await service.send("Message Content", [firstRow.data, secondRow.data]);
 ```
 
 ## Handling multiple buttons

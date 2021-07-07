@@ -78,6 +78,8 @@ class SubCommand {
     })
   }
 
+  
+  // Get buttons
   get buttons() {
     var buttons = []
     for (let row of this.components){
@@ -90,6 +92,7 @@ class SubCommand {
     return buttons;
   }
 
+  // Get menus
   get menus() {
     var menus = []
     for (let row of this.components){
