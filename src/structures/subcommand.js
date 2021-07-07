@@ -77,6 +77,30 @@ class SubCommand {
       options: this._options.data
     })
   }
+
+  get buttons() {
+    buttons = []
+    for (let row in this.components){
+      for (let component in row.components) {
+        if (component.type == 2) {
+          this.buttons.push(component);
+        }
+      }
+    }
+    return buttons;
+  }
+
+  get menus() {
+    menus = []
+    for (let row in this.components){
+      for (let component in row.components) {
+        if (component.type == 3) {
+          this.menus.push(component);
+        }
+      }
+    }
+    return menus;
+  }
 }
 
 

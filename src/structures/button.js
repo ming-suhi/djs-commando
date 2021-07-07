@@ -1,6 +1,6 @@
 class Button {
-  constructor({type, style, label, emoji, custom_id, url, disabled}) {
-    this.type = type;
+  constructor({style, label, emoji, custom_id, url, disabled}) {
+    this.type = 2;
     this.style = style;
     this.label = label;
     this.emoji = emoji;
@@ -11,13 +11,13 @@ class Button {
 
   get data(){
     return({
-      "type": this.type,
-      "style": this.style,
-      "label": this.label,
-      "emoji": this.emoji,
-      "custom_id": this.custom_id,
-      "url": this.url,
-      "disabled": this.disabled,
+      type: this.type,
+      style: this.style,
+      label: this.label,
+      emoji: this.emoji,
+      custom_id: this.custom_id,
+      url: this.url,
+      disabled: this.disabled,
     })
   }
 }

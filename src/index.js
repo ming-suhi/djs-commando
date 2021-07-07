@@ -6,5 +6,8 @@ module.exports = {
   "SubCommand": require('./structures/subcommand.js'),
   "SubCommandGroup": require('./structures/subcommand-group.js'),
   "Button": require('./structures/button.js'),
+  "ActionRow": require('./structures/action-row.js'),
+  "SelectMenu": require('./structures/select-menu.js'),
+  "SelectOption": require('./structures/select-option.js'),
   ...Fields
 }
