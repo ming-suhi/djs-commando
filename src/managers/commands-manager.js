@@ -56,47 +56,80 @@ class CommandsManager extends Folder {
 
       // Message Components
       case 3:
-      switch(commandType(interaction)) {
+      var command = this.get(interaction.message.interaction.name);
+      switch (interaction.data.component_type) {
 
-        // Command
-        case 0:
-        var command = this.get(interaction.data.name);
-        switch (interaction.data.component_type) {
-          case 2:
+        // Button
+        case 2:
+        switch(command.options) {
+
+          // Command
+          case undefined:
           await command.onPress(service);
           break;
 
-          case 3:
+          default:
+          switch(command._options.data[0].type) {
+
+            // SubCommand
+            case 1:
+            for (let subcommand of command.options) {
+              for (let button of subcommand.buttons) {
+                if (interaction.data.custom_id == button.custom_id) {
+                  await subcommand.onPress(service);
+                }
+              }
+            }
+
+            // SubCommand inside SubCommandGroup
+            case 2:
+            for (let subcommandgroup of command.options) {
+              for (let subcommand of subcommandgroup.options) {
+                for (let button of subcommand.buttons) {
+                  if (interaction.data.custom_id == button.custom_id) {
+                    await subcommand.onPress(service);
+                  }
+                }
+              }
+            }
+          }
+        }
+        break;
+
+        // Select Menus
+        case 3:
+        switch(command.options) {
+
+          // Command
+          case undefined:
           await command.onSelect(service);
-        }
-        break;
-
-        // SubCommand
-        case 1:
-        var command = this.get(interaction.data.name);
-        var subcommand = command.options.find(option => option.name == interaction.data.options[0].name);
-        switch (interaction.data.component_type) {
-          case 2:
-          await subcommand.onPress(service);
           break;
-
-          case 3:
-          await subcommand.onSelect(service);
-        }
-        break;
-
-        // SubCommand inside SubCommandGroup
-        case 2:
-        var command = this.get(interaction.data.name);
-        var subcommandgroup = command.options.find(option => option.name == interaction.data.options[0].name);
-        var subcommand = subcommandgroup.options.find(option => option.name == interaction.data.options[0].options[0].name);
-        switch (interaction.data.component_type) {
-          case 2:
-          await subcommand.onPress(service);
-          break;
-
-          case 3:
-          await subcommand.onSelect(service);
+  
+          default:
+          switch(command._options.data[0].type) {
+  
+            // SubCommand
+            case 1:
+            for (let subcommand of command.options) {
+              for (let menu of subcommand.menus) {
+                if (interaction.data.custom_id == menu.custom_id) {
+                  await subcommand.onSelect(service);
+                }
+              }
+            }
+  
+            // SubCommand inside SubCommandGroup
+            case 2:
+            for (let subcommandgroup of command.options) {
+              for (let subcommand of subcommandgroup.options) {
+                for (let menu of subcommand.menus) {
+                  if (interaction.data.custom_id == menu.custom_id) {
+                    await subcommand.onSelect(service);
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
