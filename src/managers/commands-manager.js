@@ -80,6 +80,7 @@ class CommandsManager extends Folder {
                 }
               }
             }
+            break;
 
             // SubCommand inside SubCommandGroup
             case 2:
@@ -117,6 +118,7 @@ class CommandsManager extends Folder {
                 }
               }
             }
+            break;
   
             // SubCommand inside SubCommandGroup
             case 2:
