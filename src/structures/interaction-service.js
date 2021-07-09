@@ -19,7 +19,7 @@ class InteractionService{
   /**
    * Send message
    * @param {string} content message to send
-   * @param {Discord.Component} [components] component object
+   * @param {array<Discord.Component>} [components] component object
    */
   async sendMessage(content, components) {
     const data = {
@@ -52,6 +52,7 @@ class InteractionService{
   /**
    * Send embed
    * @param {Discord.Embed} embed embed to send
+   * @param {array<Discord.Component>} [components] component object
    */
   async sendEmbed(embed, components) {
     const data = {

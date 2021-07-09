@@ -1,6 +1,6 @@
 ## Creating buttons
 
-Components on ephemeral message and embed are currently not supported. 
+Components on ephemeral message is currently not supported. 
 Refer to Discord Developer Portal for an in-depth guide on making component objects.
 
 1. Require/import necessary structures
