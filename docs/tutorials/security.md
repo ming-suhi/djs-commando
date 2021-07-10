@@ -100,7 +100,7 @@ It makes sure that unwanted users will not be able to interact with the componen
 
 ## Setting up user check
 This feature is used to check if the interactor was the one who executed the command.
-It makes sure that only the one who executed the command can interact with the command. 
+It makes sure that only the one who executed the command can interact with the components. 
 
 1. Create a try catch statement inside the `onPress` or `onSelect` method
     ```js
