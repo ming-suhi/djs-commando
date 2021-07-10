@@ -68,6 +68,17 @@ class SubCommand {
   }
 
 
+  /**
+   * Verify user if user executed the command
+   * @param {InteractionService} service instance of InteractionService
+   */
+   async userCheck(service) {
+    if(service.member.user.id != service.message.interaction.user.id) {
+      throw `Only the user can interact with these components`;
+    }
+  }
+
+
   // Returns class as object
   get data() {
     return({
