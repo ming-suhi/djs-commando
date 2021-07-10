@@ -95,4 +95,31 @@ It makes sure that unwanted users will not be able to interact with the componen
 4. Handle error, inside catch statement
     ```js
     // It is suggested to send Error message to user
-    await service.sendEphemeral(e);    
+    await service.sendEphemeral(e);   
+    ```
+
+## Setting up user check
+This feature is used to check if the interactor was the one who executed the command.
+It makes sure that only the one who executed the command can interact with the command. 
+
+1. Create a try catch statement inside the `onPress` or `onSelect` method
+    ```js
+    async onPress(service){
+      try {
+
+      }catch(e){
+
+      }
+    }
+    ```
+
+2. Inside try statement call on `userCheck`
+    ```js
+    await this.userCheck(service);
+    ```
+
+3. Handle error, inside catch statement
+    ```js
+    // It is suggested to send Error message to user
+    await service.sendEphemeral(e);   
+    ```
