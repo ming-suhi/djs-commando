@@ -62,6 +62,23 @@ class InteractionService{
     data.data.components = components;
     this.client.api.interactions(this.id, this.token).callback.post({data});
   }
+
+
+  /**
+   * Update the message the component is attached to
+   * @param {string} content message to send
+   * @param {Discord.Embed} embed embed to send
+   * @param {array<Discord.Component>} [components] component object
+   */
+  async updateMessage(content, embed, components) {
+    const data = {
+      type: 7,
+      data: await createAPIMessage(this.client, this.channel_id, embed)
+    }
+    data.data.content = content;
+    data.data.components = components;
+    this.client.api.interactions(this.id, this.token).callback.post({data});
+  }
 }
 
 module.exports = InteractionService;
