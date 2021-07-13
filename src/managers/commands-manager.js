@@ -31,7 +31,7 @@ class CommandsManager extends Folder {
 
       // Slash Commands
       case 2:
-      switch(interaction?.data?.options[0]?.type) {
+      switch(interaction?.data?.options?.[0]?.type) {
 
         // Command
         case undefined:
