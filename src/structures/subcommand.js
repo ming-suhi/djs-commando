@@ -92,7 +92,10 @@ class SubCommand {
   
   // Get buttons
   get buttons() {
-    var buttons = []
+    var buttons = [];
+    if (!this.components) {
+      return undefined;
+    }
     for (let row of this.components){
       for (let component of row.components) {
         if (component.type == 2) {
@@ -105,7 +108,10 @@ class SubCommand {
 
   // Get menus
   get menus() {
-    var menus = []
+    var menus = [];
+    if (!this.components) {
+      return undefined;
+    }
     for (let row of this.components){
       for (let component of row.components) {
         if (component.type == 3) {
