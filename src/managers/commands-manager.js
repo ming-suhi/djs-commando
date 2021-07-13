@@ -64,11 +64,15 @@ class CommandsManager extends Folder {
         case 2:
 
         // Command
-        for (let button of command.buttons) {
-          if (interaction.data.custom_id == button.custom_id) {
-            await subcommand.onPress(service);
+        if (command.buttons) {
+          for (let button of command.buttons) {
+            if (interaction.data.custom_id == button.custom_id) {
+              await subcommand.onPress(service);
+              return;
+            }
           }
         }
+        
 
         for (let commandOption of command.options) {
           switch (commandOption.constructor.name) {
@@ -79,6 +83,7 @@ class CommandsManager extends Folder {
                 for (let button of subcommand.buttons) {
                   if (interaction.data.custom_id == button.custom_id) {
                     await subcommand.onPress(service);
+                    return;
                   }
                 }
               }
@@ -91,6 +96,7 @@ class CommandsManager extends Folder {
                   for (let button of subcommand.buttons) {
                     if (interaction.data.custom_id == button.custom_id) {
                       await subcommand.onPress(service);
+                      return;
                     }
                   }
                 }
@@ -103,11 +109,15 @@ class CommandsManager extends Folder {
         case 3:
 
         // Command
-        for (let menu of command.menus) {
-          if (interaction.data.custom_id == menu.custom_id) {
-            await subcommand.onPress(service);
+        if (command.menus) {
+          for (let menu of command.menus) {
+            if (interaction.data.custom_id == menu.custom_id) {
+              await subcommand.onPress(service);
+              return;
+            }
           }
         }
+        
           
         for (let commandOption of command.options) {
           switch (commandOption.constructor.name) {
@@ -118,6 +128,7 @@ class CommandsManager extends Folder {
                 for (let menu of subcommand.menus) {
                   if (interaction.data.custom_id == menu.custom_id) {
                     await subcommand.onSelect(service);
+                    return;
                   }
                 }
               }
@@ -130,6 +141,7 @@ class CommandsManager extends Folder {
                   for (let menu of subcommand.menus) {
                     if (interaction.data.custom_id == menu.custom_id) {
                       await subcommand.onSelect(service);
+                      return;
                     }
                   }
                 }
