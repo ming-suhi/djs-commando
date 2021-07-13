@@ -1,6 +1,7 @@
 const Folder = require('../structures/folder.js');
 const InteractionService = require('../structures/interaction-service.js');
-const {commandType} = require('../utilities/command.js');
+const SubCommand = require('../structures/subcommand.js');
+const SubCommandGroup = require('../structures/subcommand-group.js');
 
 
 class CommandsManager extends Folder {
@@ -30,10 +31,10 @@ class CommandsManager extends Folder {
 
       // Slash Commands
       case 2:
-      switch(commandType(interaction)) {
+      switch(interaction?.data?.options?.[0]?.type) {
 
         // Command
-        case 0:
+        case undefined:
         var command = this.get(interaction.data.name);
         await command.execute(service);
         break;
@@ -61,76 +62,90 @@ class CommandsManager extends Folder {
 
         // Button
         case 2:
-        switch(command.options) {
 
-          // Command
-          case undefined:
-          await command.onPress(service);
-          break;
+        // Command
+        if (command.buttons) {
+          for (let button of command.buttons) {
+            if (interaction.data.custom_id == button.custom_id) {
+              await subcommand.onPress(service);
+              return;
+            }
+          }
+        }
+        
 
-          default:
-          switch(command._options.data[0].type) {
+        for (let commandOption of command.options) {
+          switch (commandOption.constructor.name) {
 
             // SubCommand
-            case 1:
-            for (let subcommand of command.options) {
-              for (let button of subcommand.buttons) {
-                if (interaction.data.custom_id == button.custom_id) {
-                  await subcommand.onPress(service);
-                }
-              }
-            }
-            break;
-
-            // SubCommand inside SubCommandGroup
-            case 2:
-            for (let subcommandgroup of command.options) {
-              for (let subcommand of subcommandgroup.options) {
+            case SubCommand.name:
+              for (let subcommand of command.options) {
                 for (let button of subcommand.buttons) {
                   if (interaction.data.custom_id == button.custom_id) {
                     await subcommand.onPress(service);
+                    return;
                   }
                 }
               }
-            }
+              break;
+
+            // SubCommandGroup
+            case SubCommandGroup.name:
+              for (let subcommandgroup of command.options) {
+                for (let subcommand of subcommandgroup.options) {
+                  for (let button of subcommand.buttons) {
+                    if (interaction.data.custom_id == button.custom_id) {
+                      await subcommand.onPress(service);
+                      return;
+                    }
+                  }
+                }
+              }
           }
         }
         break;
 
         // Select Menus
         case 3:
-        switch(command.options) {
 
-          // Command
-          case undefined:
-          await command.onSelect(service);
-          break;
-  
-          default:
-          switch(command._options.data[0].type) {
-  
-            // SubCommand
-            case 1:
-            for (let subcommand of command.options) {
-              for (let menu of subcommand.menus) {
-                if (interaction.data.custom_id == menu.custom_id) {
-                  await subcommand.onSelect(service);
-                }
-              }
+        // Command
+        if (command.menus) {
+          for (let menu of command.menus) {
+            if (interaction.data.custom_id == menu.custom_id) {
+              await subcommand.onPress(service);
+              return;
             }
-            break;
-  
-            // SubCommand inside SubCommandGroup
-            case 2:
-            for (let subcommandgroup of command.options) {
-              for (let subcommand of subcommandgroup.options) {
+          }
+        }
+        
+          
+        for (let commandOption of command.options) {
+          switch (commandOption.constructor.name) {
+
+            // SubCommand
+            case SubCommand.name:
+              for (let subcommand of command.options) {
                 for (let menu of subcommand.menus) {
                   if (interaction.data.custom_id == menu.custom_id) {
                     await subcommand.onSelect(service);
+                    return;
                   }
                 }
               }
-            }
+              break;
+
+            // SubCommandGroup
+            case SubCommandGroup.name:
+              for (let subcommandgroup of command.options) {
+                for (let subcommand of subcommandgroup.options) {
+                  for (let menu of subcommand.menus) {
+                    if (interaction.data.custom_id == menu.custom_id) {
+                      await subcommand.onSelect(service);
+                      return;
+                    }
+                  }
+                }
+              }
           }
         }
       }
