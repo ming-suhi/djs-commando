@@ -1,4 +1,9 @@
-const {Command} = require('../../src/index.js');
+const {Command, Button, SelectMenu, SelectOption, ActionRow} = require('../../src/index.js');
+
+const button = new Button({label: 'button', custom_id: 'test_button', style: 1});
+const optionOne = new SelectOption({label: 'option one', value: 'one'});
+const optionTwo = new SelectOption({label: 'option two', value: 'two'});
+const menu = new SelectMenu([optionOne, optionTwo], {custom_id: 'test_menu'});
 
 const ping = new class extends Command {
   constructor() {
@@ -8,6 +13,7 @@ const ping = new class extends Command {
     this.botPermissions = ["SEND_MESSAGES"];
     this.executePermissions = ["SEND_MESSAGES"];
     this.interactPermissions = ["SEND_MESSAGES"];
+    this.components = [new ActionRow([button]).data, new ActionRow([menu]).data];
   }
 
   async execute(service) {
