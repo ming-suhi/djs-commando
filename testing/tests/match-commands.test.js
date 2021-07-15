@@ -1,6 +1,6 @@
 const CommandsManager = require('../../src/managers/commands-manager');
 const InteractionService = require('../../src/structures/interaction-service');
-const Ping = require('../commands/ping');
+const Ping = require('../structures/ping');
 
 jest.mock('../../src/structures/interaction-service');
 
@@ -18,6 +18,9 @@ CommandsManager.prototype.get = function() {
 
 describe('Command class', () => {
 
+  const commandsManager = new CommandsManager();
+
+  
   beforeEach(() => {
     InteractionService.mockClear();
     execute.mockClear();
@@ -25,25 +28,22 @@ describe('Command class', () => {
     onSelect.mockClear();
   });
 
+
   it('should call execute', () => {
-    const commandsManager = new CommandsManager();
-  
     commandsManager.match(null, {type: 2, data: {name: 'ping'}});
     expect(InteractionService).toHaveBeenCalledTimes(1);
     expect(execute).toHaveBeenCalledTimes(1);
   });
 
+
   it('should call onPress', () => {
-    const commandsManager = new CommandsManager();
-  
     commandsManager.match(null, {type: 3, data: {component_type: 2, custom_id: 'test_button'}, message: {interaction: {name: 'ping'}}});
     expect(InteractionService).toHaveBeenCalledTimes(1);
     expect(onPress).toHaveBeenCalledTimes(1);
   })
 
+
   it('should call onSelect', () => {
-    const commandsManager = new CommandsManager();
-  
     commandsManager.match(null, {type: 3, data: {component_type: 3, custom_id: 'test_menu'}, message: {interaction: {name: 'ping'}}});
     expect(InteractionService).toHaveBeenCalledTimes(1);
     expect(onSelect).toHaveBeenCalledTimes(1);

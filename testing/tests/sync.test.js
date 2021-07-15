@@ -1,26 +1,21 @@
 const Discord = require('discord.js');
 const {LocalClient} = require('../../src/index.js');
-const ping2 = require('../test-objects/ping2.js');
+const ping = require('../structures/ping.js');
 
 const client = new Discord.Client();
 client.slash = new LocalClient();
 
 
-test('post command', async() => {
-
-  //setup
+test('sync commands', async() => {
   await client.login(client.slash.token);
+  
+  await client.slash.syncCommands(client);
 
-  //test
-  await ping2.post(client);
-
-  //check
   const commands = await client.api.applications(client.user.id).commands.get();
-  const command = commands.find(command => command.name == ping2.name);
-  expect(command).toHaveProperty("name", ping2.name);
-  expect(command).toHaveProperty("description", ping2.description);
+  var command = commands.find(command => command.name == ping.name);
+  expect(commands.length).toEqual(1);
+  expect(command).not.toEqual(undefined);
 
-  //clean
   client.destroy();
 })
 

@@ -6,7 +6,22 @@ env: ${{ secrets }}
 
 jobs:
 
-  CommandsManager:
+  LocalClient:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup Node
+      uses: actions/setup-node@v2
+      
+    - name: Install dependencies
+      run: npm ci
+
+    - name: methods
+      run: npm run test testing/tests/local-client
+
+  Folder:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,10 +34,37 @@ jobs:
       run: npm ci
     
     - name: get method
-      run: npm run test tests/commands-manager/get
+      run: npm run test testing/tests/get
+  
+  SDK:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup Node
+      uses: actions/setup-node@v2
       
+    - name: Install dependencies
+      run: npm ci
+
     - name: post method
-      run: npm run test tests/commands-manager/post
+      run: npm run test testing/tests/post
 
     - name: sync method
-      run: npm run test tests/commands-manager/sync
+      run: npm run test testing/tests/sync
+
+  InteractionHandler:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup Node
+      uses: actions/setup-node@v2
+      
+    - name: Install dependencies
+      run: npm ci
+
+    - name: top level commands
+      run: npm run test testing/tests/match-commands
