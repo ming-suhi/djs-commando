@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const {LocalClient} = require('../../src/index.js');
-const ping = require('../structures/ping.js');
+const ping = require('../commands/ping.js');
 
 const client = new Discord.Client();
 client.slash = new LocalClient();

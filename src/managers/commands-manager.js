@@ -78,25 +78,21 @@ class CommandsManager extends Folder {
 
             // SubCommand
             case SubCommand.name:
-              for (let subcommand of command.options) {
-                for (let button of subcommand.buttons) {
-                  if (interaction.data.custom_id == button.custom_id) {
-                    await subcommand.onPress(service);
-                    return;
-                  }
+              for (let button of commandOption.buttons) {
+                if (interaction.data.custom_id == button.custom_id) {
+                  await commandOption.onPress(service);
+                  return;
                 }
               }
               break;
 
             // SubCommandGroup
             case SubCommandGroup.name:
-              for (let subcommandgroup of command.options) {
-                for (let subcommand of subcommandgroup.options) {
-                  for (let button of subcommand.buttons) {
-                    if (interaction.data.custom_id == button.custom_id) {
-                      await subcommand.onPress(service);
-                      return;
-                    }
+              for (let subcommand of commandOption.options) {
+                for (let button of subcommand.buttons) {
+                  if (interaction.data.custom_id == button.custom_id) {
+                    await subcommand.onPress(service);
+                    return;
                   }
                 }
               }
@@ -123,25 +119,21 @@ class CommandsManager extends Folder {
 
             // SubCommand
             case SubCommand.name:
-              for (let subcommand of command.options) {
-                for (let menu of subcommand.menus) {
-                  if (interaction.data.custom_id == menu.custom_id) {
-                    await subcommand.onSelect(service);
-                    return;
-                  }
+              for (let menu of commandOption.menus) {
+                if (interaction.data.custom_id == menu.custom_id) {
+                  await commandOption.onSelect(service);
+                  return;
                 }
               }
               break;
 
             // SubCommandGroup
             case SubCommandGroup.name:
-              for (let subcommandgroup of command.options) {
-                for (let subcommand of subcommandgroup.options) {
-                  for (let menu of subcommand.menus) {
-                    if (interaction.data.custom_id == menu.custom_id) {
-                      await subcommand.onSelect(service);
-                      return;
-                    }
+              for (let subcommand of commandOption.options) {
+                for (let menu of subcommand.menus) {
+                  if (interaction.data.custom_id == menu.custom_id) {
+                    await subcommand.onSelect(service);
+                    return;
                   }
                 }
               }
