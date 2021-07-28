@@ -15,68 +15,28 @@ class InteractionService{
     this.responseType = 4;
   }
 
-
   /**
-   * Send message
-   * @param {string} content message to send
-   * @param {array<Discord.Component>} [components] component object
+   * Respond to an interaction
+   * @param {object} data response to interaction 
+   * @param {string} [data.content] message to send
+   * @param {Discord.MessageEmbed} [data.embed] embed to send
+   * @param {array<Discord.Component>} [data.components] components to send
+   * @param {boolean} [data.visible] if message is visible to non-users
    */
-  async sendMessage(content, components) {
-    const data = {
-      type: this.responseType,
-      data: {
-        content: content,
-        components: components
-      }
+  async send({content, embed, components, visible = true}) {
+    const data = {type: this.responseType};
+    if(embed) {
+      data.data = await createAPIMessage(this.client, this.channel_id, embed);
     }
-    this.client.api.interactions(this.id, this.token).callback.post({data});
-  }
-  
-
-  /**
-   * Send ephemeral message
-   * @param {string} content message to send
-   */
-  async sendEphemeral(content) {
-    const data = {
-      type: this.responseType,
-      data: {
-        content: content,
-        flags: 64
-      }
+    if(content) {
+      data.data.content = content;
     }
-    this.client.api.interactions(this.id, this.token).callback.post({data});
-  }
-
-
-  /**
-   * Send embed
-   * @param {Discord.Embed} embed embed to send
-   * @param {array<Discord.Component>} [components] component object
-   */
-  async sendEmbed(embed, components) {
-    const data = {
-      type: this.responseType,
-      data: await createAPIMessage(this.client, this.channel_id, embed)
+    if(components) {
+      data.data.components = components;
     }
-    data.data.components = components;
-    this.client.api.interactions(this.id, this.token).callback.post({data});
-  }
-
-
-  /**
-   * Update the message the component is attached to
-   * @param {string} content message to send
-   * @param {Discord.Embed} embed embed to send
-   * @param {array<Discord.Component>} [components] component object
-   */
-  async updateMessage(content, embed, components) {
-    const data = {
-      type: 7,
-      data: await createAPIMessage(this.client, this.channel_id, embed)
+    if(visible == false) {
+      data.data.flags = 64;
     }
-    data.data.content = content;
-    data.data.components = components;
     this.client.api.interactions(this.id, this.token).callback.post({data});
   }
 }
