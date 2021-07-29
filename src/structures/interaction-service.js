@@ -28,10 +28,10 @@ class InteractionService{
       data.data = await createAPIMessage(this.client, this.channel_id, embed);
     }
     if(content) {
-      data.data = {content: content};
+      data.data.content = content;
     }
     if(components) {
-      data.data = {components: components};
+      data.data.components = components;
     }
     if(visible == false) {
       data.data.flags = 64;
