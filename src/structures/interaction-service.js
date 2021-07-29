@@ -23,7 +23,7 @@ class InteractionService{
    * @param {boolean} [data.visible] if message is visible to non-users
    */
   async send({content, embed, components, visible = true, responseType = 4}) {
-    const data = {type: responseType};
+    const data = {type: responseType, data: {}};
     if(embed) {
       data.data = await createAPIMessage(this.client, this.channel_id, embed);
     }
