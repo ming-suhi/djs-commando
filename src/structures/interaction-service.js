@@ -12,7 +12,6 @@ class InteractionService{
   constructor(client, interaction) {
     Object.assign(this, interaction)
     this.client = client;
-    this.responseType = 4;
   }
 
   /**
@@ -23,8 +22,8 @@ class InteractionService{
    * @param {array<Discord.Component>} [data.components] components to send
    * @param {boolean} [data.visible] if message is visible to non-users
    */
-  async send({content, embed, components, visible = true}) {
-    const data = {type: this.responseType};
+  async send({content, embed, components, visible = true, responseType = 4}) {
+    const data = {type: responseType};
     if(embed) {
       data.data = await createAPIMessage(this.client, this.channel_id, embed);
     }
