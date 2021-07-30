@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Tutorial: Working with Components - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Tutorials</h3><ul><li><a href="tutorial-commands.html">Working with Commands</a></li><li><a href="tutorial-components.html">Working with Components</a></li><li><a href="tutorial-fields.html">Command Fields</a></li><li><a href="tutorial-security.html">Setting Up Security</a></li><li><a href="tutorial-setup.html">Setting Up</a></li><li><a href="tutorial-subcommand_.html">Subcommands</a></li><li><a href="tutorial-subcommandgroup_.html">Subcommand Groups</a></li><li><a href="tutorial-sync.html">Synching Command</a></li></ul><h3>Classes</h3><ul><li><a href="ActionRow.html">ActionRow</a></li><li><a href="BooleanField.html">BooleanField</a></li><li><a href="Button.html">Button</a></li><li><a href="ChannelField.html">ChannelField</a></li><li><a href="Command.html">Command</a><ul class='methods'><li data-type='method'><a href="Command.html#botCheck">botCheck</a></li><li data-type='method'><a href="Command.html#executeCheck">executeCheck</a></li><li data-type='method'><a href="Command.html#interactCheck">interactCheck</a></li><li data-type='method'><a href="Command.html#userCheck">userCheck</a></li></ul></li><li><a href="CommandsManager.html">CommandsManager</a><ul class='methods'><li data-type='method'><a href="CommandsManager.html#get">get</a></li><li data-type='method'><a href="CommandsManager.html#match">match</a></li><li data-type='method'><a href="CommandsManager.html#sync">sync</a></li></ul></li><li><a href="Folder.html">Folder</a><ul class='methods'><li data-type='method'><a href="Folder.html#get">get</a></li></ul></li><li><a href="IntegerField.html">IntegerField</a></li><li><a href="InteractionService.html">InteractionService</a><ul class='methods'><li data-type='method'><a href="InteractionService.html#send">send</a></li></ul></li><li><a href="LocalClient.html">LocalClient</a><ul class='methods'><li data-type='method'><a href="LocalClient.html#handleInteraction">handleInteraction</a></li><li data-type='method'><a href="LocalClient.html#syncCommands">syncCommands</a></li></ul></li><li><a href="MentionableField.html">MentionableField</a></li><li><a href="RoleField.html">RoleField</a></li><li><a href="SelectMenu.html">SelectMenu</a></li><li><a href="SelectOption.html">SelectOption</a></li><li><a href="StringField.html">StringField</a></li><li><a href="SubCommand.html">SubCommand</a><ul class='methods'><li data-type='method'><a href="SubCommand.html#botCheck">botCheck</a></li><li data-type='method'><a href="SubCommand.html#executeCheck">executeCheck</a></li><li data-type='method'><a href="SubCommand.html#interactCheck">interactCheck</a></li><li data-type='method'><a href="SubCommand.html#userCheck">userCheck</a></li></ul></li><li><a href="SubCommandGroup.html">SubCommandGroup</a></li><li><a href="UserField.html">UserField</a></li></ul><h3>Global</h3><ul><li><a href="global.html#fileExport">fileExport</a></li><li><a href="global.html#folderExports">folderExports</a></li><li><a href="global.html#folderPath">folderPath</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Tutorial: Working with Components</h1>
+    
+
+    <section>
+
+<header>
+    
+
+    <h2>Working with Components</h2>
+</header>
+
+<article>
+    <h2>Creating buttons</h2>
+<p>Components on ephemeral message is currently not supported.
+Refer to Discord Developer Portal for an in-depth guide on making component objects.</p>
+<ol>
+<li>
+<p>Require/import necessary structures</p>
+<pre class="prettyprint source lang-js"><code>const {Button, ActionRow} = require('@ming-suhi/djs-local-manager');
+</code></pre>
+</li>
+<li>
+<p>Create a button by extending <code>Button</code></p>
+<pre class="prettyprint source lang-js"><code>const male = new Button({label: &quot;male&quot;, custom_id: &quot;12232123&quot;, style: 1});
+</code></pre>
+</li>
+<li>
+<p>Create an action row by extending <code>ActionRow</code>. Pass the buttons in the row in an array.</p>
+<pre class="prettyprint source lang-js"><code>const firstRow = new ActionRow([male, female, nonBinary]);
+</code></pre>
+</li>
+<li>
+<p>Register all buttons and menus by registering action row in components properties of the command that will generate it.
+Make sure that there is no duplicate custom_id within the command.</p>
+<pre class="prettyprint source lang-js"><code>//inside command constructor
+this.components = [firstRow, secondRow];
+</code></pre>
+</li>
+</ol>
+<h2>Creating select menus</h2>
+<ol>
+<li>
+<p>Require/import necessary structures</p>
+<pre class="prettyprint source lang-js"><code>const {ActionRow, SelectMenu, SelectOption} = require('@ming-suhi/djs-local-manager');
+</code></pre>
+</li>
+<li>
+<p>Create a select option by extending <code>SelectOption</code></p>
+<pre class="prettyprint source lang-js"><code>const male = new SelectOption({label: &quot;male&quot;, value: &quot;123&quot;});
+</code></pre>
+</li>
+<li>
+<p>Create a select menu by extending <code>SelectMenu</code></p>
+<pre class="prettyprint source lang-js"><code>const gender = new SelectMenu([male, female, nonBinary], {placeholder: &quot;Select gender role&quot;});
+</code></pre>
+</li>
+<li>
+<p>Create an action row by extending <code>ActionRow</code>. Pass the select menu in the row in an array.</p>
+<pre class="prettyprint source lang-js"><code>const firstRow = new ActionRow([gender]);
+</code></pre>
+</li>
+<li>
+<p>Register all buttons and menus by registering action row in components properties of the command that will generate it.</p>
+<pre class="prettyprint source lang-js"><code>//inside command constructor
+this.components = [firstRow, secondRow];
+</code></pre>
+</li>
+</ol>
+<h2>Sending components</h2>
+<p>Simply access the data property of the class.</p>
+<pre class="prettyprint source lang-js"><code>await service.send({content: &quot;Message Content&quot;, components: [firstRow.data, secondRow.data]});
+</code></pre>
+<h2>Handling multiple buttons</h2>
+<p>onPress receives all button interaction in that command. In the case of multiple buttons, you can handle it by accessing the button's custom_id. You can access it through <code>service.data.custom_id</code>.</p>
+<pre class="prettyprint source lang-js"><code>async onPress(service) {
+  switch(service.data.custom_id){
+    case &quot;button_one&quot;:
+    // If button_one is pressed
+    break;
+
+    case &quot;button_two&quot;:
+    // If button_two is pressed
+  }
+}
+</code></pre>
+<h2>Handling multiple select menus</h2>
+<p>onSelect receives all select menus created in that command. Handling multile select menus is the same as handling multiple buttons.
+Access the component's id through <code>service.data.custom_id</code>. To get select menu values access it through the <code>service.data.values</code>.</p>
+<pre class="prettyprint source lang-js"><code>async onSelect(service) {
+  switch(service.data.custom_id){
+    case &quot;menu_one&quot;:
+    // If menu_one is submitted
+    break;
+
+    case &quot;menu_two&quot;:
+    // If menu_two is submitted
+  }
+}
+</code></pre>
+</article>
+
+</section>
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

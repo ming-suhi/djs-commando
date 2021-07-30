@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Tutorial: Setting Up Security - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Tutorials</h3><ul><li><a href="tutorial-commands.html">Working with Commands</a></li><li><a href="tutorial-components.html">Working with Components</a></li><li><a href="tutorial-fields.html">Command Fields</a></li><li><a href="tutorial-security.html">Setting Up Security</a></li><li><a href="tutorial-setup.html">Setting Up</a></li><li><a href="tutorial-subcommand_.html">Subcommands</a></li><li><a href="tutorial-subcommandgroup_.html">Subcommand Groups</a></li><li><a href="tutorial-sync.html">Synching Command</a></li></ul><h3>Classes</h3><ul><li><a href="ActionRow.html">ActionRow</a></li><li><a href="BooleanField.html">BooleanField</a></li><li><a href="Button.html">Button</a></li><li><a href="ChannelField.html">ChannelField</a></li><li><a href="Command.html">Command</a><ul class='methods'><li data-type='method'><a href="Command.html#botCheck">botCheck</a></li><li data-type='method'><a href="Command.html#executeCheck">executeCheck</a></li><li data-type='method'><a href="Command.html#interactCheck">interactCheck</a></li><li data-type='method'><a href="Command.html#userCheck">userCheck</a></li></ul></li><li><a href="CommandsManager.html">CommandsManager</a><ul class='methods'><li data-type='method'><a href="CommandsManager.html#get">get</a></li><li data-type='method'><a href="CommandsManager.html#match">match</a></li><li data-type='method'><a href="CommandsManager.html#sync">sync</a></li></ul></li><li><a href="Folder.html">Folder</a><ul class='methods'><li data-type='method'><a href="Folder.html#get">get</a></li></ul></li><li><a href="IntegerField.html">IntegerField</a></li><li><a href="InteractionService.html">InteractionService</a><ul class='methods'><li data-type='method'><a href="InteractionService.html#send">send</a></li></ul></li><li><a href="LocalClient.html">LocalClient</a><ul class='methods'><li data-type='method'><a href="LocalClient.html#handleInteraction">handleInteraction</a></li><li data-type='method'><a href="LocalClient.html#syncCommands">syncCommands</a></li></ul></li><li><a href="MentionableField.html">MentionableField</a></li><li><a href="RoleField.html">RoleField</a></li><li><a href="SelectMenu.html">SelectMenu</a></li><li><a href="SelectOption.html">SelectOption</a></li><li><a href="StringField.html">StringField</a></li><li><a href="SubCommand.html">SubCommand</a><ul class='methods'><li data-type='method'><a href="SubCommand.html#botCheck">botCheck</a></li><li data-type='method'><a href="SubCommand.html#executeCheck">executeCheck</a></li><li data-type='method'><a href="SubCommand.html#interactCheck">interactCheck</a></li><li data-type='method'><a href="SubCommand.html#userCheck">userCheck</a></li></ul></li><li><a href="SubCommandGroup.html">SubCommandGroup</a></li><li><a href="UserField.html">UserField</a></li></ul><h3>Global</h3><ul><li><a href="global.html#fileExport">fileExport</a></li><li><a href="global.html#folderExports">folderExports</a></li><li><a href="global.html#folderPath">folderPath</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Tutorial: Setting Up Security</h1>
+    
+
+    <section>
+
+<header>
+    
+
+    <h2>Setting Up Security</h2>
+</header>
+
+<article>
+    <h2>How it works</h2>
+<p>Security takes a user's permission and verify if all permissions stated by the command have been met.
+All security methods throw error if permissions are not met. Setting up security is optional.</p>
+<h2>Setting up bot check</h2>
+<p>This feature is used to check if bot has the set permissions.
+It makes sure that the bot has the permissions to execute the commands.</p>
+<ol>
+<li>
+<p>Set <code>botPermissions</code> property to the desired permissions</p>
+<pre class="prettyprint source lang-js"><code>this.botPermissions = [&quot;MANAGE_ROLES&quot;];
+</code></pre>
+</li>
+<li>
+<p>Create a try catch statement inside the <code>execute</code> method</p>
+<pre class="prettyprint source lang-js"><code>async execute(service){
+  try {
+
+  }catch(e){
+
+  }
+}
+</code></pre>
+</li>
+<li>
+<p>Inside try statement call on <code>botCheck</code></p>
+<pre class="prettyprint source lang-js"><code>await this.botCheck(service);
+</code></pre>
+</li>
+<li>
+<p>Handle error, inside catch statement</p>
+<pre class="prettyprint source lang-js"><code>// It is suggested to send Error message to user
+await service.send({content: e, visible: false});
+</code></pre>
+</li>
+</ol>
+<h2>Setting up execute check</h2>
+<p>This feature is used to check if user has the set permissions.
+It makes sure that unwanted users will not be able to use the slash command.</p>
+<ol>
+<li>
+<p>Set <code>executePermissions</code> property to the desired permissions</p>
+<pre class="prettyprint source lang-js"><code>this.executePermissions = [&quot;MANAGE_ROLES&quot;];
+</code></pre>
+</li>
+<li>
+<p>Create a try catch statement inside the <code>execute</code> method</p>
+<pre class="prettyprint source lang-js"><code>async execute(service){
+  try {
+
+  }catch(e){
+
+  }
+}
+</code></pre>
+</li>
+<li>
+<p>Inside try statement call on <code>executeCheck</code></p>
+<pre class="prettyprint source lang-js"><code>await this.executeCheck(service);
+</code></pre>
+</li>
+<li>
+<p>Handle error, inside catch statement</p>
+<pre class="prettyprint source lang-js"><code>// It is suggested to send Error message to user
+await service.send({content: e, visible: false});
+
+</code></pre>
+</li>
+</ol>
+<h2>Setting up interact check</h2>
+<p>This feature is used to check if user has the set permissions.
+It makes sure that unwanted users will not be able to interact with the components.</p>
+<ol>
+<li>
+<p>Set <code>interactPermissions</code> property to the desired permissions</p>
+<pre class="prettyprint source lang-js"><code>this.interactPermissions = [&quot;MANAGE_ROLES&quot;];
+</code></pre>
+</li>
+<li>
+<p>Create a try catch statement inside the <code>onPress</code> or <code>onSelect</code> method</p>
+<pre class="prettyprint source lang-js"><code>async onPress(service){
+  try {
+
+  }catch(e){
+
+  }
+}
+</code></pre>
+</li>
+<li>
+<p>Inside try statement call on <code>interactCheck</code></p>
+<pre class="prettyprint source lang-js"><code>await this.interactCheck(service);
+</code></pre>
+</li>
+<li>
+<p>Handle error, inside catch statement</p>
+<pre class="prettyprint source lang-js"><code>// It is suggested to send Error message to user
+await service.send({content: e, visible: false}); 
+</code></pre>
+</li>
+</ol>
+<h2>Setting up user check</h2>
+<p>This feature is used to check if the interactor was the one who executed the command.
+It makes sure that only the one who executed the command can interact with the components.</p>
+<ol>
+<li>
+<p>Create a try catch statement inside the <code>onPress</code> or <code>onSelect</code> method</p>
+<pre class="prettyprint source lang-js"><code>async onPress(service){
+  try {
+
+  }catch(e){
+
+  }
+}
+</code></pre>
+</li>
+<li>
+<p>Inside try statement call on <code>userCheck</code></p>
+<pre class="prettyprint source lang-js"><code>await this.userCheck(service);
+</code></pre>
+</li>
+<li>
+<p>Handle error, inside catch statement</p>
+<pre class="prettyprint source lang-js"><code>// It is suggested to send Error message to user
+await service.send({content: e, visible: false});
+</code></pre>
+</li>
+</ol>
+</article>
+
+</section>
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
