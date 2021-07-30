@@ -57,7 +57,7 @@ Refer to Discord Developer Portal for an in-depth guide on making component obje
 
 Simply access the data property of the class. 
 ```js
-await service.send("Message Content", [firstRow.data, secondRow.data]);
+await service.send({content: "Message Content", components: [firstRow.data, secondRow.data]});
 ```
 
 ## Handling multiple buttons

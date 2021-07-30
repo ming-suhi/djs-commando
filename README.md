@@ -87,7 +87,7 @@ npm install @ming-suhi/djs-local-manager
 5. Create `execute` method
     ```js
     async execute(service) {
-      await service.sendMessage('Your command has been heard');
+      await service.send({content: 'Your command has been heard'});
     }
     ```
 
@@ -108,7 +108,7 @@ npm install @ming-suhi/djs-local-manager
       }
 
       async execute(service) {
-        await service.sendMessage('Pong');
+        await service.send({content: 'Pong'});
       }
     }
 

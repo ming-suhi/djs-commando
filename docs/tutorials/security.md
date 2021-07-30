@@ -32,7 +32,7 @@ It makes sure that the bot has the permissions to execute the commands.
 4. Handle error, inside catch statement
     ```js
     // It is suggested to send Error message to user
-    await service.sendEphemeral(e);
+    await service.send({content: e, visible: false});
     ```
 
 ## Setting up execute check
@@ -64,7 +64,7 @@ It makes sure that unwanted users will not be able to use the slash command.
 4. Handle error, inside catch statement
     ```js
     // It is suggested to send Error message to user
-    await service.sendEphemeral(e);
+    await service.send({content: e, visible: false});
 
 ## Setting up interact check
 
@@ -95,7 +95,7 @@ It makes sure that unwanted users will not be able to interact with the componen
 4. Handle error, inside catch statement
     ```js
     // It is suggested to send Error message to user
-    await service.sendEphemeral(e);   
+    await service.send({content: e, visible: false}); 
     ```
 
 ## Setting up user check
@@ -121,5 +121,5 @@ It makes sure that only the one who executed the command can interact with the c
 3. Handle error, inside catch statement
     ```js
     // It is suggested to send Error message to user
-    await service.sendEphemeral(e);   
+    await service.send({content: e, visible: false});
     ```
