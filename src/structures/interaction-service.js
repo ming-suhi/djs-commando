@@ -22,17 +22,17 @@ class InteractionService{
    * @param {array<Discord.Component>} [data.components] components to send
    * @param {boolean} [data.visible] if message is visible to non-users
    */
-  async send({content, embed, components, visible = true, responseType = 4}) {
-    var data = {type: responseType, data: {}};
-    if(embed != undefined) {
-      data.data = await createAPIMessage(this.client, this.channel_id, embed);
-    }
-    if(visible === false) {
-      data.data.flags = 64;
+   async send({content, embed, components, visible = true, responseType = 4}) {
+    const data = {
+      type: responseType,
+      data: await createAPIMessage(this.client, this.channel_id, embed)
     }
     data.data.content = content;
     data.data.components = components;
-    console.log(data)
+    if(visible === false) {
+      data.data.flags = 64;
+    }
+    console.log(data);
     this.client.api.interactions(this.id, this.token).callback.post({data});
   }
 }
