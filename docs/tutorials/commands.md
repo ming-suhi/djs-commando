@@ -26,7 +26,7 @@
 5. Create `execute` method
     ```js
     async execute(service) {
-      await service.sendMessage('Your command has been heard');
+      await service.send({content: 'Your command has been heard'});
     }
     ```
 
@@ -47,7 +47,7 @@
       }
 
       async execute(service) {
-        await service.sendMessage('Pong');
+        await service.send({content: 'Pong'});
       }
     }
 
@@ -57,13 +57,3 @@
 ## Understanding service parameter
 
 `service` is a copy of interaction object, with added tools to aid in interacting with Discord. You can look up for InteractionService class here to know more about the tools it can offer. You can look up interaction object in Discord Developer portal to know more about the properties.
-
-## Stating a response type
-
-responseType property defaults to 4 (respond with a message)
-
-To state a response type simply access responseType through service parameter
-
-```js
-service.responseType = 5
-```

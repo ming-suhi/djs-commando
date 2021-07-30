@@ -1,6 +1,6 @@
 {
   "name": "@ming-suhi/djs-local-manager",
-  "version": "3.4.1",
+  "version": "3.5.0",
   "description": "Manage all Discord Interactions; Slash Commands, Button, and Select Menus",
   "main": "src/index.js",
   "keywords": [
