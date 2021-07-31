@@ -1,34 +1,23 @@
 {
-  "name": "@ming-suhi/djs-local-manager",
-  "version": "3.5.0",
-  "description": "Manage all Discord Interactions; Slash Commands, Button, and Select Menus",
-  "main": "src/index.js",
-  "keywords": [
-    "discord",
-    "discord-interactions",
-    "discord-slash",
-    "discord-buttons",
-    "discord-select-menus",
-    "discord-slash-commands",
-    "discord-manager"
-  ],
+  "name": "@djs-manager/interactions-handler",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
   "dependencies": {
-    "discord.js": "^12.5.3",
-    "dotenv": "^10.0.0"
+    "typescript": "^4.3.5"
   },
-  "devDependencies": {
-    "docdash": "^1.2.0",
-    "jest": "^27.0.6",
-    "jsdoc": "^3.6.7"
-  },
+  "devDependencies": {},
   "scripts": {
-    "test": "jest --detectOpenHandles",
-    "doc": "node_modules/.bin/jsdoc -c jsdoc.json"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ming-suhi/djs-local-manager.git"
+    "url": "git+https://github.com/ming-suhi/djs-local-manager.git"
   },
-  "author": "明强",
-  "license": "MIT"
+  "author": "明suhi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ming-suhi/djs-local-manager/issues"
+  },
+  "homepage": "https://github.com/ming-suhi/djs-local-manager#readme"
 }

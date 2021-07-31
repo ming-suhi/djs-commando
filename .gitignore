@@ -1,5 +1,4 @@
 node_modules/
 
-#development
 /.env
 /index.js
