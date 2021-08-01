@@ -40,4 +40,4 @@ commandsFolder: CommandsFolder;
   }
 }
 
-export { InteractionsHandler };
+export default InteractionsHandler;

@@ -1,3 +1,3 @@
-import { InteractionsHandler } from "./client";
+import InteractionsHandler from "./client";
 
 export { InteractionsHandler }
