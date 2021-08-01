@@ -13,8 +13,7 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "dev": "ts-node-dev src/client.ts",
-    "manual-test": "ts-node-dev index.ts"
+    "dev": "ts-node-dev index.ts"
   },
   "repository": {
     "type": "git",

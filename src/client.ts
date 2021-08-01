@@ -1,12 +1,16 @@
 import Discord from 'discord.js';
 import dotenv from 'dotenv'
+import CommandsFolder from './structures/commands-folder';
 
 class InteractionsHandler {
+commandsFolder: CommandsFolder;
 
   constructor() {
     dotenv.config();
+    this.commandsFolder = new CommandsFolder(process.env.COMMANDS_FOLDER || "commands");
   }
 
+  
   async handleInteraction(client: Discord.Client, interaction: Discord.Interaction){
 
     // If command
@@ -36,4 +40,4 @@ class InteractionsHandler {
   }
 }
 
-module.exports = InteractionsHandler;
+export { InteractionsHandler };
