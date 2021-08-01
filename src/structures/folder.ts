@@ -7,11 +7,11 @@ path: string;
     this.path = path;
   }
 
-  get files() {
+  get files(): Array<any> {
     return getFiles(this.path);
   }
 
-  file(name: string) {
+  file(name: string): any {
     return require.main?.require(`./${this.path}/${name}`);
   }
 }

@@ -17,12 +17,13 @@ commandsFolder: CommandsFolder;
     if (interaction.isCommand()) {
 
       // Determine command type
-      const commandType: string = interaction.options.data?.[0]?.type || "COMMAND";
-
+      const commandType: string = interaction.options?.data?.[0]?.type || "COMMAND";
+      
       // Handle base on command type
       switch (commandType) {
         case "COMMAND":
-        console.log(1)
+        var command = this.commandsFolder.command(interaction.commandName);
+        await command.execute();
         break;
 
         case "SUB_COMMAND":

@@ -1,3 +1,4 @@
+import Command from './command';
 import Folder from './folder';
 
 class CommandsFolder extends Folder {
@@ -6,11 +7,11 @@ class CommandsFolder extends Folder {
     super(path);
   }
 
-  get commands() {
+  get commands(): Array<Command> {
     return this.files;
   }
 
-  command(name: string) {
+  command(name: string): Command {
     return this.file(name);
   }
 }
