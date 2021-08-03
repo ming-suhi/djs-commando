@@ -1,6 +1,7 @@
 import Discord from 'discord.js';
-import dotenv from 'dotenv'
-import CommandsFolder from './structures/commands-folder';
+import dotenv from 'dotenv';
+import { Command, SubCommand } from './structures/command';
+import { CommandsFolder } from './structures/folder';
 
 class InteractionsHandler {
 commandsFolder: CommandsFolder;
@@ -22,12 +23,15 @@ commandsFolder: CommandsFolder;
       // Handle base on command type
       switch (commandType) {
         case "COMMAND":
-        var command = this.commandsFolder.command(interaction.commandName);
-        await command.execute();
+        var command = <Command>this.commandsFolder.command(interaction.commandName);
+        await command.execute?.();
         break;
 
         case "SUB_COMMAND":
-        console.log(2)
+        var command = <Command>this.commandsFolder.command(interaction.commandName);
+        var subcommand = <SubCommand>command.options?.find(option => option.name == interaction.options.getSubcommand());
+        console.log(subcommand)
+        await subcommand.execute?.();
         break
 
         case "SUB_COMMAND_GROUP":
@@ -35,7 +39,6 @@ commandsFolder: CommandsFolder;
       }
     }
   }
-
 
   async syncCommands(client: Discord.Client) {
   }
