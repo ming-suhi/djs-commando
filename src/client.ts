@@ -31,7 +31,7 @@ commandsFolder: CommandsFolder;
         var command = <Command>this.commandsFolder.command(interaction.commandName);
         var subcommand = <SubCommand>command.options?.get(interaction.options.getSubcommand());
         await subcommand.execute?.();
-        break
+        break;
 
         case "SUB_COMMAND_GROUP":
         console.log(3)

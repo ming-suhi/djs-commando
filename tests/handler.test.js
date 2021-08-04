@@ -1,4 +1,4 @@
-const { Command, Options, SubCommand, CommandsFolder, InteractionsHandler } = require('../../dist/index.js');
+const { Command, Options, SubCommand, CommandsFolder, InteractionsHandler } = require('../dist/index.js');
 const { Client, Interaction } = require('discord.js');
 
 jest.mock('discord.js');
