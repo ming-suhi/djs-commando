@@ -1,4 +1,4 @@
-const { Command, SubCommand, CommandsFolder, InteractionsHandler } = require('../../dist/index.js');
+const { Command, Options, SubCommand, CommandsFolder, InteractionsHandler } = require('../../dist/index.js');
 const { Client, Interaction } = require('discord.js');
 
 jest.mock('discord.js');
@@ -6,10 +6,6 @@ jest.mock('discord.js');
 const executeCommand = jest.fn();
 Command.prototype.execute = executeCommand;
 SubCommand.prototype.execute = executeCommand;
-
-Array.prototype.find = function() {
-  return new SubCommand();
-}
 
 Interaction.prototype.isCommand = function() {
   return true;
@@ -24,9 +20,11 @@ describe('InteractionsHandler', () => {
   const handler = new InteractionsHandler();
 
   
+  
   beforeEach(() => {
     executeCommand.mockClear();
   });
+
 
 
   it('should execute command', () => {
@@ -34,10 +32,21 @@ describe('InteractionsHandler', () => {
     expect(executeCommand).toHaveBeenCalledTimes(1);
   });
 
+
+
   it('should execute subcommand', () => {
+
+    Options.prototype.get= function() {
+      return new SubCommand();
+    }
+
     Interaction.prototype.options = {
-      data: [{type: "SUB_COMMAND"}] 
+      data: [{type: "SUB_COMMAND"}] ,
+      getSubcommand: function() {
+        return "Subcommand Name"
+      }
     };
+
     handler.handleInteraction(new Client(), new Interaction());
     expect(executeCommand).toHaveBeenCalledTimes(1);
   });

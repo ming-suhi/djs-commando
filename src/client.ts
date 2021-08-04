@@ -29,8 +29,7 @@ commandsFolder: CommandsFolder;
 
         case "SUB_COMMAND":
         var command = <Command>this.commandsFolder.command(interaction.commandName);
-        var subcommand = <SubCommand>command.options?.find(option => option.name == interaction.options.getSubcommand());
-        console.log(subcommand)
+        var subcommand = <SubCommand>command.options?.get(interaction.options.getSubcommand());
         await subcommand.execute?.();
         break
 

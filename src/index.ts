@@ -2,6 +2,7 @@ import InteractionsHandler from "./client";
 import {
   BaseCommand, 
   Command, 
+  Options,
   CommandOptions, 
   SubCommand, 
   SubCommandOptions 
@@ -11,6 +12,7 @@ export {
   InteractionsHandler,
   BaseCommand,
   Command,
+  Options,
   CommandOptions,
   SubCommand,
   SubCommandOptions,
