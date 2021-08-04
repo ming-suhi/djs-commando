@@ -1,6 +1,6 @@
 import Discord from 'discord.js';
 import dotenv from 'dotenv';
-import { Command, Subcommand } from './structures/command';
+import { Command, SubcommandGroup, Subcommand } from './structures/command';
 import { CommandsFolder } from './structures/folder';
 
 class InteractionsHandler {
@@ -34,7 +34,10 @@ commandsFolder: CommandsFolder;
         break;
 
         case "SUB_COMMAND_GROUP":
-        console.log(3)
+        var command = <Command>this.commandsFolder.command(interaction.commandName);
+        var subcommandgroup = <SubcommandGroup>command.options?.get(interaction.options.getSubcommandGroup());
+        var subcommand = <Subcommand>subcommandgroup.options?.get(interaction.options.getSubcommand());
+        await subcommand.execute?.();
       }
     }
   }
