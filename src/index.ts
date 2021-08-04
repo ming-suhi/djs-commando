@@ -4,8 +4,8 @@ import {
   Command, 
   Options,
   CommandOptions, 
-  SubCommand, 
-  SubCommandOptions 
+  Subcommand, 
+  SubcommandOptions 
 } from './structures/command';
 import { Folder, CommandsFolder } from "./structures/folder";
 export { 
@@ -14,8 +14,8 @@ export {
   Command,
   Options,
   CommandOptions,
-  SubCommand,
-  SubCommandOptions,
+  Subcommand,
+  SubcommandOptions,
   Folder,
   CommandsFolder
 };

@@ -1,6 +1,6 @@
 import Discord from 'discord.js';
 import dotenv from 'dotenv';
-import { Command, SubCommand } from './structures/command';
+import { Command, Subcommand } from './structures/command';
 import { CommandsFolder } from './structures/folder';
 
 class InteractionsHandler {
@@ -29,7 +29,7 @@ commandsFolder: CommandsFolder;
 
         case "SUB_COMMAND":
         var command = <Command>this.commandsFolder.command(interaction.commandName);
-        var subcommand = <SubCommand>command.options?.get(interaction.options.getSubcommand());
+        var subcommand = <Subcommand>command.options?.get(interaction.options.getSubcommand());
         await subcommand.execute?.();
         break;
 

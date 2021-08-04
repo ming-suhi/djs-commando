@@ -1,11 +1,11 @@
-const { Command, Options, SubCommand, CommandsFolder, InteractionsHandler } = require('../dist/index.js');
+const { Command, Options, Subcommand, CommandsFolder, InteractionsHandler } = require('../dist/index.js');
 const { Client, Interaction } = require('discord.js');
 
 jest.mock('discord.js');
 
 const executeCommand = jest.fn();
 Command.prototype.execute = executeCommand;
-SubCommand.prototype.execute = executeCommand;
+Subcommand.prototype.execute = executeCommand;
 
 Interaction.prototype.isCommand = function() {
   return true;
@@ -37,7 +37,7 @@ describe('InteractionsHandler', () => {
   it('should execute subcommand', () => {
 
     Options.prototype.get= function() {
-      return new SubCommand();
+      return new Subcommand();
     }
 
     Interaction.prototype.options = {

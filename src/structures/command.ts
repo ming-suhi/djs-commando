@@ -3,15 +3,15 @@ class BaseCommand {
   }
 }
 
-type CommandOptions = Array<SubCommand>;
+type CommandOptions = Array<Subcommand>;
 
-type SubCommandOptions = Array<string>;
+type SubcommandOptions = Array<string>;
 
 class Options {
 
-  options?: Array<SubCommand>;
+  options?: Array<Subcommand>;
 
-  constructor(options?: Array<SubCommand>) {
+  constructor(options?: Array<Subcommand>) {
     this.options = options;
   }
 
@@ -30,11 +30,11 @@ class Command extends BaseCommand{
   }
 }
 
-class SubCommand extends BaseCommand{
+class Subcommand extends BaseCommand{
 
   options?: Options;
 
-  constructor(_options?: SubCommandOptions) {
+  constructor(_options?: SubcommandOptions) {
     super();
     //this.options = new Options(_options);
   }
@@ -46,4 +46,4 @@ interface BaseCommand {
   execute?(): void;
 }
 
-export { BaseCommand, Command, Options, CommandOptions, SubCommand, SubCommandOptions };
+export { BaseCommand, Command, Options, CommandOptions, Subcommand, SubcommandOptions };
