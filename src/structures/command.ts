@@ -1,22 +1,22 @@
 import { Fields } from './field';
 
 /** Command classes */
-type Commands = Command | SubcommandGroup | Subcommand;
+export type Commands = Command | SubcommandGroup | Subcommand;
 
 /** All options */
-type Options = Array<Commands|Fields>;
+export type Options = Array<Commands|Fields>;
 
 /** Options for command */
-type CommandOptions = Array<SubcommandGroup|Subcommand|Fields>;
+export type CommandOptions = Array<SubcommandGroup|Subcommand|Fields>;
 
 /** Options for subcommand group */
-type SubcommandGroupOptions = Array<Subcommand>;
+export type SubcommandGroupOptions = Array<Subcommand>;
 
 /** Options for subcommand */
-type SubcommandOptions = Array<Fields>;
+export type SubcommandOptions = Array<Fields>;
 
 /** Interface for command creation */
-interface BaseCommand { 
+export interface BaseCommand { 
   /** The name of the command */
   name: string, 
   /** The description of the command */
@@ -28,7 +28,7 @@ interface BaseCommand {
 };
 
 /** Base structure for commands  */
-class BaseCommand {
+export class BaseCommand {
   /**
    * @param options an array of options
    */
@@ -38,7 +38,7 @@ class BaseCommand {
 }
 
 /** Structure for creating command */
-class Command extends BaseCommand {
+export class Command extends BaseCommand {
   /**
    * @param options an array of options
    * @augments BaseCommand
@@ -49,7 +49,7 @@ class Command extends BaseCommand {
 }
 
 /** Structure for creating subcommand group */
-class SubcommandGroup extends BaseCommand {
+export class SubcommandGroup extends BaseCommand {
   /**
    * @param options an array of options
    * @augments BaseCommand
@@ -60,7 +60,7 @@ class SubcommandGroup extends BaseCommand {
 }
 
 /** Structure for creating subcommand */
-class Subcommand extends BaseCommand {
+export class Subcommand extends BaseCommand {
   /**
    * @param options an array of options
    * @augments BaseCommand
@@ -71,7 +71,7 @@ class Subcommand extends BaseCommand {
 }
 
 /** Structure for creating subcommand */
-class OptionsManager {
+export class OptionsManager {
   /** Array of options */
   options?: Options
 
@@ -91,16 +91,3 @@ class OptionsManager {
     return this.options?.find(option => option.name == name);
   }
 }
-
-export { 
-  Commands,
-  Options, 
-  CommandOptions, 
-  SubcommandGroupOptions,
-  SubcommandOptions,
-  BaseCommand, 
-  Command, 
-  SubcommandGroup,
-  Subcommand, 
-  OptionsManager
-};

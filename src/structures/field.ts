@@ -1,11 +1,11 @@
 /** Field classes */
-type Fields = StringField | IntegerField | BooleanField | UserField | ChannelField | RoleField | MentionableField | NumberField;
+export type Fields = StringField | IntegerField | BooleanField | UserField | ChannelField | RoleField | MentionableField | NumberField;
 
 /** Interface for choice creation */
-interface Choice {name: string, value: string};
+export interface Choice { name: string, value: string };
 
 /** Base structure for fields */
-class BaseField {
+export class BaseField {
   /** The name of the field */
   name: string;
   /** The description of the field */
@@ -48,7 +48,7 @@ class BaseField {
 }
 
 /** Structure for creating a string field */
-class StringField extends BaseField {
+export class StringField extends BaseField {
   /**
    * @param name The name of the field
    * @param description The description of the field
@@ -62,7 +62,7 @@ class StringField extends BaseField {
 }
 
 /** Structure for creating an integer field */
-class IntegerField extends BaseField {
+export class IntegerField extends BaseField {
   /**
    * @param name The name of the field
    * @param description The description of the field
@@ -75,7 +75,7 @@ class IntegerField extends BaseField {
 }
 
 /** Structure for creating a boolean field */
-class BooleanField extends BaseField {
+export class BooleanField extends BaseField {
   /**
    * @param name The name of the field
    * @param description The description of the field
@@ -88,7 +88,7 @@ class BooleanField extends BaseField {
 }
 
 /** Structure for creating a user field */
-class UserField extends BaseField {
+export class UserField extends BaseField {
   /**
    * @param name The name of the field
    * @param description The description of the field
@@ -101,7 +101,7 @@ class UserField extends BaseField {
 }
 
 /** Structure for creating a channel field */
-class ChannelField extends BaseField {
+export class ChannelField extends BaseField {
   /**
    * @param name The name of the field
    * @param description The description of the field
@@ -114,7 +114,7 @@ class ChannelField extends BaseField {
 }
 
 /** Structure for creating a role field */
-class RoleField extends BaseField {
+export class RoleField extends BaseField {
   /**
    * @param name The name of the field
    * @param description The description of the field
@@ -127,7 +127,7 @@ class RoleField extends BaseField {
 }
 
 /** Structure for creating a mentionable field */
-class MentionableField extends BaseField {
+export class MentionableField extends BaseField {
   /**
    * @param name The name of the field
    * @param description The description of the field
@@ -140,7 +140,7 @@ class MentionableField extends BaseField {
 }
 
 /** Structure for creating a number field */
-class NumberField extends BaseField {
+export class NumberField extends BaseField {
   /**
    * @param name The name of the field
    * @param description The description of the field
@@ -150,17 +150,4 @@ class NumberField extends BaseField {
   constructor(name: string, description: string, required: boolean = false) {
     super(name, description, 10, required);
   }
-}
-
-export {
-  Fields,
-  BaseField,
-  StringField,
-  IntegerField,
-  BooleanField,
-  UserField,
-  ChannelField,
-  RoleField,
-  MentionableField,
-  NumberField
 }
