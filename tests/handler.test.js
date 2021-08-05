@@ -1,5 +1,5 @@
 const { 
-  Options, 
+  OptionsManager, 
   Command, 
   SubcommandGroup,
   Subcommand, 
@@ -20,7 +20,7 @@ Subcommand.prototype.execute = executeCommand;
 Interaction.prototype.isCommand = function() { return true }
 CommandsFolder.prototype.command = function() { return new Command() };
 
-Options.prototype.get= function(name) {
+OptionsManager.prototype.get= function(name) {
   if (name == "Subcommand Name") {
     return new Subcommand();
   } else {
