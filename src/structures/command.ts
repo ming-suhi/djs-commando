@@ -30,7 +30,7 @@ export interface BaseCommand {
 /** Base structure for commands  */
 export class BaseCommand {
   /**
-   * @param options an array of options
+   * @param options Command Options
    */
   constructor(options?: any) {
     this.options = new OptionsManager(options);
@@ -40,7 +40,7 @@ export class BaseCommand {
 /** Structure for creating command */
 export class Command extends BaseCommand {
   /**
-   * @param options an array of options
+   * @param options Command Options
    * @augments BaseCommand
    */
   constructor(options?: CommandOptions) {
@@ -51,7 +51,7 @@ export class Command extends BaseCommand {
 /** Structure for creating subcommand group */
 export class SubcommandGroup extends BaseCommand {
   /**
-   * @param options an array of options
+   * @param options Subcommand group options
    * @augments BaseCommand
    */
   constructor(options: SubcommandGroupOptions) {
@@ -62,7 +62,7 @@ export class SubcommandGroup extends BaseCommand {
 /** Structure for creating subcommand */
 export class Subcommand extends BaseCommand {
   /**
-   * @param options an array of options
+   * @param options Subcommand options
    * @augments BaseCommand
    */
   constructor(options?: SubcommandOptions) {
@@ -76,7 +76,7 @@ export class OptionsManager {
   options?: Options
 
   /**
-   * @param options an array of options
+   * @param options Options
    */
   constructor(options?: Options) {
     this.options = options;
@@ -84,8 +84,8 @@ export class OptionsManager {
 
   /**
    * Get an option by name
-   * @param name name of the option
-   * @returns option with the matching name
+   * @param name Name of the option
+   * @returns The requested option
    */
   get(name: string): any {
     return this.options?.find(option => option.name == name);

@@ -3,7 +3,7 @@ const {
   Command, 
   SubcommandGroup,
   Subcommand, 
-  CommandsFolder, 
+  Folder, 
   InteractionsHandler 
 } = require('../dist/index.js');
 const { Client, Interaction } = require('discord.js');
@@ -18,7 +18,7 @@ Subcommand.prototype.execute = executeCommand;
 
 // Controlled
 Interaction.prototype.isCommand = function() { return true }
-CommandsFolder.prototype.command = function() { return new Command() };
+Folder.prototype.file = function() { return new Command() };
 
 OptionsManager.prototype.get= function(name) {
   if (name == "Subcommand Name") {

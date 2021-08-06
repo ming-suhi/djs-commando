@@ -24,8 +24,7 @@ import {
   NumberField
 } from './structures/field';
 import { 
-  Folder, 
-  CommandsFolder
+  Folder
 } from "./structures/folder";
 export { 
   InteractionsHandler,
@@ -49,6 +48,5 @@ export {
   RoleField,
   MentionableField,
   NumberField,
-  Folder, 
-  CommandsFolder
+  Folder
 };
