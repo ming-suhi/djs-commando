@@ -49,21 +49,21 @@ describe('InteractionsHandler', () => {
 
 
   it('should execute command', () => {
-    handler.handleInteraction(new Client(), new Interaction());
+    handler.handleInteraction(new Interaction());
     expect(executeCommand).toHaveBeenCalledTimes(1);
   });
 
 
   it('should execute subcommand', () => {
     Interaction.prototype.options.data = [{type: "SUB_COMMAND"}]
-    handler.handleInteraction(new Client(), new Interaction());
+    handler.handleInteraction(new Interaction());
     expect(executeCommand).toHaveBeenCalledTimes(1);
   });
 
 
   it('should execute subcommand under subcommand group', () => {
     Interaction.prototype.options.data = [{type: "SUB_COMMAND_GROUP"}]
-    handler.handleInteraction(new Client(), new Interaction());
+    handler.handleInteraction(new Interaction());
     expect(executeCommand).toHaveBeenCalledTimes(1);
   });
 })
