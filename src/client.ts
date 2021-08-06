@@ -15,10 +15,9 @@ export default class InteractionsHandler {
 
   /**
    * Handle interactions depending on its type
-   * @param client Discord client
    * @param interaction Discord interaction
    */
-  async handleInteraction(client: Discord.Client, interaction: Discord.Interaction){
+  async handleInteraction(interaction: Discord.Interaction){
 
     // If command
     if (interaction.isCommand()) {
@@ -30,24 +29,45 @@ export default class InteractionsHandler {
       switch (commandType) {
         case "COMMAND":
         var command = <Command>this.commandsFolder.file(interaction.commandName);
-        await command.execute?.();
+        await command.execute?.(interaction);
         break;
 
         case "SUB_COMMAND":
         var command = <Command>this.commandsFolder.file(interaction.commandName);
         var subcommand = <Subcommand>command.options?.get(interaction.options.getSubcommand());
-        await subcommand.execute?.();
+        await subcommand.execute?.(interaction);
         break;
 
         case "SUB_COMMAND_GROUP":
         var command = <Command>this.commandsFolder.file(interaction.commandName);
         var subcommandgroup = <SubcommandGroup>command.options?.get(interaction.options.getSubcommandGroup());
         var subcommand = <Subcommand>subcommandgroup.options?.get(interaction.options.getSubcommand());
-        await subcommand.execute?.();
+        await subcommand.execute?.(interaction);
       }
     }
   }
 
-  async syncCommands(client: Discord.Client) {
+  /**
+   * Update slash commands
+   * @param _client Discord Client
+   */
+  async syncCommands(_client: Discord.Client) {
+    var client = <any>_client;
+
+    // Update and post commands
+    var commands = <any>this.commandsFolder.files;
+    for (let command of commands) {
+      await client.api.applications(client.user?.id).commands.post({data: command.data});
+    }
+
+    // Delete unexisting commands
+    var commands = await client.api.applications(client.user.id).commands.get();
+    for (let command of commands) {
+      try {
+        this.commandsFolder.file(command.name);
+      }catch{
+        await client.api.applications(client.user.id).commands(command.id).delete();
+      }
+    }
   }
 }

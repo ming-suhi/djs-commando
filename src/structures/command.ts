@@ -1,4 +1,5 @@
 import { Fields } from './field';
+import { Interaction } from 'discord.js';
 
 /** Command classes */
 export type Commands = Command | SubcommandGroup | Subcommand;
@@ -22,7 +23,7 @@ export interface BaseCommand {
   /** The description of the command */
   description: string, 
   /** Executed when command is called */
-  execute?(): void, 
+  execute?(interaction: Interaction): void, 
   /** Command options */
   options?: OptionsManager ,
   /** Command type */
