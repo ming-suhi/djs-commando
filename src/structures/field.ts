@@ -33,8 +33,8 @@ export class BaseField {
   }
 
   /**
-   * Gets the field as object
-   * @returns The field as object
+   * Get field data
+   * @returns Field as object
    */
   get data() {
     return({
@@ -56,7 +56,7 @@ export class StringField extends BaseField {
    * @param choices The choices of the field
    * @augments BaseField
    */
-  constructor(name: string, description: string, required: boolean = false, choices: Array<Choice>) {
+  constructor(name: string, description: string, required: boolean = false, choices?: Array<Choice>) {
     super(name, description, 3, required, choices);
   }
 }

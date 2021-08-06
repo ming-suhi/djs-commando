@@ -4,7 +4,7 @@ import { Fields } from './field';
 export type Commands = Command | SubcommandGroup | Subcommand;
 
 /** All options */
-export type Options = Array<Commands|Fields>;
+export type Options = Array<SubcommandGroup|Subcommand|Fields>;
 
 /** Options for command */
 export type CommandOptions = Array<SubcommandGroup|Subcommand|Fields>;
@@ -24,16 +24,33 @@ export interface BaseCommand {
   /** Executed when command is called */
   execute?(): void, 
   /** Command options */
-  options?: OptionsManager 
+  options?: OptionsManager ,
+  /** Command type */
+  type?: number
 };
 
 /** Base structure for commands  */
 export class BaseCommand {
   /**
-   * @param options Command Options
+   * @param options Command options
+   * @param type Command type
    */
-  constructor(options?: any) {
+  constructor(options?: any, type?: number) {
     this.options = new OptionsManager(options);
+    this.type = type;
+  }
+
+  /**
+   * Get command data
+   * @returns Command as object
+   */
+  get data() {
+    return({
+      name: this.name,
+      description: this.description,
+      options: this.options?.data,
+      type: this.type
+    })
   }
 }
 
@@ -55,7 +72,7 @@ export class SubcommandGroup extends BaseCommand {
    * @augments BaseCommand
    */
   constructor(options: SubcommandGroupOptions) {
-    super(options);
+    super(options, 2);
   }
 }
 
@@ -66,7 +83,7 @@ export class Subcommand extends BaseCommand {
    * @augments BaseCommand
    */
   constructor(options?: SubcommandOptions) {
-    super(options);
+    super(options, 1);
   }
 }
 
@@ -89,5 +106,17 @@ export class OptionsManager {
    */
   get(name: string): any {
     return this.options?.find(option => option.name == name);
+  }
+
+  /**
+   * Get options data
+   * @returns Options as objects
+   */
+  get data(): Array<any> {
+    const options = new Array();
+    this.options?.forEach(option => {
+      options.push(option.data)
+    })
+    return options;
   }
 }
