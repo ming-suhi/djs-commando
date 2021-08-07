@@ -65,7 +65,7 @@ export default class InteractionsHandler {
     for (let command of commands) {
       try {
         this.commandsFolder.file(command.name);
-      }catch{
+      } catch {
         await client.api.applications(client.user.id).commands(command.id).delete();
       }
     }

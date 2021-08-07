@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "module": "src/index.ts",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "discord.js": "^13.0.0-dev.t1627689836.ee3cdc8",
     "dotenv": "^10.0.0"
