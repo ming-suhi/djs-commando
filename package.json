@@ -1,5 +1,5 @@
 {
-  "name": "@ming-suhi/djs-commands",
+  "name": "@ming-suhi/djs-commando",
   "version": "0.0.1",
   "main": "dist/index.js",
   "module": "src/index.ts",

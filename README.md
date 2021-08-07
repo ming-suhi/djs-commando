@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://github.com/ming-suhi/djs-local-manager" target="_blank">
-    <strong>@ming-suhi/djs-local-manager</strong>
+    <strong>@ming-suhi/djs-commando</strong>
   </a>
 </p>
 
@@ -21,7 +21,7 @@ A package for easily creating and managing your Discord Slash Commands. For an i
 
 ##### Run npm install on the command line or terminal.
 ```
-npm install @ming-suhi/djs-local-manager
+npm install @ming-suhi/djs-commando
 ```
 
 ## B. Setting Environment
@@ -36,9 +36,9 @@ npm install @ming-suhi/djs-local-manager
 
 ## C. Setting Handler
 
-1. Require `InteractionsHandler` from `@ming-suhi/djs-local-manager`.
+1. Require `InteractionsHandler` from `@ming-suhi/djs-commando`.
     ```js
-    const { InteractionsHandler } = require('@ming-suhi/djs-local-manager');
+    const { InteractionsHandler } = require('@ming-suhi/djs-commando');
     ```
 
 2. Create an instance of `InteractionsHandler`
@@ -52,7 +52,7 @@ npm install @ming-suhi/djs-local-manager
 
 2. Require `Command`.
     ```js
-    const { Command } = require('@ming-suhi/djs-local-manager');
+    const { Command } = require('@ming-suhi/djs-commando');
     ```
 
 3. Create a new class extending `Command`.
@@ -87,7 +87,7 @@ npm install @ming-suhi/djs-local-manager
 
 1. Require the desired options.
 ```js
-const { StringField } = require('@ming-suhi/djs-local-manager');
+const { StringField } = require('@ming-suhi/djs-commando');
 ```
 
 2. Create instance, and extend classes for subcommand group and subcommand.
