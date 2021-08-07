@@ -4,7 +4,7 @@ import { Command, SubcommandGroup, Subcommand } from './structures/command';
 import { Folder } from './structures/folder';
 
 /** Structure for managing interactions */
-export default class InteractionsHandler {
+export class InteractionsHandler {
   /** Structure for managing commands folder */
   commandsFolder: Folder;
 
