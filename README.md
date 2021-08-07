@@ -46,11 +46,11 @@ npm install @ming-suhi/djs-local-manager
     const handler = new InteractionsHandler();
     ```
 
-## D. Creating Commands
+## D. Creating a Command
 
 1. Create a file inside the commands folder. File name must be the same as command name.
 
-2. Require/import `Command`.
+2. Require `Command`.
     ```js
     const { Command } = require('@ming-suhi/djs-local-manager');
     ```
@@ -83,7 +83,31 @@ npm install @ming-suhi/djs-local-manager
     module.exports = ping;
     ``` 
 
-## E. Synching Commands
+## E. Adding command options
+
+1. Require the desired options.
+```js
+const { StringField } = require('@ming-suhi/djs-local-manager');
+```
+
+2. Create instance, and extend classes for subcommand group and subcommand.
+```js
+const message = new StringField('message', 'message to echo', true);
+```
+
+3. Pass options to super inside an array. Refer to documentation for the options that can be passed to command, subcommand group and subcommand.
+```js
+const echo = new class extends Command {
+  constructor();
+  super([message]);
+  this.name = 'echo';
+  this.description = 'echo a message';
+}
+```
+
+4. Additional Notes: If you have subcommands, make sure that only the top command is exported.
+
+## F. Synching Commands
 It is suggested to sync commands on `ready`. Synching commands posts and updates commands, as well as deletes commands unexisting in the commands folder. Synching commands bulk updates commands and it is important to note that the recently posted commands cannot be immediately used/seen.
 ```js
 client.on('ready', async() => {
@@ -91,7 +115,7 @@ client.on('ready', async() => {
 });
 ```
 
-## F. Receiving Commands
+## G. Receiving Commands
 This will find the matching command and execute it.
 ```js
 client.on('interactionCreate', async interaction => {

@@ -10,9 +10,5 @@
     "skipLibCheck": true,                           
     "forceConsistentCasingInFileNames": true,
     "declaration": true        
-  },
-  "typedocOptions": {
-    "entryPoints": ["src/index.ts"],
-    "out": "docs"
   }
 }
