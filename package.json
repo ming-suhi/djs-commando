@@ -1,6 +1,7 @@
 {
   "name": "@ming-suhi/djs-commando",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "description": "A package to easily create and manage your Discord Slash Commands.",
   "main": "dist/index.js",
   "module": "src/index.ts",
   "types": "dist/index.d.ts",
@@ -15,15 +16,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ming-suhi/djs-local-manager.git"
+    "url": "git+https://github.com/ming-suhi/djs-commando.git"
   },
-  "keywords": [],
+  "keywords": [
+    "discord",
+    "discord-interactions",
+    "discord-slash",
+    "discord-buttons",
+    "discord-select-menus",
+    "discord-slash-commands",
+    "discord-manager"
+  ],
   "author": "明suhi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ming-suhi/djs-local-manager/issues"
+    "url": "https://github.com/ming-suhi/djs-commando/issues"
   },
-  "homepage": "https://github.com/ming-suhi/djs-local-manager#readme",
+  "homepage": "https://github.com/ming-suhi/djs-commando#readme",
   "dependencies": {
     "discord.js": "^13.0.0",
     "dotenv": "^10.0.0"
