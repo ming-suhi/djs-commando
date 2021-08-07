@@ -1,231 +1,324 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="default no-js">
 <head>
-    
-    <meta charset="utf-8">
-    <title>Home - Documentation</title>
-    
-    
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
-    <script src="scripts/nav.js" defer></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@ming-suhi/djs-commando</title>
+	<meta name="description" content="Documentation for @ming-suhi/djs-commando">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
 </head>
 <body>
-
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger" class="navicon-button x">
-  <div class="navicon"></div>
-</label>
-
-<label for="nav-trigger" class="overlay"></label>
-
-<nav >
-    
-    <h2><a href="index.html">Home</a></h2><h3>Tutorials</h3><ul><li><a href="tutorial-commands.html">Working with Commands</a></li><li><a href="tutorial-components.html">Working with Components</a></li><li><a href="tutorial-fields.html">Command Fields</a></li><li><a href="tutorial-security.html">Setting Up Security</a></li><li><a href="tutorial-setup.html">Setting Up</a></li><li><a href="tutorial-subcommand_.html">Subcommands</a></li><li><a href="tutorial-subcommandgroup_.html">Subcommand Groups</a></li><li><a href="tutorial-sync.html">Synching Command</a></li></ul><h3>Classes</h3><ul><li><a href="ActionRow.html">ActionRow</a></li><li><a href="BooleanField.html">BooleanField</a></li><li><a href="Button.html">Button</a></li><li><a href="ChannelField.html">ChannelField</a></li><li><a href="Command.html">Command</a><ul class='methods'><li data-type='method'><a href="Command.html#botCheck">botCheck</a></li><li data-type='method'><a href="Command.html#executeCheck">executeCheck</a></li><li data-type='method'><a href="Command.html#interactCheck">interactCheck</a></li><li data-type='method'><a href="Command.html#userCheck">userCheck</a></li></ul></li><li><a href="CommandsManager.html">CommandsManager</a><ul class='methods'><li data-type='method'><a href="CommandsManager.html#get">get</a></li><li data-type='method'><a href="CommandsManager.html#match">match</a></li><li data-type='method'><a href="CommandsManager.html#sync">sync</a></li></ul></li><li><a href="Folder.html">Folder</a><ul class='methods'><li data-type='method'><a href="Folder.html#get">get</a></li></ul></li><li><a href="IntegerField.html">IntegerField</a></li><li><a href="InteractionService.html">InteractionService</a><ul class='methods'><li data-type='method'><a href="InteractionService.html#send">send</a></li></ul></li><li><a href="LocalClient.html">LocalClient</a><ul class='methods'><li data-type='method'><a href="LocalClient.html#handleInteraction">handleInteraction</a></li><li data-type='method'><a href="LocalClient.html#syncCommands">syncCommands</a></li></ul></li><li><a href="MentionableField.html">MentionableField</a></li><li><a href="RoleField.html">RoleField</a></li><li><a href="SelectMenu.html">SelectMenu</a></li><li><a href="SelectOption.html">SelectOption</a></li><li><a href="StringField.html">StringField</a></li><li><a href="SubCommand.html">SubCommand</a><ul class='methods'><li data-type='method'><a href="SubCommand.html#botCheck">botCheck</a></li><li data-type='method'><a href="SubCommand.html#executeCheck">executeCheck</a></li><li data-type='method'><a href="SubCommand.html#interactCheck">interactCheck</a></li><li data-type='method'><a href="SubCommand.html#userCheck">userCheck</a></li></ul></li><li><a href="SubCommandGroup.html">SubCommandGroup</a></li><li><a href="UserField.html">UserField</a></li></ul><h3>Global</h3><ul><li><a href="global.html#fileExport">fileExport</a></li><li><a href="global.html#folderExports">folderExports</a></li><li><a href="global.html#folderPath">folderPath</a></li></ul>
-</nav>
-
-<div id="main">
-    
-
-    
-
-
-
-    
-
-
-    <section class="package">
-        <h3> </h3>		
-    </section>
-
-
-
-
-
-
-
-
-
-    
-
-
-
-    <section class="readme usertext">
-        <article><p align="center">
-  <img src="https://raw.githubusercontent.com/ming-suhi/ming-suhi/master/djs-local-manager.svg" width="100" align="center" />
-</p>
-<p align="center">
-  <a href="https://github.com/ming-suhi/djs-local-manager" target="_blank">
-    <strong>@ming-suhi/djs-local-manager</strong>
-  </a>
-</p>
-<p align="center">Powered by Discord.js</p>
-<h2>I. About</h2>
-<p>A package for managing Discord Interaction; Slash Commands, Button, and Select Menus. For an in-depth documentation visit the <a href="https://ming-suhi.github.io/djs-local-manager/" target="_blank">official website</a>. For users who want to opt for a similar package with a database manager, check out <a href="https://github.com/ming-suhi/djs-manager" target="_blank">@ming-suhi/djs-manager</a> from the same developer.</p>
-<h2>II. Getting Started</h2>
-<h2>A. Installation</h2>
-<h5>Run npm install on the command line or terminal.</h5>
-<pre class="prettyprint source"><code>npm install @ming-suhi/djs-local-manager
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">@ming-suhi/djs-commando</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>@ming-suhi/djs-commando</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<p align="center">
+					<img src="https://raw.githubusercontent.com/ming-suhi/ming-suhi/master/djs-local-manager.svg" width="100" align="center" />
+				</p>
+				<p align="center">
+					<a href="https://github.com/ming-suhi/djs-local-manager" target="_blank">
+						<strong>@ming-suhi/djs-commando</strong>
+					</a>
+				</p>
+				<p align="center">Powered by Discord.js</p>
+				<a href="#i-about" id="i-about" style="color: inherit; text-decoration: none;">
+					<h2>I. About</h2>
+				</a>
+				<p>A package for easily creating and managing your Discord Slash Commands. For an in-depth documentation visit the <a href="https://ming-suhi.github.io/djs-local-manager/" target="_blank">documentation website</a>. </p>
+				<a href="#ii-quick-start" id="ii-quick-start" style="color: inherit; text-decoration: none;">
+					<h2>II. Quick Start</h2>
+				</a>
+				<a href="#a-installing" id="a-installing" style="color: inherit; text-decoration: none;">
+					<h2>A. Installing</h2>
+				</a>
+				<a href="#run-npm-install-on-the-command-line-or-terminal" id="run-npm-install-on-the-command-line-or-terminal" style="color: inherit; text-decoration: none;">
+					<h5>Run npm install on the command line or terminal.</h5>
+				</a>
+				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">install</span><span style="color: #000000"> @</span><span style="color: #001080">ming</span><span style="color: #000000">-</span><span style="color: #001080">suhi</span><span style="color: #000000">/</span><span style="color: #001080">djs</span><span style="color: #000000">-</span><span style="color: #001080">commando</span>
 </code></pre>
-<h2>B. Setting environment</h2>
-<ol>
-<li>
-<p>Create a <code>.env</code> file in the root directory</p>
-<pre class="prettyprint source lang-env"><code>BOT_TOKEN = 
-
-COMMANDS_FOLDER =
+				<a href="#b-setting-environment" id="b-setting-environment" style="color: inherit; text-decoration: none;">
+					<h2>B. Setting Environment</h2>
+				</a>
+				<ol>
+					<li><p>Create a <code>.env</code> file in the root directory</p>
+						<pre><code><span style="color: #0070C1">COMMANDS_FOLDER</span><span style="color: #000000"> =</span>
 </code></pre>
-</li>
-<li>
-<p>Get the Discord bot's token and store it as <code>BOT_TOKEN</code>.</p>
-</li>
-<li>
-<p>Create a folder to hold command files. Store the folder path from the root as <code>COMMANDS_FOLDER</code>.</p>
-</li>
-</ol>
-<h2>C. Setting bot</h2>
-<ol>
-<li>
-<p>Create an instance of Discord Client</p>
-<pre class="prettyprint source lang-js"><code>const Discord = require('discord.js');
-const client = new Discord.Client();
+					</li>
+					<li><p>Create a folder to hold command files. Store the folder path from the root as <code>COMMANDS_FOLDER</code>.</p>
+					</li>
+				</ol>
+				<a href="#c-setting-handler" id="c-setting-handler" style="color: inherit; text-decoration: none;">
+					<h2>C. Setting Handler</h2>
+				</a>
+				<ol>
+					<li><p>Require <code>InteractionsHandler</code> from <code>@ming-suhi/djs-commando</code>.</p>
+						<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">InteractionsHandler</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;@ming-suhi/djs-commando&#039;</span><span style="color: #000000">);</span>
 </code></pre>
-</li>
-<li>
-<p>Attach an instance of Manager Client</p>
-<pre class="prettyprint source lang-js"><code>const Manager = require('@ming-suhi/djs-local-manager');
-client.msdm = new Manager.LocalClient();
+					</li>
+					<li><p>Create an instance of <code>InteractionsHandler</code></p>
+						<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">handler</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">InteractionsHandler</span><span style="color: #000000">();</span>
 </code></pre>
-</li>
-<li>
-<p>Login bot</p>
-<pre class="prettyprint source lang-js"><code>client.login(client.msdm.token);
+					</li>
+				</ol>
+				<a href="#d-creating-a-command" id="d-creating-a-command" style="color: inherit; text-decoration: none;">
+					<h2>D. Creating a Command</h2>
+				</a>
+				<ol>
+					<li><p>Create a file inside the commands folder. File name must be the same as command name.</p>
+					</li>
+					<li><p>Require <code>Command</code>.</p>
+						<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">Command</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;@ming-suhi/djs-commando&#039;</span><span style="color: #000000">);</span>
 </code></pre>
-</li>
-</ol>
-<h2>D. Creating commands</h2>
-<ol>
-<li>
-<p>Create a file inside the commands folder, file name must be the same as command name</p>
-</li>
-<li>
-<p>Require/import <code>Command</code></p>
-<pre class="prettyprint source lang-js"><code>const {Command} = require('@ming-suhi/djs-local-manager');
+					</li>
+					<li><p>Create a new class extending <code>Command</code>.</p>
+						<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">ping</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #0000FF">class</span><span style="color: #000000"> </span><span style="color: #0000FF">extends</span><span style="color: #000000"> </span><span style="color: #267F99">Command</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #0000FF">constructor</span><span style="color: #000000">() {</span>
+<span style="color: #000000">    </span><span style="color: #0000FF">super</span><span style="color: #000000">();</span>
+<span style="color: #000000">    </span><span style="color: #008000">// Properties here</span>
+<span style="color: #000000">  }</span>
+<span style="color: #000000">}</span>
 </code></pre>
-</li>
-<li>
-<p>Extend <code>Command</code></p>
-<pre class="prettyprint source lang-js"><code>const myCommand = new class extends Command {
-  constructor() {
-    super();
-    // Properties here
-  }
-}
+					</li>
+					<li><p>Define class properties inside constructor. Refer to Discord Developer Portal for valid property values.</p>
+						<pre><code class="language-js"><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">name</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;ping&quot;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">description</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;short description&quot;</span><span style="color: #000000">; </span>
 </code></pre>
-</li>
-<li>
-<p>Set class properties</p>
-<pre class="prettyprint source lang-js"><code>this.name = &quot;mycommand&quot;;
-this.description = 'my custom command';
+					</li>
+					<li><p>Create execute method which accepts one parameter. The parameter is an instance of <code>Interaction</code> class of <code>discord.js</code>, which is received during interactionCreate event of <code>discord.js</code>. </p>
+						<pre><code class="language-js"><span style="color: #001080">async</span><span style="color: #000000"> </span><span style="color: #795E26">execute</span><span style="color: #000000">(</span><span style="color: #001080">interaction</span><span style="color: #000000">) {</span>
+<span style="color: #000000">  </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">interaction</span><span style="color: #000000">.</span><span style="color: #795E26">reply</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;Pong&quot;</span><span style="color: #000000">);</span>
+<span style="color: #000000">}</span>
 </code></pre>
-</li>
-<li>
-<p>Create <code>execute</code> method</p>
-<pre class="prettyprint source lang-js"><code>async execute(service) {
-  await service.send({content: 'Your command has been heard'});
-}
+					</li>
+					<li><p>Export created class.</p>
+						<pre><code class="language-js"><span style="color: #267F99">module</span><span style="color: #000000">.</span><span style="color: #267F99">exports</span><span style="color: #000000"> = </span><span style="color: #001080">ping</span><span style="color: #000000">;</span>
 </code></pre>
-</li>
-<li>
-<p>Export created class</p>
-<pre class="prettyprint source lang-js"><code>module.exports = myCommand;
+					</li>
+				</ol>
+				<a href="#e-adding-command-options" id="e-adding-command-options" style="color: inherit; text-decoration: none;">
+					<h2>E. Adding Command Options</h2>
+				</a>
+				<ol>
+					<li><p>Require the desired options.</p>
+						<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">StringField</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;@ming-suhi/djs-commando&#039;</span><span style="color: #000000">);</span>
 </code></pre>
-<p>Example</p>
-<pre class="prettyprint source lang-js"><code>const {Command} = require('@ming-suhi/djs-local-manager');
-
-const ping = new class extends Command {
-  constructor() {
-    super();
-    this.name = &quot;ping&quot;;
-    this.description = 'pings bot to get latency';
-  }
-
-  async execute(service) {
-    await service.send({content: 'Pong'});
-  }
-}
-
-module.exports = ping;
+					</li>
+					<li><p>Create instance, and extend classes for subcommand group and subcommand.</p>
+						<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">message</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">StringField</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;message&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;message to echo&#039;</span><span style="color: #000000">, </span><span style="color: #0000FF">true</span><span style="color: #000000">);</span>
 </code></pre>
-</li>
-</ol>
-<h2>E. Synching commands</h2>
-<p>It is suggested to sync commands on client ready. To sync commands just simply call on <code>syncCommands</code> method.</p>
-<pre class="prettyprint source lang-js"><code>client.on('ready', async() => {
-  client.msdm.syncCommands(client);
-});
+					</li>
+					<li><p>Pass options to super inside an array. Refer to documentation for the options that can be passed to command, subcommand group and subcommand.</p>
+						<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">echo</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #0000FF">class</span><span style="color: #000000"> </span><span style="color: #0000FF">extends</span><span style="color: #000000"> </span><span style="color: #267F99">Command</span><span style="color: #000000"> {</span>
+<span style="color: #0000FF">constructor</span><span style="color: #000000">();</span>
+<span style="color: #795E26">super</span><span style="color: #000000">([</span><span style="color: #001080">message</span><span style="color: #000000">]);</span>
+<span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">name</span><span style="color: #000000"> = </span><span style="color: #A31515">&#039;echo&#039;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">description</span><span style="color: #000000"> = </span><span style="color: #A31515">&#039;echo a message&#039;</span><span style="color: #000000">;</span>
+<span style="color: #000000">}</span>
 </code></pre>
-<h2>F. Setting interaction handler</h2>
-<p>This step setups an interaction handler that finds the corresponding file for the requested command. Upon receiving a slash command it calls on the executes method of that command. Upon receiving a button interaction it executes the onPress method, while receiving a select menu interaction executes the onSelect method.</p>
-<pre class="prettyprint source lang-js"><code>client.ws.on('INTERACTION_CREATE', async interaction => {
-  client.msdm.handleInteraction(client, interaction);
-})
+					</li>
+					<li><p>Additional Notes: If you have subcommands, make sure that only the top command is exported.</p>
+					</li>
+				</ol>
+				<a href="#f-synching-commands" id="f-synching-commands" style="color: inherit; text-decoration: none;">
+					<h2>F. Synching Commands</h2>
+				</a>
+				<p>It is suggested to sync commands on <code>ready</code>. Synching commands posts and updates commands, as well as deletes commands unexisting in the commands folder. Synching commands bulk updates commands and it is important to note that the recently posted commands cannot be immediately used/seen.</p>
+				<pre><code class="language-js"><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">on</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;ready&#039;</span><span style="color: #000000">, </span><span style="color: #0000FF">async</span><span style="color: #000000">() </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #001080">handler</span><span style="color: #000000">.</span><span style="color: #795E26">syncCommands</span><span style="color: #000000">(</span><span style="color: #001080">client</span><span style="color: #000000">);</span>
+<span style="color: #000000">});</span>
 </code></pre>
-<h2>III. Contributing</h2>
-<h2>A. Issues</h2>
-<p>This project uses GitHub Issues to track bugs and feature requests. Please search the existing issues before filing new issues to avoid duplicates. For new issues, file your bug or feature request as a new issue.</p>
-<p>For help and questions about using this project, please open a GitHub issue.</p>
-<h2>B. Pull requests</h2>
-<ol>
-<li>
-<p>Fork the project.</p>
-</li>
-<li>
-<p>Create a topic branch from master.</p>
-</li>
-<li>
-<p>Make some commits to improve the project.</p>
-</li>
-<li>
-<p>Push this branch to your GitHub project.</p>
-</li>
-<li>
-<p>Open a Pull Request on GitHub.</p>
-</li>
-<li>
-<p>Discuss, and optionally continue committing.</p>
-</li>
-</ol>
-<h2>IV. License</h2>
-<p>MIT © 明suhi</p></article>
-    </section>
-
-
-
-
-
-
-    
-    
+				<a href="#g-receiving-commands" id="g-receiving-commands" style="color: inherit; text-decoration: none;">
+					<h2>G. Receiving Commands</h2>
+				</a>
+				<p>This will find the matching command and execute it.</p>
+				<pre><code class="language-js"><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">on</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;interactionCreate&#039;</span><span style="color: #000000">, </span><span style="color: #0000FF">async</span><span style="color: #000000"> </span><span style="color: #001080">interaction</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">handler</span><span style="color: #000000">.</span><span style="color: #795E26">handleInteraction</span><span style="color: #000000">(</span><span style="color: #001080">interaction</span><span style="color: #000000">);</span>
+<span style="color: #000000">});</span>
+</code></pre>
+				<a href="#iii-contributing" id="iii-contributing" style="color: inherit; text-decoration: none;">
+					<h2>III. Contributing</h2>
+				</a>
+				<a href="#a-issues" id="a-issues" style="color: inherit; text-decoration: none;">
+					<h2>A. Issues</h2>
+				</a>
+				<p>This project uses GitHub Issues to track bugs and feature requests. Please search the existing issues before filing new issues to avoid duplicates. For new issues, file your bug or feature request as a new issue.</p>
+				<p>For help and questions about using this project, please open a GitHub issue.</p>
+				<a href="#b-pull-requests" id="b-pull-requests" style="color: inherit; text-decoration: none;">
+					<h2>B. Pull requests</h2>
+				</a>
+				<ol>
+					<li><p>Fork the project.</p>
+					</li>
+					<li><p>Create a topic branch from master.</p>
+					</li>
+					<li><p>Make some commits to improve the project.</p>
+					</li>
+					<li><p>Push this branch to your GitHub project.</p>
+					</li>
+					<li><p>Open a Pull Request on GitHub.</p>
+					</li>
+					<li><p>Discuss, and optionally continue committing.</p>
+					</li>
+				</ol>
+				<a href="#iv-license" id="iv-license" style="color: inherit; text-decoration: none;">
+					<h2>IV. License</h2>
+				</a>
+				<p>MIT © 明suhi</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/BaseCommand.html" class="tsd-kind-icon">Base<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/BaseField.html" class="tsd-kind-icon">Base<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/BooleanField.html" class="tsd-kind-icon">Boolean<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/ChannelField.html" class="tsd-kind-icon">Channel<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/Command.html" class="tsd-kind-icon">Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/Folder.html" class="tsd-kind-icon">Folder</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/IntegerField.html" class="tsd-kind-icon">Integer<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/InteractionsHandler.html" class="tsd-kind-icon">Interactions<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/MentionableField.html" class="tsd-kind-icon">Mentionable<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/NumberField.html" class="tsd-kind-icon">Number<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/OptionsManager.html" class="tsd-kind-icon">Options<wbr>Manager</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/RoleField.html" class="tsd-kind-icon">Role<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/StringField.html" class="tsd-kind-icon">String<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/Subcommand.html" class="tsd-kind-icon">Subcommand</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/SubcommandGroup.html" class="tsd-kind-icon">Subcommand<wbr>Group</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/UserField.html" class="tsd-kind-icon">User<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/Choice.html" class="tsd-kind-icon">Choice</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#CommandOptions" class="tsd-kind-icon">Command<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#Commands" class="tsd-kind-icon">Commands</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#Fields" class="tsd-kind-icon">Fields</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#Options" class="tsd-kind-icon">Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#SubcommandGroupOptions" class="tsd-kind-icon">Subcommand<wbr>Group<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#SubcommandOptions" class="tsd-kind-icon">Subcommand<wbr>Options</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
 </div>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+		</div>
+	</div>
 </footer>
-
-<script>prettyPrint();</script>
-<script src="scripts/polyfill.js"></script>
-<script src="scripts/linenumber.js"></script>
-
-
-
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://github.com/ming-suhi/djs-local-manager" target="_blank">
-    <strong>@ming-suhi/djs-local-manager</strong>
+    <strong>@ming-suhi/djs-commando</strong>
   </a>
 </p>
 
@@ -12,65 +12,52 @@
 
 
 ## I. About
-A package for managing Discord Interaction; Slash Commands, Button, and Select Menus. For an in-depth documentation visit the <a href="https://ming-suhi.github.io/djs-local-manager/" target="_blank">official website</a>. For users who want to opt for a similar package with a database manager, check out <a href="https://github.com/ming-suhi/djs-manager" target="_blank">@ming-suhi/djs-manager</a> from the same developer. 
+A package for easily creating and managing your Discord Slash Commands. For an in-depth documentation visit the <a href="https://ming-suhi.github.io/djs-local-manager/" target="_blank">documentation website</a>. 
 
 
-## II. Getting Started
+## II. Quick Start
 
-## A. Installation
+## A. Installing
 
 ##### Run npm install on the command line or terminal.
 ```
-npm install @ming-suhi/djs-local-manager
+npm install @ming-suhi/djs-commando
 ```
 
-
-## B. Setting environment
+## B. Setting Environment
 
 1. Create a `.env` file in the root directory
 
-    ```env
-    BOT_TOKEN = 
-
+    ```
     COMMANDS_FOLDER =
     ```
 
-2. Get the Discord bot's token and store it as `BOT_TOKEN`.
+2. Create a folder to hold command files. Store the folder path from the root as `COMMANDS_FOLDER`.
 
-3. Create a folder to hold command files. Store the folder path from the root as `COMMANDS_FOLDER`.
+## C. Setting Handler
 
-
-## C. Setting bot
-
-1. Create an instance of Discord Client
+1. Require `InteractionsHandler` from `@ming-suhi/djs-commando`.
     ```js
-    const Discord = require('discord.js');
-    const client = new Discord.Client();
+    const { InteractionsHandler } = require('@ming-suhi/djs-commando');
     ```
 
-2. Attach an instance of Manager Client
+2. Create an instance of `InteractionsHandler`
     ```js
-    const Manager = require('@ming-suhi/djs-local-manager');
-    client.msdm = new Manager.LocalClient();
+    const handler = new InteractionsHandler();
     ```
 
-3. Login bot
+## D. Creating a Command
+
+1. Create a file inside the commands folder. File name must be the same as command name.
+
+2. Require `Command`.
     ```js
-    client.login(client.msdm.token);
+    const { Command } = require('@ming-suhi/djs-commando');
     ```
 
-## D. Creating commands
-
-1. Create a file inside the commands folder, file name must be the same as command name
-
-2. Require/import `Command`
+3. Create a new class extending `Command`.
     ```js
-    const {Command} = require('@ming-suhi/djs-local-manager');
-    ```
-
-3. Extend `Command`
-    ```js
-    const myCommand = new class extends Command {
+    const ping = new class extends Command {
       constructor() {
         super();
         // Properties here
@@ -78,65 +65,63 @@ npm install @ming-suhi/djs-local-manager
     }
     ```
 
-4. Set class properties
+4. Define class properties inside constructor. Refer to Discord Developer Portal for valid property values.
     ```js
-    this.name = "mycommand";
-    this.description = 'my custom command';
+    this.name = "ping";
+    this.description = "short description"; 
     ```
 
-5. Create `execute` method
+5. Create execute method which accepts one parameter. The parameter is an instance of `Interaction` class of `discord.js`, which is received during interactionCreate event of `discord.js`. 
     ```js
-    async execute(service) {
-      await service.send({content: 'Your command has been heard'});
+    async execute(interaction) {
+      await interaction.reply("Pong");
     }
     ```
 
-6. Export created class
+6. Export created class.
     ```js
-    module.exports = myCommand;
-    ```
-
-    Example
-    ```js
-    const {Command} = require('@ming-suhi/djs-local-manager');
-
-    const ping = new class extends Command {
-      constructor() {
-        super();
-        this.name = "ping";
-        this.description = 'pings bot to get latency';
-      }
-
-      async execute(service) {
-        await service.send({content: 'Pong'});
-      }
-    }
-
     module.exports = ping;
-    ```
+    ``` 
 
+## E. Adding Command Options
 
-## E. Synching commands
+1. Require the desired options.
+```js
+const { StringField } = require('@ming-suhi/djs-commando');
+```
 
-It is suggested to sync commands on client ready. To sync commands just simply call on `syncCommands` method.
+2. Create instance, and extend classes for subcommand group and subcommand.
+```js
+const message = new StringField('message', 'message to echo', true);
+```
 
+3. Pass options to super inside an array. Refer to documentation for the options that can be passed to command, subcommand group and subcommand.
+```js
+const echo = new class extends Command {
+  constructor();
+  super([message]);
+  this.name = 'echo';
+  this.description = 'echo a message';
+}
+```
+
+4. Additional Notes: If you have subcommands, make sure that only the top command is exported.
+
+## F. Synching Commands
+It is suggested to sync commands on `ready`. Synching commands posts and updates commands, as well as deletes commands unexisting in the commands folder. Synching commands bulk updates commands and it is important to note that the recently posted commands cannot be immediately used/seen.
 ```js
 client.on('ready', async() => {
-  client.msdm.syncCommands(client);
+  handler.syncCommands(client);
 });
 ```
 
-
-## F. Setting interaction handler
-
-This step setups an interaction handler that finds the corresponding file for the requested command. Upon receiving a slash command it calls on the executes method of that command. Upon receiving a button interaction it executes the onPress method, while receiving a select menu interaction executes the onSelect method.
-
+## G. Receiving Commands
+This will find the matching command and execute it.
 ```js
-client.ws.on('INTERACTION_CREATE', async interaction => {
-  client.msdm.handleInteraction(client, interaction);
-})
+client.on('interactionCreate', async interaction => {
+  await handler.handleInteraction(interaction);
+});
 ```
-
 
 ## III. Contributing
 ## A. Issues

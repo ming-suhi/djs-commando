@@ -1,77 +1,25 @@
-name: 🧪 SDK Extension Testing
+name: 🧪 Handler Testing
 
 on: [push, pull_request, workflow_dispatch]
 
-env: ${{ secrets }}
-
 jobs:
 
-  LocalClient:
+  Client:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
-    
+
     - name: Setup Node
       uses: actions/setup-node@v2
-      
-    - name: Install dependencies
+      with:
+        node-version: 16.6.1
+
+    - name: Install Dependencies
       run: npm ci
 
-    - name: methods
-      run: npm run test testing/tests/local-client
+    - name: Build Dist
+      run: npm run build
 
-  Folder:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    
-    - name: Setup Node
-      uses: actions/setup-node@v2
-      
-    - name: Install dependencies
-      run: npm ci
-    
-    - name: get method
-      run: npm run test testing/tests/get
-  
-  SDK:
-    needs: Folder
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    
-    - name: Setup Node
-      uses: actions/setup-node@v2
-      
-    - name: Install dependencies
-      run: npm ci
-
-    - name: post method
-      run: npm run test testing/tests/post
-
-    - name: sync method
-      run: npm run test testing/tests/sync
-
-  InteractionHandler:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    
-    - name: Setup Node
-      uses: actions/setup-node@v2
-      
-    - name: Install dependencies
-      run: npm ci
-
-    - name: top command
-      run: npm run test testing/tests/top-command
-    
-    - name: sub command
-      run: npm run test testing/tests/sub-command
-
-    - name: group command
-      run: npm run test testing/tests/group-command
+    - name: Tests
+      run: npm run test
