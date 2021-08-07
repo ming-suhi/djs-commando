@@ -1,8 +1,5 @@
 node_modules/
-/dist
 
-/.env
-/index.js
-/index.ts
+/dist
 
 /docs

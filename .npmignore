@@ -1,0 +1,12 @@
+node_modules/
+
+.github/
+
+src/
+
+tests/
+
+.gitignore
+
+tsconfig.json
+typedoc.json
