@@ -32,6 +32,6 @@ jobs:
 
     - name: Commit
       run: |
-        git add --force .
+        git add --force docs 
         git commit -m "Generate Documentation"
         git push origin ${{ steps.vars.outputs.short_ref }}
