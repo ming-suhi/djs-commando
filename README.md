@@ -83,7 +83,7 @@ npm install @ming-suhi/djs-local-manager
     module.exports = ping;
     ``` 
 
-## E. Adding command options
+## E. Adding Command Options
 
 1. Require the desired options.
 ```js
