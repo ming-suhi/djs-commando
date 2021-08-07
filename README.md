@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ming-suhi/ming-suhi/master/djs-local-manager.svg" width="100" align="center" />
+  <img src="https://raw.githubusercontent.com/ming-suhi/ming-suhi/master/djs-commando.svg" width="100" align="center" />
 </p>
 
 <p align="center">
-  <a href="https://github.com/ming-suhi/djs-local-manager" target="_blank">
+  <a href="https://github.com/ming-suhi/djs-commando" target="_blank">
     <strong>@ming-suhi/djs-commando</strong>
   </a>
 </p>
@@ -12,7 +12,7 @@
 
 
 ## I. About
-A package for easily creating and managing your Discord Slash Commands. For an in-depth documentation visit the <a href="https://ming-suhi.github.io/djs-local-manager/" target="_blank">documentation website</a>. 
+A package for easily creating and managing your Discord Slash Commands. For an in-depth documentation visit the <a href="https://ming-suhi.github.io/djs-commando/" target="_blank">documentation website</a>. 
 
 
 ## II. Quick Start

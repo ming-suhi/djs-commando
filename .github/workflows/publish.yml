@@ -20,6 +20,9 @@ jobs:
           node-version: 16.6.1
           registry-url: 'https://registry.npmjs.org'
           scope: '@ming-suhi'
+
+      - name: Install Dependencies
+        run: npm ci
       
       - name: Build Dist
         run: npm run build
