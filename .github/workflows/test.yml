@@ -1,0 +1,27 @@
+name: 🧪 Handler Testing
+
+on: workflow_dispatch
+
+env: ${{ secrets }}
+
+jobs:
+
+  Client:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Node
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16.6.1
+
+    - name: Install Dependencies
+      run: npm ci
+
+    - name: Build Dist
+      run: npm run build
+
+    - name: Tests
+      run: npm run test
