@@ -19,8 +19,9 @@ jobs:
       run: npm ci
 
     - name: Setup Git Config
-      run: git config user.name "GitHub Documentation Bot"
-      run: git config user.email "<>"
+      run: >
+        git config user.name "GitHub Documentation Bot"
+        git config user.email "<>"
 
     - name: Generate Documentation
       run: npx typedoc
@@ -30,6 +31,7 @@ jobs:
       run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
 
     - name: Commit
-      run: git add .
-      run: git commit -m "Generate Documentation"
-      run: git push origin ${{ steps.vars.outputs.short_ref }}
+      run: >
+        git add .
+        git commit -m "Generate Documentation"
+        git push origin ${{ steps.vars.outputs.short_ref }}
