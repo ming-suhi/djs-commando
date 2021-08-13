@@ -1,6 +1,6 @@
 import Discord from 'discord.js';
 import dotenv from 'dotenv';
-import { Command, SubcommandGroup, Subcommand } from './structures/command';
+import { Command, SubcommandGroup, Subcommand, UserCommand } from './structures/command';
 import { Folder } from './structures/folder';
 
 /** Structure for managing interactions */
@@ -44,6 +44,12 @@ export class InteractionsHandler {
         var subcommand = <Subcommand>subcommandgroup.options?.get(interaction.options.getSubcommand());
         await subcommand.execute?.(interaction);
       }
+    }
+
+    // If user command
+    if (interaction.isContextMenu()) {
+      var userCommand = <UserCommand>this.commandsFolder.file(interaction.commandName);
+      await userCommand.execute?.(interaction);
     }
   }
 

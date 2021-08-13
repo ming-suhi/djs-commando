@@ -17,28 +17,27 @@ export type SubcommandGroupOptions = Array<Subcommand>;
 export type SubcommandOptions = Array<Fields>;
 
 /** Interface for command creation */
-export interface BaseCommand { 
+export interface BaseCommand<Description, Type> { 
   /** The name of the command */
   name: string, 
   /** The description of the command */
-  description: string, 
+  description: Description extends true ? string : undefined, 
   /** Executed when command is called */
   execute?(interaction: Interaction): void, 
   /** Command options */
-  options?: OptionsManager ,
+  options: OptionsManager,
   /** Command type */
-  type?: number
+  type: Type
 };
 
 /** Base structure for commands  */
-export class BaseCommand {
+export class BaseCommand<Description, Type> {
   /**
    * @param options Command options
    * @param type Command type
    */
-  constructor(options?: any, type?: number) {
+  constructor(options?: Options) {
     this.options = new OptionsManager(options);
-    this.type = type;
   }
 
   /**
@@ -56,7 +55,7 @@ export class BaseCommand {
 }
 
 /** Structure for creating command */
-export class Command extends BaseCommand {
+export class Command extends BaseCommand<true, undefined> {
   /**
    * @param options Command Options
    * @augments BaseCommand
@@ -67,31 +66,40 @@ export class Command extends BaseCommand {
 }
 
 /** Structure for creating subcommand group */
-export class SubcommandGroup extends BaseCommand {
+export class SubcommandGroup extends BaseCommand<true, 2> {
   /**
    * @param options Subcommand group options
    * @augments BaseCommand
    */
   constructor(options: SubcommandGroupOptions) {
-    super(options, 2);
+    super(options);
   }
 }
 
 /** Structure for creating subcommand */
-export class Subcommand extends BaseCommand {
+export class Subcommand extends BaseCommand<true, 1> {
   /**
    * @param options Subcommand options
    * @augments BaseCommand
    */
   constructor(options?: SubcommandOptions) {
-    super(options, 1);
+    super(options);
+  }
+}
+
+export class UserCommand extends BaseCommand<false, 2> {
+  /**
+   * @augments BaseCommand
+   */
+  constructor() {
+    super(undefined);
   }
 }
 
 /** Structure for creating subcommand */
 export class OptionsManager {
   /** Array of options */
-  options?: Options
+  options?: Options;
 
   /**
    * @param options Options

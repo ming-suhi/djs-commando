@@ -98,10 +98,11 @@ const message = new StringField('message', 'message to echo', true);
 3. Pass options to super inside an array. Refer to documentation for the options that can be passed to command, subcommand group and subcommand.
 ```js
 const echo = new class extends Command {
-  constructor();
-  super([message]);
-  this.name = 'echo';
-  this.description = 'echo a message';
+  constructor(){
+    super([message]);
+    this.name = 'echo';
+    this.description = 'echo a message';
+  }
 }
 ```
 
