@@ -17,7 +17,7 @@ export type SubcommandGroupOptions = Array<Subcommand>;
 export type SubcommandOptions = Array<Fields>;
 
 /** Interface for command creation */
-export interface BaseCommand<Description, Type> { 
+export interface BaseCommand<Description> { 
   /** The name of the command */
   name: string, 
   /** The description of the command */
@@ -27,17 +27,18 @@ export interface BaseCommand<Description, Type> {
   /** Command options */
   options: OptionsManager,
   /** Command type */
-  type: Type
+  type?: number
 };
 
 /** Base structure for commands  */
-export class BaseCommand<Description, Type> {
+export class BaseCommand<Description> {
   /**
    * @param options Command options
    * @param type Command type
    */
-  constructor(options?: Options) {
+  constructor(options?: Options, type?: number) {
     this.options = new OptionsManager(options);
+    this.type = type;
   }
 
   /**
@@ -55,44 +56,53 @@ export class BaseCommand<Description, Type> {
 }
 
 /** Structure for creating command */
-export class Command extends BaseCommand<true, undefined> {
+export class Command extends BaseCommand<true> {
   /**
    * @param options Command Options
    * @augments BaseCommand
    */
   constructor(options?: CommandOptions) {
-    super(options);
+    super(options, undefined);
   }
 }
 
 /** Structure for creating subcommand group */
-export class SubcommandGroup extends BaseCommand<true, 2> {
+export class SubcommandGroup extends BaseCommand<true> {
   /**
    * @param options Subcommand group options
    * @augments BaseCommand
    */
   constructor(options: SubcommandGroupOptions) {
-    super(options);
+    super(options, 2);
   }
 }
 
 /** Structure for creating subcommand */
-export class Subcommand extends BaseCommand<true, 1> {
+export class Subcommand extends BaseCommand<true> {
   /**
    * @param options Subcommand options
    * @augments BaseCommand
    */
   constructor(options?: SubcommandOptions) {
-    super(options);
+    super(options, 1);
   }
 }
 
-export class UserCommand extends BaseCommand<false, 2> {
+export class UserCommand extends BaseCommand<false> {
   /**
    * @augments BaseCommand
    */
   constructor() {
-    super(undefined);
+    super(undefined, 2);
+  }
+}
+
+export class MessageCommand extends BaseCommand<false> {
+  /**
+   * @augments BaseCommand
+   */
+  constructor() {
+    super(undefined, 3);
   }
 }
 

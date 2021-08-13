@@ -48,7 +48,7 @@ export class InteractionsHandler {
 
     // If user command
     if (interaction.isContextMenu()) {
-      var userCommand = <UserCommand>this.commandsFolder.file(interaction.commandName);
+      var userCommand = <UserCommand>this.commandsFolder.file(interaction.commandName.toLowerCase());
       await userCommand.execute?.(interaction);
     }
   }
