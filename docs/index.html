@@ -155,10 +155,11 @@
 					</li>
 					<li><p>Pass options to super inside an array. Refer to documentation for the options that can be passed to command, subcommand group and subcommand.</p>
 						<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">echo</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #0000FF">class</span><span style="color: #000000"> </span><span style="color: #0000FF">extends</span><span style="color: #000000"> </span><span style="color: #267F99">Command</span><span style="color: #000000"> {</span>
-<span style="color: #0000FF">constructor</span><span style="color: #000000">();</span>
-<span style="color: #795E26">super</span><span style="color: #000000">([</span><span style="color: #001080">message</span><span style="color: #000000">]);</span>
-<span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">name</span><span style="color: #000000"> = </span><span style="color: #A31515">&#039;echo&#039;</span><span style="color: #000000">;</span>
-<span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">description</span><span style="color: #000000"> = </span><span style="color: #A31515">&#039;echo a message&#039;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">constructor</span><span style="color: #000000">(){</span>
+<span style="color: #000000"> </span><span style="color: #0000FF">super</span><span style="color: #000000">([</span><span style="color: #001080">message</span><span style="color: #000000">]);</span>
+<span style="color: #000000"> </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">name</span><span style="color: #000000"> = </span><span style="color: #A31515">&#039;echo&#039;</span><span style="color: #000000">;</span>
+<span style="color: #000000"> </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">description</span><span style="color: #000000"> = </span><span style="color: #A31515">&#039;echo a message&#039;</span><span style="color: #000000">;</span>
+<span style="color: #000000">}</span>
 <span style="color: #000000">}</span>
 </code></pre>
 					</li>
@@ -222,7 +223,7 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class">
+					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="classes/BaseCommand.html" class="tsd-kind-icon">Base<wbr>Command</a>
 					</li>
 					<li class=" tsd-kind-class">
@@ -250,6 +251,9 @@
 						<a href="classes/MentionableField.html" class="tsd-kind-icon">Mentionable<wbr>Field</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="classes/MessageCommand.html" class="tsd-kind-icon">Message<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/NumberField.html" class="tsd-kind-icon">Number<wbr>Field</a>
 					</li>
 					<li class=" tsd-kind-class">
@@ -266,6 +270,9 @@
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/SubcommandGroup.html" class="tsd-kind-icon">Subcommand<wbr>Group</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/UserCommand.html" class="tsd-kind-icon">User<wbr>Command</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/UserField.html" class="tsd-kind-icon">User<wbr>Field</a>
