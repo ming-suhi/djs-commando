@@ -93,6 +93,7 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="InteractionsHandler.html#commands" class="tsd-kind-icon">commands</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="InteractionsHandler.html#commandsFolder" class="tsd-kind-icon">commands<wbr>Folder</a></li>
 							</ul>
 						</section>
@@ -100,6 +101,7 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="InteractionsHandler.html#handleInteraction" class="tsd-kind-icon">handle<wbr>Interaction</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="InteractionsHandler.html#initializeCommands" class="tsd-kind-icon">initialize<wbr>Commands</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="InteractionsHandler.html#syncCommands" class="tsd-kind-icon">sync<wbr>Commands</a></li>
 							</ul>
 						</section>
@@ -118,7 +120,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/75dad81/src/client.ts#L11">client.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/6e58e84/src/client.ts#L13">client.ts:13</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="InteractionsHandler.html" class="tsd-signature-type" data-tsd-kind="Class">InteractionsHandler</a></h4>
@@ -129,12 +131,27 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="commands" class="tsd-anchor"></a>
+					<h3>commands</h3>
+					<div class="tsd-signature tsd-kind-icon">commands<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../modules.html#Commands" class="tsd-signature-type" data-tsd-kind="Type alias">Commands</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/6e58e84/src/client.ts#L11">client.ts:11</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Structure for storing commands</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="commandsFolder" class="tsd-anchor"></a>
 					<h3>commands<wbr>Folder</h3>
 					<div class="tsd-signature tsd-kind-icon">commands<wbr>Folder<span class="tsd-signature-symbol">:</span> <a href="Folder.html" class="tsd-signature-type" data-tsd-kind="Class">Folder</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/75dad81/src/client.ts#L9">client.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/6e58e84/src/client.ts#L9">client.ts:9</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -156,7 +173,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/75dad81/src/client.ts#L20">client.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/6e58e84/src/client.ts#L24">client.ts:24</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -178,6 +195,23 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="initializeCommands" class="tsd-anchor"></a>
+					<h3>initialize<wbr>Commands</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">initialize<wbr>Commands<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/6e58e84/src/client.ts#L86">client.ts:86</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="syncCommands" class="tsd-anchor"></a>
 					<h3>sync<wbr>Commands</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -187,7 +221,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/75dad81/src/client.ts#L60">client.ts:60</a></li>
+									<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/6e58e84/src/client.ts#L64">client.ts:64</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -250,10 +284,16 @@
 								<a href="InteractionsHandler.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="InteractionsHandler.html#commands" class="tsd-kind-icon">commands</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="InteractionsHandler.html#commandsFolder" class="tsd-kind-icon">commands<wbr>Folder</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="InteractionsHandler.html#handleInteraction" class="tsd-kind-icon">handle<wbr>Interaction</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="InteractionsHandler.html#initializeCommands" class="tsd-kind-icon">initialize<wbr>Commands</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="InteractionsHandler.html#syncCommands" class="tsd-kind-icon">sync<wbr>Commands</a>

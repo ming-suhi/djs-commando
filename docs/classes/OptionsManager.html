@@ -93,13 +93,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="OptionsManager.html#data" class="tsd-kind-icon">data</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="OptionsManager.html#options" class="tsd-kind-icon">options</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Accessors</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="OptionsManager.html#data" class="tsd-kind-icon">data</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -117,19 +112,19 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Options<wbr>Manager<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">?: </span><a href="../modules.html#Options" class="tsd-signature-type" data-tsd-kind="Type alias">Options</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="OptionsManager.html" class="tsd-signature-type" data-tsd-kind="Class">OptionsManager</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Options<wbr>Manager<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">?: </span><a href="../modules.html#Options" class="tsd-signature-type" data-tsd-kind="Type alias">Options</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="OptionsManager.html" class="tsd-signature-type" data-tsd-kind="Class">OptionsManager</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/75dad81/src/structures/command.ts#L117">structures/command.ts:117</a></li>
+									<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/6e58e84/src/structures/command.ts#L115">structures/command.ts:115</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <a href="../modules.html#Options" class="tsd-signature-type" data-tsd-kind="Type alias">Options</a></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <a href="../modules.html#Options" class="tsd-signature-type" data-tsd-kind="Type alias">Options</a><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>Options</p>
@@ -145,12 +140,27 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="options" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> options</h3>
-					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <a href="../modules.html#Options" class="tsd-signature-type" data-tsd-kind="Type alias">Options</a></div>
+					<a name="data" class="tsd-anchor"></a>
+					<h3>data</h3>
+					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/75dad81/src/structures/command.ts#L112">structures/command.ts:112</a></li>
+							<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/6e58e84/src/structures/command.ts#L110">structures/command.ts:110</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Class as object</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="options" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> options</h3>
+					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../modules.html#Options" class="tsd-signature-type" data-tsd-kind="Type alias">Options</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/6e58e84/src/structures/command.ts#L108">structures/command.ts:108</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -158,32 +168,6 @@
 							<p>Array of options</p>
 						</div>
 					</div>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Accessors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
-					<a name="data" class="tsd-anchor"></a>
-					<h3>data</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> data<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/75dad81/src/structures/command.ts#L134">structures/command.ts:134</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Get options data</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h4>
-							<p>Options as objects</p>
-						</li>
-					</ul>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -198,7 +182,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/75dad81/src/structures/command.ts#L126">structures/command.ts:126</a></li>
+									<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/6e58e84/src/structures/command.ts#L132">structures/command.ts:132</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -274,10 +258,10 @@
 								<a href="OptionsManager.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="OptionsManager.html#options" class="tsd-kind-icon">options</a>
-							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 								<a href="OptionsManager.html#data" class="tsd-kind-icon">data</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="OptionsManager.html#options" class="tsd-kind-icon">options</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="OptionsManager.html#get" class="tsd-kind-icon">get</a>
