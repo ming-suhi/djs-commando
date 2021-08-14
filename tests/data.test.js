@@ -1,10 +1,7 @@
-const { InteractionsHandler, StringField, Command, Subcommand } = require('../dist/index');
+const { StringField, Command, Subcommand } = require('../dist/index');
 
 // tests
 describe('data', () => {
-
-  const handler = new InteractionsHandler();
-  
   var fieldObject = {
     name: "testField", 
     description: "a test field", 

@@ -1,16 +1,20 @@
 import Discord from 'discord.js';
 import dotenv from 'dotenv';
-import { Command, SubcommandGroup, Subcommand, UserCommand } from './structures/command';
+import { Command, SubcommandGroup, Subcommand, UserCommand, Commands } from './structures/command';
 import { Folder } from './structures/folder';
 
 /** Structure for managing interactions */
 export class InteractionsHandler {
   /** Structure for managing commands folder */
   commandsFolder: Folder;
+  /** Structure for storing commands */
+  commands: Map<string, Commands>;
 
   constructor() {
     dotenv.config();
     this.commandsFolder = new Folder(process.env.COMMANDS_FOLDER || "commands");
+    this.commands = new Map();
+    this.initializeCommands();
   }
 
   /**
@@ -28,18 +32,18 @@ export class InteractionsHandler {
       // Handle based on command type
       switch (commandType) {
         case "COMMAND":
-        var command = <Command>this.commandsFolder.file(interaction.commandName);
+        var command = <Command>this.commands.get(interaction.commandName);
         await command.execute?.(interaction);
         break;
 
         case "SUB_COMMAND":
-        var command = <Command>this.commandsFolder.file(interaction.commandName);
+        var command = <Command>this.commands.get(interaction.commandName);
         var subcommand = <Subcommand>command.options?.get(interaction.options.getSubcommand());
         await subcommand.execute?.(interaction);
         break;
 
         case "SUB_COMMAND_GROUP":
-        var command = <Command>this.commandsFolder.file(interaction.commandName);
+        var command = <Command>this.commands.get(interaction.commandName);
         var subcommandgroup = <SubcommandGroup>command.options?.get(interaction.options.getSubcommandGroup());
         var subcommand = <Subcommand>subcommandgroup.options?.get(interaction.options.getSubcommand());
         await subcommand.execute?.(interaction);
@@ -48,7 +52,7 @@ export class InteractionsHandler {
 
     // If user command
     if (interaction.isContextMenu()) {
-      var userCommand = <UserCommand>this.commandsFolder.file(interaction.commandName.toLowerCase());
+      var userCommand = <UserCommand>this.commands.get(interaction.commandName.toLowerCase());
       await userCommand.execute?.(interaction);
     }
   }
@@ -74,6 +78,14 @@ export class InteractionsHandler {
       } catch {
         await client.api.applications(client.user.id).commands(command.id).delete();
       }
+    }
+  }
+
+
+  // Stores commands to memory
+  initializeCommands() {
+    for (let command of this.commandsFolder.files) {
+      this.commands.set(command.name.toLowerCase(), command);
     }
   }
 }
