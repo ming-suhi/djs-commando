@@ -3,10 +3,10 @@ const {
   Command, 
   SubcommandGroup,
   Subcommand, 
-  Folder, 
-  InteractionsHandler 
+  InteractionsHandler,
+  Folder
 } = require('../dist/index.js');
-const { Client, Interaction } = require('discord.js');
+const { Interaction } = require('discord.js');
 
 // Mocks
 jest.mock('discord.js');
@@ -18,7 +18,7 @@ Subcommand.prototype.execute = executeCommand;
 
 // Controlled
 Interaction.prototype.isCommand = function() { return true }
-Folder.prototype.file = function() { return new Command() };
+Folder.prototype = {get files(){ return [] }};
 
 OptionsManager.prototype.get= function(name) {
   if (name == "Subcommand Name") {
@@ -41,29 +41,34 @@ Interaction.prototype.options = {
 // tests
 describe('InteractionsHandler', () => {
 
-  const handler = new InteractionsHandler();
-  
+  const handler = new class extends InteractionsHandler {
+    constructor() {
+      super();
+      this.commands = {get: function() { return new Command() }}
+    }
+  };
+
   beforeEach(() => {
     executeCommand.mockClear();
   });
 
 
-  it('should execute command', () => {
-    handler.handleInteraction(new Interaction());
+  it('should execute command', async() => {
+    await handler.handleInteraction(new Interaction());
     expect(executeCommand).toHaveBeenCalledTimes(1);
   });
 
 
-  it('should execute subcommand', () => {
+  it('should execute subcommand', async() => {
     Interaction.prototype.options.data = [{type: "SUB_COMMAND"}]
-    handler.handleInteraction(new Interaction());
+    await handler.handleInteraction(new Interaction());
     expect(executeCommand).toHaveBeenCalledTimes(1);
   });
 
 
-  it('should execute subcommand under subcommand group', () => {
+  it('should execute subcommand under subcommand group', async() => {
     Interaction.prototype.options.data = [{type: "SUB_COMMAND_GROUP"}]
-    handler.handleInteraction(new Interaction());
+    await handler.handleInteraction(new Interaction());
     expect(executeCommand).toHaveBeenCalledTimes(1);
   });
 })

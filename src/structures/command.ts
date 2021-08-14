@@ -2,19 +2,19 @@ import { Fields } from './field';
 import { Interaction } from 'discord.js';
 
 /** Command classes */
-export type Commands = Command | SubcommandGroup | Subcommand;
+export type Commands = Command | SubcommandGroup | Subcommand | UserCommand | MessageCommand;
 
 /** All options */
-export type Options = Array<SubcommandGroup|Subcommand|Fields>;
+export type Options = SubcommandGroup | Subcommand | Fields;
 
 /** Options for command */
-export type CommandOptions = Array<SubcommandGroup|Subcommand|Fields>;
+export type CommandOptions = SubcommandGroup | Subcommand | Fields;
 
 /** Options for subcommand group */
-export type SubcommandGroupOptions = Array<Subcommand>;
+export type SubcommandGroupOptions = Subcommand;
 
 /** Options for subcommand */
-export type SubcommandOptions = Array<Fields>;
+export type SubcommandOptions = Fields;
 
 /** Interface for command creation */
 export interface BaseCommand<Description> { 
@@ -36,17 +36,13 @@ export class BaseCommand<Description> {
    * @param options Command options
    * @param type Command type
    */
-  constructor(options?: Options, type?: number) {
+  constructor(options?: Array<Options>, type?: number) {
     this.options = new OptionsManager(options);
     this.type = type;
   }
 
-  /**
-   * Get command data
-   * @returns Command as object
-   */
   get data() {
-    return({
+    return ({
       name: this.name,
       description: this.description,
       options: this.options?.data,
@@ -61,7 +57,7 @@ export class Command extends BaseCommand<true> {
    * @param options Command Options
    * @augments BaseCommand
    */
-  constructor(options?: CommandOptions) {
+  constructor(options?: Array<CommandOptions>) {
     super(options, undefined);
   }
 }
@@ -72,7 +68,7 @@ export class SubcommandGroup extends BaseCommand<true> {
    * @param options Subcommand group options
    * @augments BaseCommand
    */
-  constructor(options: SubcommandGroupOptions) {
+  constructor(options: Array<SubcommandGroupOptions>) {
     super(options, 2);
   }
 }
@@ -83,7 +79,7 @@ export class Subcommand extends BaseCommand<true> {
    * @param options Subcommand options
    * @augments BaseCommand
    */
-  constructor(options?: SubcommandOptions) {
+  constructor(options?: Array<SubcommandOptions>) {
     super(options, 1);
   }
 }
@@ -109,13 +105,23 @@ export class MessageCommand extends BaseCommand<false> {
 /** Structure for creating subcommand */
 export class OptionsManager {
   /** Array of options */
-  options?: Options;
+  options?: Map<string, Options>;
+  /** Class as object */
+  data: Array<any>
 
   /**
    * @param options Options
    */
-  constructor(options?: Options) {
-    this.options = options;
+  constructor(options?: Array<Options>) {
+    // Create properties
+    this.options = new Map();
+    this.data = new Array();
+
+    // Set properties
+    options?.forEach(option => {
+      this.options?.set(option.name, option)
+      this.data.push(option.data)
+    })
   }
 
   /**
@@ -124,18 +130,6 @@ export class OptionsManager {
    * @returns The requested option
    */
   get(name: string): any {
-    return this.options?.find(option => option.name == name);
-  }
-
-  /**
-   * Get options data
-   * @returns Options as objects
-   */
-  get data(): Array<any> {
-    const options = new Array();
-    this.options?.forEach(option => {
-      options.push(option.data)
-    })
-    return options;
+    return this.options?.get(name);
   }
 }
