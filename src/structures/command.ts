@@ -1,121 +1,129 @@
-import { Fields } from './field';
-import { Interaction } from 'discord.js';
+import { FieldData, FieldStructures } from './field';
+import { CommandInteraction, ContextMenuInteraction } from 'discord.js';
 
-/** Command classes */
-export type Commands = Command | SubcommandGroup | Subcommand | UserCommand | MessageCommand;
+/** Commands structures */
+export type CommandStructures = Command | SubcommandGroup | Subcommand | UserCommand | MessageCommand;
 
-/** All options */
-export type Options = SubcommandGroup | Subcommand | Fields;
+/** Options for slash commands */
+export type SlashCommandOptions = (SubcommandGroup | Subcommand | FieldStructures)[];
 
 /** Options for command */
-export type CommandOptions = SubcommandGroup | Subcommand | Fields;
+export type CommandOptions = (SubcommandGroup | Subcommand)[] | FieldStructures[];
 
 /** Options for subcommand group */
-export type SubcommandGroupOptions = Subcommand;
+export type SubcommandGroupOptions = Subcommand[];
 
 /** Options for subcommand */
-export type SubcommandOptions = Fields;
+export type SubcommandOptions = FieldStructures[];
 
 /** Interface for command creation */
-export interface BaseCommand<Description> { 
-  /** The name of the command */
+export interface SlashCommand<TOptions> { 
+  /** Command name */
   name: string, 
-  /** The description of the command */
-  description: Description extends true ? string : undefined, 
-  /** Executed when command is called */
-  execute?(interaction: Interaction): void, 
-  /** Command options */
-  options: OptionsManager,
-  /** Command type */
-  type?: number
+  /** Command description */
+  description: string, 
+  /** Command function */
+  execute?(interaction: CommandInteraction): void, 
 };
 
-/** Base structure for commands  */
-export class BaseCommand<Description> {
-  /**
-   * @param options Command options
-   * @param type Command type
-   */
-  constructor(options?: Array<Options>, type?: number) {
-    this.options = new OptionsManager(options);
-    this.type = type;
-  }
+/** Interface for command JSON */
+export interface SlashCommandData {
+  /** Command name */
+  name: string,
+  /** Command description */
+  description: string,
+  /** Command options */
+  options?: SlashCommandData[],
+  /** Command type */
+  type: number
+}
 
-  get data() {
-    return ({
-      name: this.name,
-      description: this.description,
-      options: this.options?.data,
-      type: this.type
-    })
+/** Base structure for slash commands  */
+export class SlashCommand<TOptions extends SlashCommandOptions> {
+  /** Command type */
+  protected readonly type?: number
+  /** Command options */
+  public readonly options: OptionsManager<TOptions>
+
+  /**
+   * @param options Slash command options
+   */
+  public constructor(options?: TOptions) {
+    this.options = new OptionsManager<TOptions>(options);
+  }
+  
+  /**
+   * Get the command as JSON object
+   */
+  public get data(): SlashCommandData {
+    const name = this.name;
+    const description = this.description;
+    const options = this.options.data;
+    const type = this.type!;
+    return ({ name, description, options, type});
   }
 }
 
 /** Structure for creating command */
-export class Command extends BaseCommand<true> {
-  /**
-   * @param options Command Options
-   * @augments BaseCommand
-   */
-  constructor(options?: Array<CommandOptions>) {
-    super(options, undefined);
-  }
+export class Command extends SlashCommand<CommandOptions> {
+  protected readonly type = 1;
 }
 
 /** Structure for creating subcommand group */
-export class SubcommandGroup extends BaseCommand<true> {
-  /**
-   * @param options Subcommand group options
-   * @augments BaseCommand
-   */
-  constructor(options: Array<SubcommandGroupOptions>) {
-    super(options, 2);
-  }
+export class SubcommandGroup extends SlashCommand<SubcommandGroupOptions> {
+  protected readonly type = 2;
 }
 
 /** Structure for creating subcommand */
-export class Subcommand extends BaseCommand<true> {
+export class Subcommand extends SlashCommand<SubcommandOptions> {
+  protected readonly type = 1;
+}
+
+/** Interface for command creation */
+export interface ContextMenuCommand { 
+  /** The name of the command */
+  name: string, 
+  /** Executed when command is called */
+  execute(interaction: ContextMenuInteraction): void
+};
+
+/** Base structure for commands  */
+export class ContextMenuCommand {
+  /** Command type */
+  protected type?: number;
+
   /**
-   * @param options Subcommand options
-   * @augments BaseCommand
+   * Get the command as JSON object
    */
-  constructor(options?: Array<SubcommandOptions>) {
-    super(options, 1);
+  public get data() {
+    return ({ name: this.name, type: this.type! });
   }
 }
 
-export class UserCommand extends BaseCommand<false> {
-  /**
-   * @augments BaseCommand
-   */
-  constructor() {
-    super(undefined, 2);
-  }
+/** Structure for creating user command */
+export class UserCommand extends ContextMenuCommand {
+  protected readonly type = 2;
 }
 
-export class MessageCommand extends BaseCommand<false> {
-  /**
-   * @augments BaseCommand
-   */
-  constructor() {
-    super(undefined, 3);
-  }
+/** Structure for creating message command */
+export class MessageCommand extends ContextMenuCommand {
+  protected readonly type = 3;
 }
 
 /** Structure for creating subcommand */
-export class OptionsManager {
+export class OptionsManager<TOptions extends SlashCommandOptions> {
   /** Array of options */
-  options?: Map<string, Options>;
+  public readonly options: Map<string, TOptions[number]>
   /** Class as object */
-  data: Array<any>
+  public readonly data: (SlashCommandData | FieldData)[]
 
   /**
    * @param options Options
    */
-  constructor(options?: Array<Options>) {
+  constructor(options?: TOptions) {
     // Create properties
     this.options = new Map();
-    this.data = new Array();
+    this.data = [];
 
     // Set properties
     options?.forEach(option => {
@@ -129,7 +137,7 @@ export class OptionsManager {
    * @param name Name of the option
    * @returns The requested option
    */
-  get(name: string): any {
-    return this.options?.get(name);
+  public get(name: string): TOptions[number] | undefined {
+    return this.options.get(name);
   }
 }

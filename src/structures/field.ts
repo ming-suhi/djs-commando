@@ -1,22 +1,39 @@
 /** Field classes */
-export type Fields = StringField | IntegerField | BooleanField | UserField | ChannelField | RoleField | MentionableField | NumberField;
+export type FieldStructures = StringField | IntegerField | BooleanField | UserField | ChannelField | RoleField | MentionableField | NumberField;
 
 /** Interface for choice creation */
 export interface Choice { name: string, value: string };
 
-/** Base structure for fields */
-export class BaseField {
+/** Interface for field creation */
+export interface Field {
   /** The name of the field */
-  name: string;
+  name: string,
   /** The description of the field */
-  description: string;
-  /** The type of the field */
-  type: number;
+  description: string,
   /** If field is required */
-  required: boolean;
+  required: boolean,
   /** The choices of the field */
-  choices?: Array<Choice>;
+  choices?: Choice[]
+}
 
+/** Interface for field JSON */
+export interface FieldData {
+  /** Field name */
+  name: string,
+  /** Field description */
+  description: string,
+  /** Field type */
+  type: number,
+  /** If field is required */
+  required: boolean,
+  /** Field choices */
+  choices?: Choice[]
+}
+
+/** Base structure for fields */
+export class Field {
+  /** Field type */
+  protected type?: number;
   /**
    * @param name The name of the field
    * @param description The description of the field
@@ -24,10 +41,9 @@ export class BaseField {
    * @param required If field is required
    * @param choices The choices of the field
    */
-  constructor(name: string, description: string, type: number, required: boolean = false, choices?: Array<Choice>) {
+  constructor(name: string, description: string, required: boolean = false, choices?: Choice[]) {
     this.name = name;
     this.description = description;
-    this.type = type;
     this.required = required;
     this.choices = choices;
   }
@@ -36,118 +52,52 @@ export class BaseField {
    * Get field data
    * @returns Field as object
    */
-  get data() {
-    return({
-      name: this.name,
-      description: this.description,
-      type: this.type,
-      required: this.required,
-      choices: this.choices
-    })
+  get data(): FieldData {
+    const name = this.name;
+    const description = this.description;
+    const type = this.type!;
+    const required = this.required;
+    const choices = this.choices;
+    return({ name, description, type, required, choices });
   }
 }
 
 /** Structure for creating a string field */
-export class StringField extends BaseField {
-  /**
-   * @param name The name of the field
-   * @param description The description of the field
-   * @param required If field is required
-   * @param choices The choices of the field
-   * @augments BaseField
-   */
-  constructor(name: string, description: string, required: boolean = false, choices?: Array<Choice>) {
-    super(name, description, 3, required, choices);
-  }
+export class StringField extends Field {
+  protected readonly type = 3;
 }
 
 /** Structure for creating an integer field */
-export class IntegerField extends BaseField {
-  /**
-   * @param name The name of the field
-   * @param description The description of the field
-   * @param required If field is required
-   * @augments BaseField
-   */
-  constructor(name: string, description: string, required: boolean = false) {
-    super(name, description, 4, required);
-  }
+export class IntegerField extends Field {
+  protected readonly type = 4;
 }
 
 /** Structure for creating a boolean field */
-export class BooleanField extends BaseField {
-  /**
-   * @param name The name of the field
-   * @param description The description of the field
-   * @param required If field is required
-   * @augments BaseField
-   */
-  constructor(name: string, description: string, required: boolean = false) {
-    super(name, description, 5, required);
-  }
+export class BooleanField extends Field {
+  protected readonly type = 5;
 }
 
 /** Structure for creating a user field */
-export class UserField extends BaseField {
-  /**
-   * @param name The name of the field
-   * @param description The description of the field
-   * @param required If field is required
-   * @augments BaseField
-   */
-  constructor(name: string, description: string, required: boolean = false) {
-    super(name, description, 6, required);
-  }
+export class UserField extends Field {
+  protected readonly type = 6;
 }
 
 /** Structure for creating a channel field */
-export class ChannelField extends BaseField {
-  /**
-   * @param name The name of the field
-   * @param description The description of the field
-   * @param required If field is required
-   * @augments BaseField
-   */
-  constructor(name: string, description: string, required: boolean = false) {
-    super(name, description, 7, required);
-  }
+export class ChannelField extends Field {
+  protected readonly type = 7;
 }
 
 /** Structure for creating a role field */
-export class RoleField extends BaseField {
-  /**
-   * @param name The name of the field
-   * @param description The description of the field
-   * @param required If field is required
-   * @augments BaseField
-   */
-  constructor(name: string, description: string, required: boolean = false) {
-    super(name, description, 8, required);
-  }
+export class RoleField extends Field {
+  protected readonly type = 8;
 }
 
 /** Structure for creating a mentionable field */
-export class MentionableField extends BaseField {
-  /**
-   * @param name The name of the field
-   * @param description The description of the field
-   * @param required If field is required
-   * @augments BaseField
-   */
-  constructor(name: string, description: string, required: boolean = false) {
-    super(name, description, 9, required);
-  }
+export class MentionableField extends Field {
+  protected readonly type = 9;
 }
 
 /** Structure for creating a number field */
-export class NumberField extends BaseField {
-  /**
-   * @param name The name of the field
-   * @param description The description of the field
-   * @param required If field is required
-   * @augments BaseField
-   */
-  constructor(name: string, description: string, required: boolean = false) {
-    super(name, description, 10, required);
-  }
+export class NumberField extends Field {
+  protected readonly type = 10;
 }

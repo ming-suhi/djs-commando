@@ -1,6 +1,6 @@
 import Discord from 'discord.js';
 import dotenv from 'dotenv';
-import { Command, SubcommandGroup, Subcommand, UserCommand, Commands } from './structures/command';
+import { Command, SubcommandGroup, Subcommand, UserCommand, CommandStructures, MessageCommand } from './structures/command';
 import { Folder } from './structures/folder';
 
 /** Structure for managing interactions */
@@ -8,7 +8,7 @@ export class InteractionsHandler {
   /** Structure for managing commands folder */
   commandsFolder: Folder;
   /** Structure for storing commands */
-  commands: Map<string, Commands>;
+  commands: Map<string, CommandStructures>;
 
   constructor() {
     dotenv.config();
@@ -27,7 +27,7 @@ export class InteractionsHandler {
     if (interaction.isCommand()) {
 
       // Determine command type
-      const commandType: string = interaction.options?.data?.[0]?.type || "COMMAND";
+      const commandType: string = interaction.options.data?.[0]?.type || "COMMAND";
       
       // Handle based on command type
       switch (commandType) {
@@ -52,7 +52,7 @@ export class InteractionsHandler {
 
     // If user command
     if (interaction.isContextMenu()) {
-      var userCommand = <UserCommand>this.commands.get(interaction.commandName.toLowerCase());
+      var userCommand = <UserCommand|MessageCommand>this.commands.get(interaction.commandName.toLowerCase());
       await userCommand.execute?.(interaction);
     }
   }
