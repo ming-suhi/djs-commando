@@ -1,11 +1,4 @@
-const { 
-  OptionsManager, 
-  Command, 
-  SubcommandGroup,
-  Subcommand, 
-  InteractionsHandler,
-  Folder
-} = require('../dist/index.js');
+const { OptionsManager, Command, SubcommandGroup, Subcommand, InteractionsHandler, Folder } = require('../dist/index.js');
 const { Interaction } = require('discord.js');
 
 // Mocks
