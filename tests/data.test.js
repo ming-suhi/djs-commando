@@ -14,7 +14,7 @@ describe('data', () => {
     name: "command",
     description: "a command",
     options: [],
-    type: undefined
+    type: 1
   }
 
   var subcommandObject = {
