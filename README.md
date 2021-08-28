@@ -32,7 +32,7 @@ npm install @ming-suhi/djs-commando
     COMMANDS_FOLDER =
     ```
 
-2. Create a folder to hold command files. Store the folder path from the root as `COMMANDS_FOLDER`.
+2. Create a folder to hold command files. Store the folder path from main as `COMMANDS_FOLDER`.
 
 ## C. Setting Handler
 
@@ -124,7 +124,45 @@ client.on('interactionCreate', async interaction => {
 });
 ```
 
-## III. Contributing
+## III. Additional Feature: Event Handling
+## A. Setting Environment
+1. Create a folder to hold event files. Store the folder path from main as `EVENTS_FOLDER`.
+
+## B. Setting Handler
+1. Require `EventsHandler` from `@ming-suhi/djs-commando`.
+    ```js
+    const { EventsHandler } = require('@ming-suhi/djs-commando');
+    ```
+
+2. Create an instance of `InteractionsHandler`
+    ```js
+    const handler = new EventsHandler();
+    ```
+
+## C. Creating Event Handler
+1. Create a file inside the events folder. File name must be the same as event name.
+
+2. Create object, set name property as the name of event
+
+3. Set run as the function to run on event
+
+4. Export event
+    ```js
+    module.exports = {
+      name: 'ready',
+      run() {
+        console.log('Ready!');
+      }
+    } 
+    ```
+
+## D. Registering events
+It is suggested to register events on `ready`.
+```js
+handler.registerEvents(client);
+```
+
+## IV. Contributing
 ## A. Issues
 This project uses GitHub Issues to track bugs and feature requests. Please search the existing issues before filing new issues to avoid duplicates. For new issues, file your bug or feature request as a new issue.
 
@@ -145,5 +183,5 @@ For help and questions about using this project, please open a GitHub issue.
 6. Discuss, and optionally continue committing.
 
 
-## IV. License
+## V. License
 MIT © 明suhi
