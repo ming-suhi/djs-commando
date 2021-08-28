@@ -16,7 +16,7 @@ export class Folder {
    * Get the file exports of all files
    * @returns File exports
    */
-  get files(): Array<any> {
+  get files(): any[] {
     return getFiles(this.path);
   }
 
