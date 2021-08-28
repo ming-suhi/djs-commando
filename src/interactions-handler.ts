@@ -6,9 +6,9 @@ import { Folder } from './structures/folder';
 /** Structure for managing interactions */
 export class InteractionsHandler {
   /** Structure for managing commands folder */
-  commandsFolder: Folder;
+  public readonly commandsFolder: Folder;
   /** Structure for storing commands */
-  commands: Map<string, CommandStructures>;
+  public readonly commands: Map<string, CommandStructures>;
 
   constructor() {
     dotenv.config();
@@ -80,7 +80,6 @@ export class InteractionsHandler {
       }
     }
   }
-
 
   // Stores commands to memory
   initializeCommands() {
