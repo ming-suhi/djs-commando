@@ -90,7 +90,7 @@
 						<pre><code><span style="color: #0070C1">COMMANDS_FOLDER</span><span style="color: #000000"> =</span>
 </code></pre>
 					</li>
-					<li><p>Create a folder to hold command files. Store the folder path from the root as <code>COMMANDS_FOLDER</code>.</p>
+					<li><p>Create a folder to hold command files. Store the folder path from main as <code>COMMANDS_FOLDER</code>.</p>
 					</li>
 				</ol>
 				<a href="#c-setting-handler" id="c-setting-handler" style="color: inherit; text-decoration: none;">
@@ -182,8 +182,56 @@
 <span style="color: #000000">  </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">handler</span><span style="color: #000000">.</span><span style="color: #795E26">handleInteraction</span><span style="color: #000000">(</span><span style="color: #001080">interaction</span><span style="color: #000000">);</span>
 <span style="color: #000000">});</span>
 </code></pre>
-				<a href="#iii-contributing" id="iii-contributing" style="color: inherit; text-decoration: none;">
-					<h2>III. Contributing</h2>
+				<a href="#iii-additional-feature-event-handling" id="iii-additional-feature-event-handling" style="color: inherit; text-decoration: none;">
+					<h2>III. Additional Feature: Event Handling</h2>
+				</a>
+				<a href="#a-setting-environment" id="a-setting-environment" style="color: inherit; text-decoration: none;">
+					<h2>A. Setting Environment</h2>
+				</a>
+				<ol>
+					<li>Create a folder to hold event files. Store the folder path from main as <code>EVENTS_FOLDER</code>.</li>
+				</ol>
+				<a href="#b-setting-handler" id="b-setting-handler" style="color: inherit; text-decoration: none;">
+					<h2>B. Setting Handler</h2>
+				</a>
+				<ol>
+					<li><p>Require <code>EventsHandler</code> from <code>@ming-suhi/djs-commando</code>.</p>
+						<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">EventsHandler</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;@ming-suhi/djs-commando&#039;</span><span style="color: #000000">);</span>
+</code></pre>
+					</li>
+					<li><p>Create an instance of <code>InteractionsHandler</code></p>
+						<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">handler</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">EventsHandler</span><span style="color: #000000">();</span>
+</code></pre>
+					</li>
+				</ol>
+				<a href="#c-creating-event-handler" id="c-creating-event-handler" style="color: inherit; text-decoration: none;">
+					<h2>C. Creating Event Handler</h2>
+				</a>
+				<ol>
+					<li><p>Create a file inside the events folder. File name must be the same as event name.</p>
+					</li>
+					<li><p>Create object, set name property as the name of event</p>
+					</li>
+					<li><p>Set run as the function to run on event</p>
+					</li>
+					<li><p>Export event</p>
+						<pre><code class="language-js"><span style="color: #267F99">module</span><span style="color: #000000">.</span><span style="color: #267F99">exports</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">  </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;ready&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #795E26">run</span><span style="color: #000000">() {</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;Ready!&#039;</span><span style="color: #000000">);</span>
+<span style="color: #000000">  }</span>
+<span style="color: #000000">} </span>
+</code></pre>
+					</li>
+				</ol>
+				<a href="#d-registering-events" id="d-registering-events" style="color: inherit; text-decoration: none;">
+					<h2>D. Registering events</h2>
+				</a>
+				<p>It is suggested to register events on <code>ready</code>.</p>
+				<pre><code class="language-js"><span style="color: #001080">handler</span><span style="color: #000000">.</span><span style="color: #795E26">registerEvents</span><span style="color: #000000">(</span><span style="color: #001080">client</span><span style="color: #000000">);</span>
+</code></pre>
+				<a href="#iv-contributing" id="iv-contributing" style="color: inherit; text-decoration: none;">
+					<h2>IV. Contributing</h2>
 				</a>
 				<a href="#a-issues" id="a-issues" style="color: inherit; text-decoration: none;">
 					<h2>A. Issues</h2>
@@ -207,8 +255,8 @@
 					<li><p>Discuss, and optionally continue committing.</p>
 					</li>
 				</ol>
-				<a href="#iv-license" id="iv-license" style="color: inherit; text-decoration: none;">
-					<h2>IV. License</h2>
+				<a href="#v-license" id="v-license" style="color: inherit; text-decoration: none;">
+					<h2>V. License</h2>
 				</a>
 				<p>MIT © 明suhi</p>
 			</div>
@@ -234,6 +282,9 @@
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/ContextMenuCommand.html" class="tsd-kind-icon">Context<wbr>Menu<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/EventsHandler.html" class="tsd-kind-icon">Events<wbr>Handler</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/Field.html" class="tsd-kind-icon">Field</a>
@@ -284,6 +335,9 @@
 						<a href="interfaces/Choice.html" class="tsd-kind-icon">Choice</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/Event.html" class="tsd-kind-icon">Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/FieldData.html" class="tsd-kind-icon">Field<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -328,6 +382,7 @@
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>

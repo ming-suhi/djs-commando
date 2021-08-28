@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Field | @ming-suhi/djs-commando</title>
+	<title>EventsHandler | @ming-suhi/djs-commando</title>
 	<meta name="description" content="Documentation for @ming-suhi/djs-commando">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,10 +55,10 @@
 					<a href="../modules.html">@ming-suhi/djs-commando</a>
 				</li>
 				<li>
-					<a href="Field.html">Field</a>
+					<a href="EventsHandler.html">EventsHandler</a>
 				</li>
 			</ul>
-			<h1>Class Field</h1>
+			<h1>Class EventsHandler</h1>
 		</div>
 	</div>
 </header>
@@ -68,7 +68,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Base structure for fields</p>
+						<p>Structure for managing events</p>
 					</div>
 				</div>
 			</section>
@@ -76,33 +76,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Field</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<a href="StringField.html" class="tsd-signature-type" data-tsd-kind="Class">StringField</a>
-							</li>
-							<li>
-								<a href="IntegerField.html" class="tsd-signature-type" data-tsd-kind="Class">IntegerField</a>
-							</li>
-							<li>
-								<a href="BooleanField.html" class="tsd-signature-type" data-tsd-kind="Class">BooleanField</a>
-							</li>
-							<li>
-								<a href="UserField.html" class="tsd-signature-type" data-tsd-kind="Class">UserField</a>
-							</li>
-							<li>
-								<a href="ChannelField.html" class="tsd-signature-type" data-tsd-kind="Class">ChannelField</a>
-							</li>
-							<li>
-								<a href="RoleField.html" class="tsd-signature-type" data-tsd-kind="Class">RoleField</a>
-							</li>
-							<li>
-								<a href="MentionableField.html" class="tsd-signature-type" data-tsd-kind="Class">MentionableField</a>
-							</li>
-							<li>
-								<a href="NumberField.html" class="tsd-signature-type" data-tsd-kind="Class">NumberField</a>
-							</li>
-						</ul>
+						<span class="target">EventsHandler</span>
 					</li>
 				</ul>
 			</section>
@@ -113,23 +87,21 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="Field.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="EventsHandler.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Field.html#choices" class="tsd-kind-icon">choices</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Field.html#description" class="tsd-kind-icon">description</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Field.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Field.html#required" class="tsd-kind-icon">required</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="Field.html#type" class="tsd-kind-icon">type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="EventsHandler.html#events" class="tsd-kind-icon">events</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="EventsHandler.html#eventsFolder" class="tsd-kind-icon">events<wbr>Folder</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
-							<h3>Accessors</h3>
+							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="Field.html#data" class="tsd-kind-icon">data</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="EventsHandler.html#initializeEvents" class="tsd-kind-icon">initialize<wbr>Events</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="EventsHandler.html#registerEvents" class="tsd-kind-icon">register<wbr>Events</a></li>
 							</ul>
 						</section>
 					</div>
@@ -141,51 +113,16 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Field<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, description<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, required<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, choices<span class="tsd-signature-symbol">?: </span><a href="../interfaces/Choice.html" class="tsd-signature-type" data-tsd-kind="Interface">Choice</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Field.html" class="tsd-signature-type" data-tsd-kind="Class">Field</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Events<wbr>Handler<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="EventsHandler.html" class="tsd-signature-type" data-tsd-kind="Class">EventsHandler</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/8b67458/src/structures/field.ts#L44">structures/field.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/8b67458/src/events-handler.ts#L20">events-handler.ts:20</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>name: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>The name of the field</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<h5>description: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>The description of the field</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<h5>required: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>If field is required</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> choices: <a href="../interfaces/Choice.html" class="tsd-signature-type" data-tsd-kind="Interface">Choice</a><span class="tsd-signature-symbol">[]</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>The choices of the field</p>
-										</div>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="Field.html" class="tsd-signature-type" data-tsd-kind="Class">Field</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="EventsHandler.html" class="tsd-signature-type" data-tsd-kind="Class">EventsHandler</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -193,103 +130,83 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="choices" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> choices</h3>
-					<div class="tsd-signature tsd-kind-icon">choices<span class="tsd-signature-symbol">:</span> <a href="../interfaces/Choice.html" class="tsd-signature-type" data-tsd-kind="Interface">Choice</a><span class="tsd-signature-symbol">[]</span></div>
+					<a name="events" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> events</h3>
+					<div class="tsd-signature tsd-kind-icon">events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/Event.html" class="tsd-signature-type" data-tsd-kind="Interface">Event</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/8b67458/src/structures/field.ts#L16">structures/field.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/8b67458/src/events-handler.ts#L18">events-handler.ts:18</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The choices of the field</p>
+							<p>Structure for storing event handlers</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="description" class="tsd-anchor"></a>
-					<h3>description</h3>
-					<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="eventsFolder" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> events<wbr>Folder</h3>
+					<div class="tsd-signature tsd-kind-icon">events<wbr>Folder<span class="tsd-signature-symbol">:</span> <a href="Folder.html" class="tsd-signature-type" data-tsd-kind="Class">Folder</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/8b67458/src/structures/field.ts#L12">structures/field.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/8b67458/src/events-handler.ts#L16">events-handler.ts:16</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The description of the field</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="name" class="tsd-anchor"></a>
-					<h3>name</h3>
-					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/8b67458/src/structures/field.ts#L10">structures/field.ts:10</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The name of the field</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="required" class="tsd-anchor"></a>
-					<h3>required</h3>
-					<div class="tsd-signature tsd-kind-icon">required<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/8b67458/src/structures/field.ts#L14">structures/field.ts:14</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>If field is required</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
-					<a name="type" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> <span class="tsd-flag ts-flagOptional">Optional</span> type</h3>
-					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/8b67458/src/structures/field.ts#L36">structures/field.ts:36</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Field type</p>
+							<p>Structure for managing events folder</p>
 						</div>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Accessors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
-					<a name="data" class="tsd-anchor"></a>
-					<h3>data</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> data<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/FieldData.html" class="tsd-signature-type" data-tsd-kind="Interface">FieldData</a></li>
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="initializeEvents" class="tsd-anchor"></a>
+					<h3>initialize<wbr>Events</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">initialize<wbr>Events<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/8b67458/src/structures/field.ts#L55">structures/field.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/8b67458/src/events-handler.ts#L38">events-handler.ts:38</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="registerEvents" class="tsd-anchor"></a>
+					<h3>register<wbr>Events</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">register<wbr>Events<span class="tsd-signature-symbol">(</span>client<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Client</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/8b67458/src/events-handler.ts#L31">events-handler.ts:31</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Get field data</p>
+									<p>Register events to client</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/FieldData.html" class="tsd-signature-type" data-tsd-kind="Interface">FieldData</a></h4>
-							<p>Field as object</p>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>client: <span class="tsd-signature-type">Client</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Discord client</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -317,39 +234,33 @@
 					<li class=" tsd-kind-class">
 						<a href="ContextMenuCommand.html" class="tsd-kind-icon">Context<wbr>Menu<wbr>Command</a>
 					</li>
-					<li class=" tsd-kind-class">
-						<a href="EventsHandler.html" class="tsd-kind-icon">Events<wbr>Handler</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
-						<a href="Field.html" class="tsd-kind-icon">Field</a>
+						<a href="EventsHandler.html" class="tsd-kind-icon">Events<wbr>Handler</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="Field.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="EventsHandler.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="Field.html#choices" class="tsd-kind-icon">choices</a>
+								<a href="EventsHandler.html#events" class="tsd-kind-icon">events</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="Field.html#description" class="tsd-kind-icon">description</a>
+								<a href="EventsHandler.html#eventsFolder" class="tsd-kind-icon">events<wbr>Folder</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="Field.html#name" class="tsd-kind-icon">name</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="EventsHandler.html#initializeEvents" class="tsd-kind-icon">initialize<wbr>Events</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="Field.html#required" class="tsd-kind-icon">required</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
-								<a href="Field.html#type" class="tsd-kind-icon">type</a>
-							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="Field.html#data" class="tsd-kind-icon">data</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="EventsHandler.html#registerEvents" class="tsd-kind-icon">register<wbr>Events</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-class">
+						<a href="Field.html" class="tsd-kind-icon">Field</a>
+					</li>
 					<li class=" tsd-kind-class">
 						<a href="Folder.html" class="tsd-kind-icon">Folder</a>
 					</li>
