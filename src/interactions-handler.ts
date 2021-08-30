@@ -14,7 +14,7 @@ export class InteractionsHandler {
     dotenv.config();
     this.commandsFolder = new Folder(process.env.COMMANDS_FOLDER || "commands");
     this.commands = new Map();
-    this.initializeCommands();
+    this.loadCommands();
   }
 
   /**
@@ -80,9 +80,17 @@ export class InteractionsHandler {
       }
     }
   }
+  
+  /**
+   * Reloads all command
+   */
+  reloadCommands() {
+    this.commandsFolder.deleteCache();
+    this.loadCommands();
+  }
 
-  // Stores commands to memory
-  initializeCommands() {
+  // Load all commands
+  loadCommands() {
     for (let command of this.commandsFolder.files) {
       this.commands.set(command.name.toLowerCase(), command);
     }
