@@ -27,7 +27,9 @@ export class InteractionsHandler {
     if (interaction.isCommand()) {
 
       // Determine command type
-      const commandType: string = interaction.options.data?.[0]?.type || "COMMAND";
+      const commandOptionType = interaction.options.data?.[0]?.type
+      const commandFields = ["STRING", "INTEGER", "BOOLEAN", "USER", "CHANNEL", "ROLE", "MENTIONABLE", "NUMBER"];
+      const commandType: string = commandFields.includes(commandOptionType) || !commandOptionType ? "COMMAND" : commandOptionType;
       
       // Handle based on command type
       switch (commandType) {
@@ -79,6 +81,17 @@ export class InteractionsHandler {
         await client.api.applications(client.user.id).commands(command.id).delete();
       }
     }
+  }
+
+  /**
+   * Post slash command
+   * @param _client Discord Client
+   * @param name Command name
+   */
+  async postCommand(_client: Discord.Client, name: string) {
+    var client = <any>_client;
+    const command = await this.commandsFolder.file(name);
+    await client.api.applications(client.user?.id).commands.post({data: command.data})
   }
   
   /**
