@@ -75,9 +75,8 @@ export class InteractionsHandler {
     // Delete unexisting commands
     var commands = await client.api.applications(client.user.id).commands.get();
     for (let command of commands) {
-      try {
-        this.commandsFolder.file(command.name);
-      } catch {
+      const exist = this.commands.get(command.name);
+      if(!exist) {
         await client.api.applications(client.user.id).commands(command.id).delete();
       }
     }
@@ -90,8 +89,10 @@ export class InteractionsHandler {
    */
   async postCommand(_client: Discord.Client, name: string) {
     var client = <any>_client;
-    const command = await this.commandsFolder.file(name);
-    await client.api.applications(client.user?.id).commands.post({data: command.data})
+    const command = this.commands.get(name);
+    if (command) {
+      await client.api.applications(client.user?.id).commands.post({data: command.data})
+    };
   }
   
   /**
@@ -105,7 +106,7 @@ export class InteractionsHandler {
   // Load all commands
   loadCommands() {
     for (let command of this.commandsFolder.files) {
-      this.commands.set(command.name.toLowerCase(), command);
+      this.commands.set(command.name, command);
     }
   }
 }
