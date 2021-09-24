@@ -66,11 +66,15 @@
 						<strong>@ming-suhi/djs-commando</strong>
 					</a>
 				</p>
-				<p align="center">Powered by Discord.js</p>
+				<p align="center">
+					<a href="https://discord.com/invite/P3UMxQCEaY" target="_blank">
+						<img src="https://discordapp.com/api/guilds/753818535440023593/widget.png?style=shield" alt="Discord Server">
+					</a>
+				</p>
 				<a href="#i-about" id="i-about" style="color: inherit; text-decoration: none;">
 					<h2>I. About</h2>
 				</a>
-				<p>A package for easily creating and managing your Discord Slash Commands. For an in-depth documentation visit the <a href="https://ming-suhi.github.io/djs-commando/" target="_blank">documentation website</a>. </p>
+				<p>A discord.js extension for easily creating and managing your Discord Slash Commands. For an in-depth documentation visit the <a href="https://ming-suhi.github.io/djs-commando/" target="_blank">documentation website</a>. Or join the <a href="https://discord.com/invite/P3UMxQCEaY" target="_blank">support server</a> to meet the developer. Please note that this package is not associated with discord.js.</p>
 				<a href="#ii-quick-start" id="ii-quick-start" style="color: inherit; text-decoration: none;">
 					<h2>II. Quick Start</h2>
 				</a>
@@ -110,7 +114,7 @@
 					<h2>D. Creating a Command</h2>
 				</a>
 				<ol>
-					<li><p>Create a file inside the commands folder. File name must be the same as command name.</p>
+					<li><p>Create a file inside the commands folder. </p>
 					</li>
 					<li><p>Require <code>Command</code>.</p>
 						<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">Command</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;@ming-suhi/djs-commando&#039;</span><span style="color: #000000">);</span>
@@ -136,7 +140,7 @@
 <span style="color: #000000">}</span>
 </code></pre>
 					</li>
-					<li><p>Export created class.</p>
+					<li><p>Export created class. If using typescript please also export as shown below.</p>
 						<pre><code class="language-js"><span style="color: #267F99">module</span><span style="color: #000000">.</span><span style="color: #267F99">exports</span><span style="color: #000000"> = </span><span style="color: #001080">ping</span><span style="color: #000000">;</span>
 </code></pre>
 					</li>
@@ -230,8 +234,28 @@
 				<p>It is suggested to register events on <code>ready</code>.</p>
 				<pre><code class="language-js"><span style="color: #001080">handler</span><span style="color: #000000">.</span><span style="color: #795E26">registerEvents</span><span style="color: #000000">(</span><span style="color: #001080">client</span><span style="color: #000000">);</span>
 </code></pre>
-				<a href="#iv-contributing" id="iv-contributing" style="color: inherit; text-decoration: none;">
-					<h2>IV. Contributing</h2>
+				<a href="#iv-additional-feature-call-context-menu-command-using-message-reply" id="iv-additional-feature-call-context-menu-command-using-message-reply" style="color: inherit; text-decoration: none;">
+					<h2>IV. Additional Feature: Call context menu command using message reply</h2>
+				</a>
+				<p>Context menu commands are not yet available on mobile, so a round-about for this is calling context menu commands through message reply. Just simply reply the command name or alias to the target message or user to call on the corresponding context menu command.</p>
+				<a href="#a-creating-onreply-method" id="a-creating-onreply-method" style="color: inherit; text-decoration: none;">
+					<h2>A. Creating onReply method</h2>
+				</a>
+				<p>Create a onReply method for the command which accepts one parameter which is an instance of <code>Message</code> class of <code>discord.js</code>.</p>
+				<pre><code class="language-js"><span style="color: #001080">async</span><span style="color: #000000"> </span><span style="color: #795E26">onReply</span><span style="color: #000000">(</span><span style="color: #001080">message</span><span style="color: #000000">) {</span>
+<span style="color: #000000">  </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">message</span><span style="color: #000000">.</span><span style="color: #001080">channel</span><span style="color: #000000">.</span><span style="color: #795E26">send</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;Pong&quot;</span><span style="color: #000000">);</span>
+<span style="color: #000000">}</span>
+</code></pre>
+				<a href="#b-receiving-commands" id="b-receiving-commands" style="color: inherit; text-decoration: none;">
+					<h2>B. Receiving commands</h2>
+				</a>
+				<p>This will find the matching command and execute the onReply method.</p>
+				<pre><code class="language-js"><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">on</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;messageCreate&#039;</span><span style="color: #000000">, </span><span style="color: #0000FF">async</span><span style="color: #000000"> </span><span style="color: #001080">message</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">handler</span><span style="color: #000000">.</span><span style="color: #795E26">handleMessage</span><span style="color: #000000">(</span><span style="color: #001080">message</span><span style="color: #000000">);</span>
+<span style="color: #000000">});</span>
+</code></pre>
+				<a href="#v-contributing" id="v-contributing" style="color: inherit; text-decoration: none;">
+					<h2>V. Contributing</h2>
 				</a>
 				<a href="#a-issues" id="a-issues" style="color: inherit; text-decoration: none;">
 					<h2>A. Issues</h2>
