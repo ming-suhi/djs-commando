@@ -1,4 +1,4 @@
-import Discord from 'discord.js';
+import Discord, { Message } from 'discord.js';
 import dotenv from 'dotenv';
 import { Command, SubcommandGroup, Subcommand, UserCommand, CommandStructures, MessageCommand } from './structures/command';
 import { Folder } from './structures/folder';
@@ -52,10 +52,24 @@ export class InteractionsHandler {
       }
     }
 
-    // If user command
+    // If context menu command
     if (interaction.isContextMenu()) {
       var userCommand = <UserCommand|MessageCommand>this.commands.get(interaction.commandName.toLowerCase());
       await userCommand.execute?.(interaction);
+    }
+  }
+
+  /**
+   * Handle message command and user command called through reply
+   * @param message Discord message
+   */
+  async handleMessage(message: Message) {
+    // If message is a reply
+    if (message.type == "REPLY") {
+      const command = <MessageCommand|UserCommand>this.commands.get(message.content.toLowerCase());
+      if (command) {
+        await command.onReply(message);
+      }
     }
   }
 
@@ -106,7 +120,12 @@ export class InteractionsHandler {
   // Load all commands
   loadCommands() {
     for (let command of this.commandsFolder.files) {
+      console.log(command)
       this.commands.set(command.name, command);
+      if(!command.aliases) continue;
+      for (let alias of command.aliases) {
+        this.commands.set(alias, command);
+      }
     }
   }
 }

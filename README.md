@@ -8,11 +8,15 @@
   </a>
 </p>
 
-<p align="center">Powered by Discord.js</p>
+<p align="center">
+  <a href="https://discord.com/invite/P3UMxQCEaY" target="_blank">
+    <img src="https://discordapp.com/api/guilds/753818535440023593/widget.png?style=shield" alt="Discord Server">
+  </a>
+</p>
 
 
 ## I. About
-A package for easily creating and managing your Discord Slash Commands. For an in-depth documentation visit the <a href="https://ming-suhi.github.io/djs-commando/" target="_blank">documentation website</a>. 
+A discord.js extension for easily creating and managing your Discord Slash Commands. For an in-depth documentation visit the <a href="https://ming-suhi.github.io/djs-commando/" target="_blank">documentation website</a>. Or join the <a href="https://discord.com/invite/P3UMxQCEaY" target="_blank">support server</a> to meet the developer. Please note that this package is not associated with discord.js.
 
 
 ## II. Quick Start
@@ -48,7 +52,7 @@ npm install @ming-suhi/djs-commando
 
 ## D. Creating a Command
 
-1. Create a file inside the commands folder. File name must be the same as command name.
+1. Create a file inside the commands folder. 
 
 2. Require `Command`.
     ```js
@@ -78,7 +82,7 @@ npm install @ming-suhi/djs-commando
     }
     ```
 
-6. Export created class.
+6. Export created class. If using typescript please also export as shown below.
     ```js
     module.exports = ping;
     ``` 
@@ -162,7 +166,24 @@ It is suggested to register events on `ready`.
 handler.registerEvents(client);
 ```
 
-## IV. Contributing
+## IV. Additional Feature: Call context menu command using message reply
+Context menu commands are not yet available on mobile, so a round-about for this is calling context menu commands through message reply. Just simply reply the command name or alias to the target message or user to call on the corresponding context menu command.
+## A. Creating onReply method
+Create a onReply method for the command which accepts one parameter which is an instance of `Message` class of `discord.js`.
+```js
+async onReply(message) {
+  await message.channel.send("Pong");
+}
+```
+## B. Receiving commands
+This will find the matching command and execute the onReply method.
+```js
+client.on('messageCreate', async message => {
+  await handler.handleMessage(message);
+});
+```
+
+## V. Contributing
 ## A. Issues
 This project uses GitHub Issues to track bugs and feature requests. Please search the existing issues before filing new issues to avoid duplicates. For new issues, file your bug or feature request as a new issue.
 

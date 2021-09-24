@@ -1,5 +1,5 @@
 import { FieldData, FieldStructures } from './field';
-import { CommandInteraction, ContextMenuInteraction } from 'discord.js';
+import { CommandInteraction, ContextMenuInteraction, Message } from 'discord.js';
 
 /** Commands structures */
 export type CommandStructures = Command | SubcommandGroup | Subcommand | UserCommand | MessageCommand;
@@ -83,6 +83,10 @@ export class Subcommand extends SlashCommand<SubcommandOptions> {
 export interface ContextMenuCommand { 
   /** The name of the command */
   name: string, 
+  /** The aliases of the command */
+  aliases: string[],
+  /** Executed when message is sent */
+  onReply(message: Message): void,
   /** Executed when command is called */
   execute(interaction: ContextMenuInteraction): void
 };
