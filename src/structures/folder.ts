@@ -1,39 +1,35 @@
-import { deleteCache, getFiles } from '../utilities/folder';
-import { resolve } from 'path';
+import { resolve } from "path";
+import { getFolderPaths, getFilePaths, deleteCache } from "../services/file-system";
 
-/** Structure for managing a folder */
+/**
+ * Folder structure.
+ * Used to easily navigate through the file system.
+ */
 export class Folder {
-  /** Path to folder */
-  public path: string;
-
+  /** 
+   * The path to the folder 
+   */
+  readonly path: string;
+  /** 
+   * The folders inside the folder 
+   */
+  readonly folders: Folder[];
+  /** 
+   * The file exports of the files inside the folder 
+   */
+  readonly files: any[];
   /**
-   * @param path Path to folder
+   * @param path The path to the folder
    */
   constructor(path: string) {
-    this.path = resolve(require.main!.path, path);
+    this.path = resolve(path);
+    this.folders = getFolderPaths(path).map(path => new Folder(path));
+    this.files = getFilePaths(path).map(path => require(path));
   }
-
   /**
-   * Get the file exports of all files
-   * @returns File exports
-   */
-  get files(): any[] {
-    return getFiles(this.path);
-  }
-
-  /**
-   * Gets the file exports of a file
-   * @param name The name of the file
-   * @returns File exports
-   */
-  file(name: string): any {
-    return require(resolve(this.path, name));
-  }
-
-  /**
-   * Deletes the folder cache
+   * Delete cache of folder
    */
   deleteCache() {
-    deleteCache(this.path)
+    deleteCache(this.path);
   }
 }
