@@ -25,9 +25,7 @@ export const getFilePaths = (path: string) => {
   for (let content of readdirSync(path)) {
     const contentPath = resolve(path, content);
     const isDirectory = lstatSync(contentPath).isDirectory();
-    if (content.endsWith('.ts') || content.endsWith('.js')) {
-      if(!isDirectory) files.push(contentPath);
-    }
+    if ((content.endsWith('.ts') || content.endsWith('.js')) && (!isDirectory)) files.push(contentPath);
   }
   return files;
 }

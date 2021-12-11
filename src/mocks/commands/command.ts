@@ -1,35 +1,42 @@
-import { ChannelField, Command, Subcommand, SubcommandGroup } from "../..";
+import { BooleanField, ChannelField, Command, IntegerField, MentionableField, NumberField, RoleField, StringField, Subcommand, SubcommandGroup, UserField } from "../..";
 
-export const subcommandInsideGroup = new class extends Subcommand {
-  constructor() {
-    super();
-    this.name = "subcommandinsidegroup";
-    this.description = "a subcommand inside a group";
-  }
-}
-
-export const group = new class extends SubcommandGroup {
-  constructor() {
-    super([subcommandInsideGroup]);
-    this.name = "group";
-    this.description = "a subcommand group";
-  }
-}
-
-export const channel = new ChannelField("channel", "channel field", true);
+export const stringField = new StringField("string", "string field", true, [{name: "option", value: "1"}]);
+export const integerField = new IntegerField("integer", "integer field");
+export const booleanField = new BooleanField("boolean", "boolean field", false);
+export const userField = new UserField("user", "user field", true);
+export const channelField = new ChannelField("channel", "channel field", true);
+export const roleField = new RoleField("role", "role field", true);
+export const mentionableField = new MentionableField("mentionable", "mentionable field", true);
+export const numberField = new NumberField("number", "number field", true);
 
 export const subcommand = new class extends Subcommand {
   constructor() {
-    super([channel]);
+    super([stringField, integerField, booleanField, userField, channelField, roleField, mentionableField, numberField]);
     this.name = "subcommand";
     this.description ="a subcommand";
   }
 }
 
+export const subcommandTwo = new class extends Subcommand {
+  constructor() {
+    super();
+    this.name = "subcommandTwo";
+    this.description ="a subcommand";
+  }
+}
+
+export const subcommandgroup = new class extends SubcommandGroup {
+  constructor() {
+    super([subcommand, subcommandTwo]);
+    this.name = "subcommandgroup";
+    this.description = "a subcommand group";
+  }
+}
+
 export const command = new class extends Command {
   constructor() {
-    super([subcommand, group]);
-    this.name = "top";
+    super([subcommand, subcommandgroup]);
+    this.name = "command";
     this.description = "a top level command";
   }
 }

@@ -24,7 +24,7 @@ export class CommandsMap extends Map<string, Command>{
    */
   getCommand(array: string[]) {
     array = array.filter(Boolean);
-    var command: any = this.get(array[0])!;
+    var command: any = this.get(array[0]);
     if (array.length > 1) command = command?.options.get(array[1]);
     if (array.length > 2) command = command?.options.get(array[2]);
     return command;
