@@ -6,6 +6,12 @@ import { Command } from "..";
  */
 export class CommandsMap extends Map<string, Command>{
   /**
+   * Get an array of raw data of all commands.
+   */
+  get rawData() {
+    return Array.from(this.entries()).map(([index, value]) => value.rawData);
+  }
+  /**
    * Get command by name.
    * Can be used to easily get subcommands under command or subcommand group.
    * To get a nested subcommand or subcommand group, enter all parent nodes from top level command in order.

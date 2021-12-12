@@ -48,7 +48,7 @@ export class SlashCommand<TOptions extends Array<any>> {
     return({
       name: this.name,
       description: this.description,
-      options: this._options.map(option => option.rawData),
+      options: this._options.map(option => option.rawData).filter(option => option != undefined),
       type: this.type
     })
   }

@@ -5,6 +5,10 @@ describe("CommandsMap", () => {
 
   const commands = new CommandsMap([[MockCommand.command.name, MockCommand.command]]);
 
+  test("rawData property", () => {
+    expect(commands.rawData).toEqual([MockCommand.command.rawData]);
+  });
+
   describe("getCommand function", () => {
     
     it("should return undefined", () => {
