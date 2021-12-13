@@ -1,5 +1,5 @@
 import { resolve } from "path";
-import { getFolderPaths, getFilePaths, deleteCache } from "../services/file-system";
+import FileSystemService from "../services/file-system";
 
 /**
  * Folder structure.
@@ -23,13 +23,13 @@ export class Folder {
    */
   constructor(path: string) {
     this.path = resolve(path);
-    this.folders = getFolderPaths(path).map(path => new Folder(path));
-    this.files = getFilePaths(path).map(path => require(path));
+    this.folders = FileSystemService.getFolderPaths(path).map(path => new Folder(path));
+    this.files = FileSystemService.getFilePaths(path).map(path => require(path));
   }
   /**
    * Delete cache of folder
    */
   deleteCache() {
-    deleteCache(this.path);
+    FileSystemService.deleteCache(this.path);
   }
 }
