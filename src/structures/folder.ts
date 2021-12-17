@@ -5,7 +5,7 @@ import FileSystemService from "../services/file-system";
  * Folder structure.
  * Used to easily navigate through the file system.
  */
-export class Folder {
+export default class Folder {
   /** 
    * The path to the folder 
    */

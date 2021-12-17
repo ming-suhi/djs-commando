@@ -1,7 +1,7 @@
 import { userCommand } from "../mocks/commands/userCommand";
 import { messageCommand } from "../mocks/commands/messageCommand";
-import messageCommandRaw from "../mocks/commands-raws/command_2.json";
-import userCommandRaw from "../mocks/commands-raws/command_3.json";
+import userCommandRaw from "../mocks/commands-raws/command_2.json";
+import messageCommandRaw from "../mocks/commands-raws/command_3.json";
 
 describe("Context Menu Commands", () => {
 

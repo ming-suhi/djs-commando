@@ -1,10 +1,10 @@
-import { Command } from "..";
+import { ApplicationCommandType } from "./application-commands";
 
 /**
  * Commands Map.
  * Extends Map to easily access commands; store and get commands.
  */
-export class CommandsMap extends Map<string, Command>{
+export default class CommandsMap extends Map<string, ApplicationCommandType>{
   /**
    * Get an array of raw data of all commands.
    */

@@ -1,6 +1,9 @@
 import { readdirSync, lstatSync } from "fs";
 import { resolve } from "path";
 
+/**
+ * File system related functions.
+ */
 export default class FileSystemService {
   /**
    * Get the path of all folders inside a given path.

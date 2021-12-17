@@ -1,7 +1,8 @@
-import Discord, { Message } from 'discord.js';
+import Discord from 'discord.js';
 import dotenv from 'dotenv';
-import { CommandsMap } from './commands-map';
-import { Folder } from '..';
+import CommandsMap from './commands-map';
+import Folder from './folder';
+import { MessageCommand, UserCommand } from "./menu-command-consumer";
 
 export class InteractionsHandler {
   public readonly commandsFolder: Folder;
@@ -20,9 +21,9 @@ export class InteractionsHandler {
   }
 
   async handleMessage(message: Discord.Message) {
-    if(message.type == "REPLY") {
-      const command = this.commands.get(message.content.toLowerCase());
-      //if(command) await command.onReply(message);
+    if (message.type == "REPLY") {
+      const command = this.commands.get(message.content.toLowerCase()) as MessageCommand | UserCommand;
+      if (command) await command.onReply(message);
     }
   }
 
@@ -35,7 +36,7 @@ export class InteractionsHandler {
   loadCommands() {
     for (let command of this.commandsFolder.files) {
       this.commands.set(command.name, command);
-      if(!command.aliases) continue;
+      if (!command.aliases) continue;
       for (let alias of command.aliases) {
         this.commands.set(alias, command);
       }

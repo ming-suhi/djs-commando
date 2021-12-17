@@ -1,5 +1,5 @@
 import * as MockCommand from "../mocks/commands/command";
-import { CommandsMap } from "./commands-map";
+import CommandsMap from "./commands-map";
 
 describe("CommandsMap", () => {
 
