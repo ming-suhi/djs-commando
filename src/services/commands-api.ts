@@ -9,13 +9,25 @@ export default class CommandsAPIService {
    * @param appId Application Id
    * @param token Bot token
    */
-  static async getCommands(appId: string, token: string) {
+  static async getCommands(appId: string, token: string): Promise<any[]> {
     const response = await fetch(`https://discord.com/api/v8/applications/${appId}/commands`, {
       method: 'GET',
       headers: {'Authorization': `Bot ${token}`}
     });
     const commands = await response.json();
     return commands;
+  }
+
+  /**
+   * Get a bot's command data by name from Discord.
+   * @param appId Application Id
+   * @param token Bot token
+   * @param commandName Name of command to get
+   */
+  static async getCommand(appId: string, token: string, commandName: string) {
+    const commands = await this.getCommands(appId, token);
+    const command = commands.find(command => command.name == commandName);
+    return command;
   }
 
   /**

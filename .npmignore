@@ -1,12 +1,18 @@
-node_modules/
+# Src
+/src
 
-.github/
+# NPM
+/node_modules
 
-src/
+# Generated content
+/coverage
+/docs
 
-tests/
+# Github
+/.gitignore
+/.github
 
-.gitignore
-
-tsconfig.json
-typedoc.json
+# Config files
+/tsconfig.json
+/jest.config.js
+/typedoc.json
