@@ -1,5 +1,5 @@
 /** 
- * Interface for field choices
+ * Interface for field choices.
  */
 export interface choice { 
   /**
@@ -39,7 +39,7 @@ export default interface Field {
 }
 
 /**
- * Base field structure for creating field types.
+ * Base field structure.
  * Do not use for creating fields.
  */
 export default class Field {

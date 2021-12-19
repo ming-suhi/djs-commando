@@ -1,6 +1,9 @@
 import { ContextMenuInteraction, Message } from "discord.js";
 import ContextMenuCommand from "./menu-command";
 
+/**
+ * Interface for creating context menu commands.
+ */
 export interface ContextMenuCommandBuilder extends ContextMenuCommand {
   /**
    * An array of aliases to call command
@@ -18,4 +21,7 @@ export interface ContextMenuCommandBuilder extends ContextMenuCommand {
   execute(interaction: ContextMenuInteraction): void
 }
 
+/**
+ * Managed class for creating context menu command types.
+ */
 export class ContextMenuCommandBuilder extends ContextMenuCommand { }

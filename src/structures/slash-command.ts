@@ -1,5 +1,5 @@
 /** 
- * Interface for slash command creation 
+ * Interface for slash command creation.
  */
 export default interface SlashCommand {
   /**
@@ -17,12 +17,11 @@ export default interface SlashCommand {
   /**
    * The options of the command.
    */
-  options: any[];
+  options?: any[];
 }
 
 /**
- * Base structure for creating slash command types.
- * Limit option types with `TOptions`.
+ * Base structure slash command structure.
  * Do not use for creating commands.
  */
 export default class SlashCommand {

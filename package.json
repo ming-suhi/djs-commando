@@ -7,12 +7,11 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "jest",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "postinstall": "node ./dist/cli-services/index.js"
   },
   "bin": {
-    "djs-get-commands": "dist/cli-services/get-commands.js",
-    "djs-get-command": "dist/cli-services/get-command.js",
-    "djs-post-command": "dist/cli-services/post-command.js"
+    "djsc": "dist/cli-services/index.js"
   },
   "repository": {
     "type": "git",
@@ -32,11 +31,17 @@
   },
   "homepage": "https://github.com/ming-suhi/djs-commando#readme",
   "dependencies": {
+    "chalk": "<5.0.0",
+    "clear": "^0.1.0",
     "discord.js": "^13.1.0",
     "dotenv": "^10.0.0",
-    "node-fetch": "<3.0.0"
+    "figlet": "^1.5.2",
+    "node-fetch": "<3.0.0",
+    "node-fetch-retry": "^2.0.0"
   },
   "devDependencies": {
+    "@types/clear": "^0.1.2",
+    "@types/figlet": "^1.5.4",
     "@types/jest": "^27.0.3",
     "@types/node": "^16.11.12",
     "@types/node-fetch": "<3.0.0",

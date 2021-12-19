@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+import fetch from "node-fetch-retry";
 
 /**
  * For interacting with Discord API.
@@ -12,22 +12,13 @@ export default class CommandsAPIService {
   static async getCommands(appId: string, token: string): Promise<any[]> {
     const response = await fetch(`https://discord.com/api/v8/applications/${appId}/commands`, {
       method: 'GET',
-      headers: {'Authorization': `Bot ${token}`}
-    });
-    const commands = await response.json();
+      headers: {'Authorization': `Bot ${token}`},
+      retry: 3, 
+      pause: 5000,
+      silent: true
+    })
+    const commands = response.json();
     return commands;
-  }
-
-  /**
-   * Get a bot's command data by name from Discord.
-   * @param appId Application Id
-   * @param token Bot token
-   * @param commandName Name of command to get
-   */
-  static async getCommand(appId: string, token: string, commandName: string) {
-    const commands = await this.getCommands(appId, token);
-    const command = commands.find(command => command.name == commandName);
-    return command;
   }
 
   /**
@@ -39,10 +30,36 @@ export default class CommandsAPIService {
   static async postCommand(appId: string, token: string, data: any) {
     const response = await fetch(`https://discord.com/api/v8/applications/${appId}/commands`, {
       method: 'POST',
-      headers: {'Authorization': `Bot ${token}`},
-      body: JSON.stringify(data)
+      headers: {
+        'Authorization': `Bot ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data),
+      retry: 3, 
+      pause: 5000,
+      silent: true
     });
-    const commands = await response.json();
-    return commands;
+    const status = await response.json();
+    console.log(status)
+    return status;
+  }
+
+
+  /**
+   * Delete a command by id.
+   * @param appId Application Id
+   * @param token Bot token
+   * @param commandId Command Id
+   */
+  static async deleteCommand(appId: string, token: string, commandId: string) {
+    const response = await fetch(`https://discord.com/api/v8/applications/${appId}/commands/${commandId}`, {
+      method: 'DELETE',
+      headers: {'Authorization': `Bot ${token}`},
+      retry: 3, 
+      pause: 5000,
+      silent: true
+    });
+    const status = await response.text();
+    return status;
   }
 }

@@ -1,16 +1,25 @@
-#!node
-
+import chalk from "chalk";
 import CommandsAPIService from "../services/commands-api";
 import { InteractionsHandler } from "../structures/interactions-handler";
-import dotenv from "dotenv";
+import { checkEnv } from "./utils";
 
-dotenv.config();
+const commandNameNotProvided = () => console.log(chalk.red(`Command name not provided \n`));
+const commandNotFound = (commandName: string) => console.log(chalk.red(`No command found with the name: ${commandName} \n`));
 
-async function main() {
-  const commandName = process.argv[2];
+export async function postCommand() {
+  // check if env variables are defined
+  if(!checkEnv()) return;
+
+  // check if command name was provided
+  const commandName = process.argv[3];
+  if(!commandName) return commandNameNotProvided();
+
+  // get local commands
   const handler = new InteractionsHandler();
-  const command = handler.commands.get(commandName);
-  if(command) await CommandsAPIService.postCommand(process.env.APP_ID!, process.env.BOT_TOKEN!, command.rawData);
-}
+  const localCommand = handler.commands.get(commandName);
+  if(!localCommand) return commandNotFound(commandName);
 
-main();
+  // post command
+  await CommandsAPIService.postCommand(process.env.APP_ID!, process.env.BOT_TOKEN!, localCommand.rawData);
+  console.log(chalk.green(`Posted command with the name: ${commandName} \n`));
+}

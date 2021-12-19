@@ -13,7 +13,7 @@ export default interface ContextMenuCommand {
 };
 
 /**
- * Base structure for creating context menu command types.
+ * Base structure context menu command types.
  * Do not use for creating context menu commands.
  */
 export default class ContextMenuCommand {

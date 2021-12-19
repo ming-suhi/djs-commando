@@ -1,6 +1,9 @@
 import { CommandInteraction } from "discord.js";
 import SlashCommand from "./slash-command";
 
+/**
+ * Interface for creating slash command creation.
+ */
 export default interface SlashCommandBuilder<TOptions extends Array<any>> extends Omit<SlashCommand, "options"> {
   /**
    * The function to execute when command is called
@@ -9,6 +12,9 @@ export default interface SlashCommandBuilder<TOptions extends Array<any>> extend
   execute(interaction: CommandInteraction): void;
 }
 
+/**
+ * Managed slash command structure for creating slash command types(have options property).
+ */
 export default class SlashCommandBuilder<TOptions extends Array<any>> {
   /**
    * The mapped options.

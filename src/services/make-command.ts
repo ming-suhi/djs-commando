@@ -2,6 +2,7 @@ import { BooleanField, ChannelField, IntegerField, MentionableField, NumberField
 import { MessageCommand, UserCommand } from "../structures/menu-command-consumer";
 import { Command, Subcommand, SubcommandGroup } from "../structures/slash-command-consumer";
 import { ApplicationCommandType, CommandOptionType, commandOptionStructures } from "../structures/application-commands";
+import CommandsMap from "../structures/commands-map";
 
 /**
  * Transform raw objects to managed classes.
@@ -21,7 +22,7 @@ export default class MakeCommandService {
    * @param commandData The raw object for command data
    */
   static makeSubcommand(commandData: Subcommand["rawData"]) {
-    const options = commandData.options.map(option => this.makeField(option));
+    const options = commandData.options?.map(option => this.makeField(option));
     const subcommand = new Subcommand(options);
     subcommand.name = commandData.name;
     subcommand.description = commandData.description;
@@ -33,7 +34,7 @@ export default class MakeCommandService {
    * @param commandData The raw object for command data
    */
   static makeSubcommandGroup(commandData: SubcommandGroup["rawData"]) {
-    const options = commandData.options.map(option => this.makeSubcommand(option));
+    const options = commandData.options?.map(option => this.makeSubcommand(option));
     const subcommandGroup = new SubcommandGroup(options);
     subcommandGroup.name = commandData.name;
     subcommandGroup.description = commandData.description;
@@ -55,7 +56,7 @@ export default class MakeCommandService {
    * @param commandData The raw object for command data
    */
   static makeCommand(commandData: Command["rawData"]) {
-    const commandOptions = commandData.options.map(option => this.makeCommandOption(option)) as (SubcommandGroup | Subcommand)[] | FieldType[];
+    const commandOptions = commandData.options?.map(option => this.makeCommandOption(option)) as (SubcommandGroup | Subcommand)[] | FieldType[];
     const command = new Command(commandOptions);
     command.name = commandData.name;
     command.description = commandData.description;
@@ -90,5 +91,14 @@ export default class MakeCommandService {
     if(commandData.type == 1) return this.makeCommand(commandData as Command["rawData"]);
     if(commandData.type == 2) return this.makeUserCommand(commandData);
     if(commandData.type == 3) return this.makeMessageCommand(commandData);
+  }
+
+  /**
+   * Transform command datas to corresponding command class and store them on a commands map.
+   * @param commandData The raw object for command data
+   */
+   static makeApplicationCommands(commandDatas: ApplicationCommandType["rawData"][]) {
+    const commandsMap = new CommandsMap(commandDatas.map(data => [data.name, this.makeApplicationCommand(data)!])); 
+    return commandsMap;
   }
 }
