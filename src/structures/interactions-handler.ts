@@ -2,7 +2,6 @@ import Discord from 'discord.js';
 import dotenv from 'dotenv';
 import CommandsMap from './commands-map';
 import Folder from './folder';
-import { MessageCommand, UserCommand } from "./menu-command-consumer";
 
 /**
  * Main structure for managing commands and interactions.
@@ -29,18 +28,20 @@ export class InteractionsHandler {
    */
   async handleInteraction(interaction: Discord.Interaction) {
     if (interaction.isCommand() || interaction.isContextMenu()) {
-      const command = this.commands.getCommand([interaction.commandName, interaction.options.getSubcommandGroup(), interaction.options.getSubcommand()]);
+      let subcommand = undefined;
+      let subcommandGroup = undefined;
+      try { 
+        subcommand = interaction.options?.getSubcommand();
+      } catch {
+        subcommand = "";
+      }
+      try { 
+        subcommandGroup = interaction.options?.getSubcommandGroup.prototype;
+      } catch {
+        subcommandGroup = "";
+      }
+      const command = this.commands.getCommand([interaction.commandName, subcommandGroup, subcommand]);
       if (command) await command.execute(interaction);
-    }
-  }
-  /**
-   * Checks if message is a command, and executes matching command.
-   * @param message The message received
-   */
-  async handleMessage(message: Discord.Message) {
-    if (message.type == "REPLY") {
-      const command = this.commands.get(message.content.toLowerCase()) as MessageCommand | UserCommand;
-      if (command) await command.onReply(message);
     }
   }
   /**
