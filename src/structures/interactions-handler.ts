@@ -1,5 +1,6 @@
 import Discord from 'discord.js';
 import dotenv from 'dotenv';
+import ErrorHandlingService from '../services/error-handling';
 import CommandsMap from './commands-map';
 import Folder from './folder';
 
@@ -28,18 +29,8 @@ export class InteractionsHandler {
    */
   async handleInteraction(interaction: Discord.Interaction) {
     if (interaction.isCommand() || interaction.isContextMenu()) {
-      let subcommand = undefined;
-      let subcommandGroup = undefined;
-      try { 
-        subcommand = interaction.options?.getSubcommand();
-      } catch {
-        subcommand = "";
-      }
-      try { 
-        subcommandGroup = interaction.options?.getSubcommandGroup.prototype;
-      } catch {
-        subcommandGroup = "";
-      }
+      let subcommand = ErrorHandlingService.undefinedOnError(() => interaction.options?.getSubcommand()) || "";
+      let subcommandGroup = ErrorHandlingService.undefinedOnError(() => interaction.options?.getSubcommandGroup()) || "";
       const command = this.commands.getCommand([interaction.commandName, subcommandGroup, subcommand]);
       if (command) await command.execute(interaction);
     }
