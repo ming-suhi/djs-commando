@@ -28,7 +28,7 @@ export default async function compareCommand() {
 
   // compare commands
   const { localOnly, databaseOnly, modified } = compareCommands(localCommands.commands, databaseCommands);
-  if(localCommands.commands.rawData == databaseCommands.rawData) return console.log(chalk.green("Commands in sync."));
+  if(localOnly.length === 0 && databaseOnly.length === 0 && modified.length === 0) return console.log(chalk.green("Commands in sync."));
   console.log("Commands not in sync. Please sync using sync command or manually post and delete.");
   console.log(chalk.green(`+ Exists locally but not on Discord`));
   console.log(chalk.red("- Exists on Discord but not locally"));

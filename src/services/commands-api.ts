@@ -17,7 +17,7 @@ export default class CommandsAPIService {
       pause: 5000,
       silent: true
     })
-    const commands = response.json();
+    const commands = await response.json();
     return commands;
   }
 
@@ -40,7 +40,6 @@ export default class CommandsAPIService {
       silent: true
     });
     const status = await response.json();
-    console.log(status)
     return status;
   }
 

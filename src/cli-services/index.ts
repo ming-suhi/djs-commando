@@ -7,6 +7,7 @@ import chalk from "chalk";
 import deleteCommand from "./delete-command";
 import compareCommand from "./compare-command";
 import { postCommand } from "./post-command";
+import { syncCommands } from "./sync-command";
 
 dotenv.config();
 
@@ -17,6 +18,10 @@ async function main() {
       help();
       break;
 
+    case "sc":
+      await syncCommands();
+      break;
+      
     case "gc":
       await getCommand();
       break;
