@@ -29,8 +29,8 @@ export class InteractionsHandler {
    */
   async handleInteraction(interaction: Discord.Interaction) {
     if (interaction.isCommand() || interaction.isContextMenu()) {
-      let subcommand = ErrorHandlingService.undefinedOnError(() => interaction.options?.getSubcommand()) || "";
-      let subcommandGroup = ErrorHandlingService.undefinedOnError(() => interaction.options?.getSubcommandGroup()) || "";
+      let subcommand = ErrorHandlingService.undefinedOnError(() => (interaction.options as Discord.CommandInteractionOptionResolver)?.getSubcommand()) || "";
+      let subcommandGroup = ErrorHandlingService.undefinedOnError(() => (interaction.options as Discord.CommandInteractionOptionResolver)?.getSubcommandGroup()) || "";
       const command = this.commands.getCommand([interaction.commandName, subcommandGroup, subcommand]);
       if (command) await command.execute(interaction);
     }
