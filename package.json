@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "jest",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "tsc -p tsconfig.json"
   },
   "bin": {
     "djsc": "dist/cli-services/index.js"
@@ -19,11 +19,11 @@
   "keywords": [
     "discord",
     "discord-interactions",
-    "discord-slash",
     "discord-buttons",
     "discord-select-menus",
     "discord-slash-commands",
-    "discord-manager"
+    "discord-cli-tool",
+    "discord-cli"
   ],
   "bugs": {
     "url": "https://github.com/ming-suhi/djs-commando/issues"

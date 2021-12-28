@@ -9,7 +9,7 @@ export interface choice {
    /**
     * The value to pass when choice is selected
     */
-   value: string 
+   value: string | number
 };
 
 /**
