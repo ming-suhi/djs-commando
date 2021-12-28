@@ -68,7 +68,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Structure for creating command</p>
+						<p>Command</p>
 					</div>
 				</div>
 			</section>
@@ -76,7 +76,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="SlashCommand.html" class="tsd-signature-type" data-tsd-kind="Class">SlashCommand</a><span class="tsd-signature-symbol">&lt;</span><a href="../modules.html#CommandOptions" class="tsd-signature-type" data-tsd-kind="Type alias">CommandOptions</a><span class="tsd-signature-symbol">&gt;</span>
+						<span class="tsd-signature-type">SlashCommandBuilder</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">(</span><a href="SubcommandGroup.html" class="tsd-signature-type" data-tsd-kind="Class">SubcommandGroup</a><span class="tsd-signature-symbol"> | </span><a href="Subcommand.html" class="tsd-signature-type" data-tsd-kind="Class">Subcommand</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><a href="../modules.html#FieldType" class="tsd-signature-type" data-tsd-kind="Type alias">FieldType</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span>
 						<ul class="tsd-hierarchy">
 							<li>
 								<span class="target">Command</span>
@@ -98,16 +98,17 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="Command.html#_options" class="tsd-kind-icon">_options</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="Command.html#description" class="tsd-kind-icon">description</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="Command.html#name" class="tsd-kind-icon">name</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="Command.html#options" class="tsd-kind-icon">options</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="Command.html#type" class="tsd-kind-icon">type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite"><a href="Command.html#type" class="tsd-kind-icon">type</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="Command.html#data" class="tsd-kind-icon">data</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="Command.html#rawData" class="tsd-kind-icon">raw<wbr>Data</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-inherited">
@@ -125,22 +126,22 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Command<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">?: </span><a href="../modules.html#CommandOptions" class="tsd-signature-type" data-tsd-kind="Type alias">CommandOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Command.html" class="tsd-signature-type" data-tsd-kind="Class">Command</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Command<span class="tsd-signature-symbol">(</span>_options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">(</span><a href="SubcommandGroup.html" class="tsd-signature-type" data-tsd-kind="Class">SubcommandGroup</a><span class="tsd-signature-symbol"> | </span><a href="Subcommand.html" class="tsd-signature-type" data-tsd-kind="Class">Subcommand</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><a href="../modules.html#FieldType" class="tsd-signature-type" data-tsd-kind="Type alias">FieldType</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Command.html" class="tsd-signature-type" data-tsd-kind="Class">Command</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="SlashCommand.html">SlashCommand</a>.<a href="SlashCommand.html#constructor">constructor</a></p>
+								<p>Inherited from SlashCommandBuilder&lt;(SubcommandGroup | Subcommand)[] | FieldType[]&gt;.constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/a13d51e/src/structures/command.ts#L51">structures/command.ts:51</a></li>
+									<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/137f6ff/src/structures/slash-command-builder.ts#L27">structures/slash-command-builder.ts:27</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <a href="../modules.html#CommandOptions" class="tsd-signature-type" data-tsd-kind="Type alias">CommandOptions</a></h5>
+									<h5>_options: <span class="tsd-signature-symbol">(</span><a href="SubcommandGroup.html" class="tsd-signature-type" data-tsd-kind="Class">SubcommandGroup</a><span class="tsd-signature-symbol"> | </span><a href="Subcommand.html" class="tsd-signature-type" data-tsd-kind="Class">Subcommand</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><a href="../modules.html#FieldType" class="tsd-signature-type" data-tsd-kind="Type alias">FieldType</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol"> = []</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>Slash command options</p>
+										<p>The options for the command.</p>
 									</div>
 								</li>
 							</ul>
@@ -152,18 +153,26 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="_options" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> _options</h3>
+					<div class="tsd-signature tsd-kind-icon">_options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><a href="SubcommandGroup.html" class="tsd-signature-type" data-tsd-kind="Class">SubcommandGroup</a><span class="tsd-signature-symbol"> | </span><a href="Subcommand.html" class="tsd-signature-type" data-tsd-kind="Class">Subcommand</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><a href="../modules.html#FieldType" class="tsd-signature-type" data-tsd-kind="Type alias">FieldType</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol"> = []</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from SlashCommandBuilder._options</p>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="description" class="tsd-anchor"></a>
 					<h3>description</h3>
 					<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="SlashCommand.html">SlashCommand</a>.<a href="SlashCommand.html#description">description</a></p>
+						<p>Inherited from SlashCommandBuilder.description</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/a13d51e/src/structures/command.ts#L24">structures/command.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/137f6ff/src/structures/slash-command.ts#L16">structures/slash-command.ts:16</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Command description</p>
+							<p>The description of the command.</p>
 						</div>
 					</div>
 				</section>
@@ -172,71 +181,81 @@
 					<h3>name</h3>
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="SlashCommand.html">SlashCommand</a>.<a href="SlashCommand.html#name">name</a></p>
+						<p>Inherited from SlashCommandBuilder.name</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/a13d51e/src/structures/command.ts#L22">structures/command.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/137f6ff/src/structures/slash-command.ts#L12">structures/slash-command.ts:12</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Command name</p>
+							<p>The name of the command.</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="options" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> options</h3>
-					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <a href="OptionsManager.html" class="tsd-signature-type" data-tsd-kind="Class">OptionsManager</a><span class="tsd-signature-symbol">&lt;</span><a href="../modules.html#CommandOptions" class="tsd-signature-type" data-tsd-kind="Type alias">CommandOptions</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="SubcommandGroup.html" class="tsd-signature-type" data-tsd-kind="Class">SubcommandGroup</a><span class="tsd-signature-symbol"> | </span><a href="Subcommand.html" class="tsd-signature-type" data-tsd-kind="Class">Subcommand</a><span class="tsd-signature-symbol"> | </span><a href="../modules.html#FieldType" class="tsd-signature-type" data-tsd-kind="Type alias">FieldType</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="SlashCommand.html">SlashCommand</a>.<a href="SlashCommand.html#options">options</a></p>
+						<p>Inherited from SlashCommandBuilder.options</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/a13d51e/src/structures/command.ts#L46">structures/command.ts:46</a></li>
+							<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/137f6ff/src/structures/slash-command-builder.ts#L23">structures/slash-command-builder.ts:23</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Command options</p>
+							<p>The mapped options.
+							Used for easily finding options using option name.</p>
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
 					<a name="type" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> type</h3>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> type</h3>
 					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">1</span><span class="tsd-signature-symbol"> = 1</span></div>
 					<aside class="tsd-sources">
-						<p>Overrides <a href="SlashCommand.html">SlashCommand</a>.<a href="SlashCommand.html#type">type</a></p>
+						<p>Overrides SlashCommandBuilder.type</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/a13d51e/src/structures/command.ts#L69">structures/command.ts:69</a></li>
+							<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/137f6ff/src/structures/slash-command-consumer.ts#L16">structures/slash-command-consumer.ts:16</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Command type</p>
-						</div>
-					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Accessors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
-					<a name="data" class="tsd-anchor"></a>
-					<h3>data</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> data<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/SlashCommandData.html" class="tsd-signature-type" data-tsd-kind="Interface">SlashCommandData</a></li>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="rawData" class="tsd-anchor"></a>
+					<h3>raw<wbr>Data</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> rawData<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>description<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/a13d51e/src/structures/command.ts#L58">structures/command.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/137f6ff/src/structures/slash-command-builder.ts#L33">structures/slash-command-builder.ts:33</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Get the command as JSON object</p>
+									<p>The raw object for command data. Used to interact with discord.</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/SlashCommandData.html" class="tsd-signature-type" data-tsd-kind="Interface">SlashCommandData</a></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span>description<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></h4>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter">
+									<h5>description<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
 						</li>
 					</ul>
 				</section>
@@ -245,27 +264,30 @@
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="execute" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> execute</h3>
+					<h3>execute</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">execute<span class="tsd-signature-symbol">(</span>interaction<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">CommandInteraction</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">execute<span class="tsd-signature-symbol">(</span>interaction<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">CommandInteraction</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">CacheType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="SlashCommand.html">SlashCommand</a>.<a href="SlashCommand.html#execute">execute</a></p>
+								<p>Inherited from SlashCommandBuilder.execute</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/a13d51e/src/structures/command.ts#L26">structures/command.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/ming-suhi/djs-commando/blob/137f6ff/src/structures/slash-command-builder.ts#L12">structures/slash-command-builder.ts:12</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Command function</p>
+									<p>The function to execute when command is called</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>interaction: <span class="tsd-signature-type">CommandInteraction</span></h5>
+									<h5>interaction: <span class="tsd-signature-type">CommandInteraction</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">CacheType</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The command interaction object</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -299,6 +321,9 @@
 								<a href="Command.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="Command.html#_options" class="tsd-kind-icon">_options</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="Command.html#description" class="tsd-kind-icon">description</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
@@ -307,11 +332,11 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="Command.html#options" class="tsd-kind-icon">options</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
 								<a href="Command.html#type" class="tsd-kind-icon">type</a>
 							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
-								<a href="Command.html#data" class="tsd-kind-icon">data</a>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="Command.html#rawData" class="tsd-kind-icon">raw<wbr>Data</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="Command.html#execute" class="tsd-kind-icon">execute</a>
@@ -320,18 +345,6 @@
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class">
-						<a href="ContextMenuCommand.html" class="tsd-kind-icon">Context<wbr>Menu<wbr>Command</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="EventsHandler.html" class="tsd-kind-icon">Events<wbr>Handler</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="Field.html" class="tsd-kind-icon">Field</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="Folder.html" class="tsd-kind-icon">Folder</a>
-					</li>
 					<li class=" tsd-kind-class">
 						<a href="IntegerField.html" class="tsd-kind-icon">Integer<wbr>Field</a>
 					</li>
@@ -347,14 +360,8 @@
 					<li class=" tsd-kind-class">
 						<a href="NumberField.html" class="tsd-kind-icon">Number<wbr>Field</a>
 					</li>
-					<li class=" tsd-kind-class tsd-has-type-parameter">
-						<a href="OptionsManager.html" class="tsd-kind-icon">Options<wbr>Manager</a>
-					</li>
 					<li class=" tsd-kind-class">
 						<a href="RoleField.html" class="tsd-kind-icon">Role<wbr>Field</a>
-					</li>
-					<li class=" tsd-kind-class tsd-has-type-parameter">
-						<a href="SlashCommand.html" class="tsd-kind-icon">Slash<wbr>Command</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="StringField.html" class="tsd-kind-icon">String<wbr>Field</a>
@@ -371,35 +378,20 @@
 					<li class=" tsd-kind-class">
 						<a href="UserField.html" class="tsd-kind-icon">User<wbr>Field</a>
 					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/Choice.html" class="tsd-kind-icon">Choice</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/Event.html" class="tsd-kind-icon">Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/FieldData.html" class="tsd-kind-icon">Field<wbr>Data</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/SlashCommandData.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Data</a>
+					<li class=" tsd-kind-type-alias">
+						<a href="../modules.html#ApplicationCommandType" class="tsd-kind-icon">Application<wbr>Command<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
-						<a href="../modules.html#CommandOptions" class="tsd-kind-icon">Command<wbr>Options</a>
+						<a href="../modules.html#CommandOptionType" class="tsd-kind-icon">Command<wbr>Option<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
-						<a href="../modules.html#CommandStructures" class="tsd-kind-icon">Command<wbr>Structures</a>
+						<a href="../modules.html#FieldType" class="tsd-kind-icon">Field<wbr>Type</a>
 					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="../modules.html#FieldStructures" class="tsd-kind-icon">Field<wbr>Structures</a>
+					<li class=" tsd-kind-variable">
+						<a href="../modules.html#applicationCommandStructures" class="tsd-kind-icon">application<wbr>Command<wbr>Structures</a>
 					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="../modules.html#SlashCommandOptions" class="tsd-kind-icon">Slash<wbr>Command<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="../modules.html#SubcommandGroupOptions" class="tsd-kind-icon">Subcommand<wbr>Group<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="../modules.html#SubcommandOptions" class="tsd-kind-icon">Subcommand<wbr>Options</a>
+					<li class=" tsd-kind-variable">
+						<a href="../modules.html#commandOptionStructures" class="tsd-kind-icon">command<wbr>Option<wbr>Structures</a>
 					</li>
 				</ul>
 			</nav>
@@ -419,13 +411,6 @@
 				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
 			</ul>
 		</div>
 	</div>
