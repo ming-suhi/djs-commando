@@ -1,18 +1,16 @@
 {
   "name": "@ming-suhi/djs-commando",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A package to easily create and manage your Discord Slash Commands.",
   "main": "dist/index.js",
-  "module": "src/index.ts",
   "types": "dist/index.d.ts",
-  "directories": {
-    "doc": "docs",
-    "test": "tests"
-  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "dev": "ts-node-dev index.ts",
-    "test": "jest --detectOpenHandles"
+    "test": "jest",
+    "prepublishOnly": "tsc -p tsconfig.json"
+  },
+  "bin": {
+    "djsc": "dist/cli-services/index.js"
   },
   "repository": {
     "type": "git",
@@ -21,26 +19,36 @@
   "keywords": [
     "discord",
     "discord-interactions",
-    "discord-slash",
     "discord-buttons",
     "discord-select-menus",
     "discord-slash-commands",
-    "discord-manager"
+    "discord-cli-tool",
+    "discord-cli"
   ],
-  "author": "明suhi",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ming-suhi/djs-commando/issues"
   },
   "homepage": "https://github.com/ming-suhi/djs-commando#readme",
   "dependencies": {
-    "discord.js": "^13.1.0",
-    "dotenv": "^10.0.0"
+    "chalk": "<5.0.0",
+    "clear": "^0.1.0",
+    "discord.js": "^13.4.0",
+    "dotenv": "^10.0.0",
+    "figlet": "^1.5.2",
+    "node-fetch": "<3.0.0",
+    "node-fetch-retry": "^2.0.0"
   },
   "devDependencies": {
+    "@types/clear": "^0.1.2",
+    "@types/figlet": "^1.5.4",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.12",
+    "@types/node-fetch": "<3.0.0",
     "jest": "^27.0.6",
-    "ts-node-dev": "^1.1.8",
+    "ts-jest": "^27.1.1",
     "typedoc": "^0.21.5",
     "typescript": "^4.3.5"
-  }
+  },
+  "author": "明suhi",
+  "license": "MIT"
 }

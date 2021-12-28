@@ -30,160 +30,116 @@ npm install @ming-suhi/djs-commando
 
 ## B. Setting Environment
 
-1. Create a `.env` file in the root directory
+Create a `.env` file in the project root directory. Create a folder to hold command files. Store the folder path from project root as `COMMANDS_FOLDER`. Store discord application id as `APP_ID`, and bot token as `BOT_TOKEN`. 
 
-    ```
-    COMMANDS_FOLDER =
-    ```
+```
+APP_ID = "application id here" 
+BOT_TOKEN = "bot token here"
+COMMANDS_FOLDER = "path/to/commands-folder"
+```
 
-2. Create a folder to hold command files. Store the folder path from main as `COMMANDS_FOLDER`.
+## C. Creating a Command
 
-## C. Setting Handler
+Start creating a command by making a file inside the designated folder. File name doesn't need to be command
+name. Require/import the needed command class from `@ming-suhi/djs-commando`. Command classes include 
+`Command`, `Subcommand`, `SubcommandGroup`, `UserCommand` and `MessageCommand`. To create a command class make 
+a new instance of the chosen class and set its properties. Finally for command to be handled by the package, 
+export it with `module.exports`. Only export top commands(Command, UserCommand, MessageCommand). Do not export 
+command options such as Subcommand and SubcommandGroup(command options will be discussed below).
 
-1. Require `InteractionsHandler` from `@ming-suhi/djs-commando`.
-    ```js
-    const { InteractionsHandler } = require('@ming-suhi/djs-commando');
-    ```
+```js
+const { Command } = require('@ming-suhi/djs-commando');
 
-2. Create an instance of `InteractionsHandler`
-    ```js
-    const handler = new InteractionsHandler();
-    ```
-
-## D. Creating a Command
-
-1. Create a file inside the commands folder. 
-
-2. Require `Command`.
-    ```js
-    const { Command } = require('@ming-suhi/djs-commando');
-    ```
-
-3. Create a new class extending `Command`.
-    ```js
-    const ping = new class extends Command {
-      constructor() {
-        super();
-        // Properties here
-      }
-    }
-    ```
-
-4. Define class properties inside constructor. Refer to Discord Developer Portal for valid property values.
-    ```js
+// 1st option for making command
+const command = new class extends Command {
+  constructor() {
+    super();
     this.name = "ping";
-    this.description = "short description"; 
-    ```
+    this.description = "get ponged";
+  }
 
-5. Create execute method which accepts one parameter. The parameter is an instance of `Interaction` class of `discord.js`, which is received during interactionCreate event of `discord.js`. 
-    ```js
-    async execute(interaction) {
-      await interaction.reply("Pong");
-    }
-    ```
-
-6. Export created class. If using typescript please also export as shown below.
-    ```js
-    module.exports = ping;
-    ``` 
-
-## E. Adding Command Options
-
-1. Require the desired options.
-```js
-const { StringField } = require('@ming-suhi/djs-commando');
-```
-
-2. Create instance, and extend classes for subcommand group and subcommand.
-```js
-const message = new StringField('message', 'message to echo', true);
-```
-
-3. Pass options to super inside an array. Refer to documentation for the options that can be passed to command, subcommand group and subcommand.
-```js
-const echo = new class extends Command {
-  constructor(){
-    super([message]);
-    this.name = 'echo';
-    this.description = 'echo a message';
+  async execute(interaction) {
+    interaction.reply("pong");
   }
 }
+
+// 2nd option for making command
+const command = new Command();
+command.name = "ping";
+command.description = "get ponged";
+command.execute = async(interaction) => {
+  interaction.reply("pong");
+}
+
+module.exports = command;
 ```
 
-4. Additional Notes: If you have subcommands, make sure that only the top command is exported.
+## D. Adding Command Options
 
-## F. Synching Commands
-It is suggested to sync commands on `ready`. Synching commands posts and updates commands, as well as deletes commands unexisting in the commands folder. Synching commands bulk updates commands and it is important to note that the recently posted commands cannot be immediately used/seen.
+Require/import the needed command class from `@ming-suhi/djs-commando`. Command options include Subcommand,
+SubcommandGroup, StringField, IntegerField, BooleanField, UserField, ChannelField, RoleField,
+MentionableField, and NumberField. Create a new instance of the chosen class and pass it inside an array as an argument to it's parent's constructor.
+
 ```js
-client.on('ready', async() => {
-  handler.syncCommands(client);
-});
+const { StringField } = require('@ming-suhi/djs-commando');
+
+// Creation of field differs from subcommand and subcommand group
+// Subcommand and subcommand group are created like Command, UserCommand and MessageCommand
+const message = new StringField('message', 'message to echo', true);
+
+// 1st option
+const command = new class extends Command {
+  constructor() {
+    super([message]); // pass all options inside an array
+    this.name = "ping";
+    this.description = "get ponged";
+  }
+
+  async execute(interaction) {
+    interaction.reply("pong");
+  }
+}
+
+// 2nd option
+const command = new Command([message]); // pass all options inside an array
+command.name = "ping";
+command.description = "get ponged";
+command.execute = async(interaction) => {
+  interaction.reply("pong");
+}
+
+module.exports = command; // only export top command
 ```
 
-## G. Receiving Commands
-This will find the matching command and execute it.
+## E. Posting Commands
+For slash command to be executed by users from Discord, the data of the command needs to be posted first.
+The package includes a CLI tool for posting from the command line. To access the main menu of the cli tool, open a terminal inside the project directory and run `npx djsc` or `npx djsc help`.
+```
+npx djsc
+```
+The command line tool offers a command to automatically sync commands; this will post local commands not 
+posted to discord, and delete from discord commands that doesn't exist locally. To sync commands, run `npx djsc sc`.
+```
+npx djsc sc
+```
+The command line tool however also offers manual `post` and `delete` of command/s. To make manual
+operations more easier, the command line tool also offers a `compare` command that compares the status
+of commands locally and on Discord. Open CLI tool main menu for list of commands.
+
+## F. Receiving Commands
+Now that the commands are posted, users can now use the posted commands. Note that it may take up to one hour for commands to be available after posting. To receive commands, first require/import `InteractionsHandler` from `@ming-suhi/djs-commando`. Create new instance of `InteractionsHandler` and call `handleInteraction` method on `interactionCreate` event. Interactions handler 
+will manage getting the matching command and executing it when interaction is received.
 ```js
+const { InteractionsHandler } = require('@ming-suhi/djs-commando');
+
+const handler = new InteractionsHandler();
+
 client.on('interactionCreate', async interaction => {
   await handler.handleInteraction(interaction);
 });
 ```
 
-## III. Additional Feature: Event Handling
-## A. Setting Environment
-1. Create a folder to hold event files. Store the folder path from main as `EVENTS_FOLDER`.
-
-## B. Setting Handler
-1. Require `EventsHandler` from `@ming-suhi/djs-commando`.
-    ```js
-    const { EventsHandler } = require('@ming-suhi/djs-commando');
-    ```
-
-2. Create an instance of `InteractionsHandler`
-    ```js
-    const handler = new EventsHandler();
-    ```
-
-## C. Creating Event Handler
-1. Create a file inside the events folder. File name must be the same as event name.
-
-2. Create object, set name property as the name of event
-
-3. Set run as the function to run on event
-
-4. Export event
-    ```js
-    module.exports = {
-      name: 'ready',
-      run() {
-        console.log('Ready!');
-      }
-    } 
-    ```
-
-## D. Registering events
-It is suggested to register events on `ready`.
-```js
-handler.registerEvents(client);
-```
-
-## IV. Additional Feature: Call context menu command using message reply
-Context menu commands are not yet available on mobile, so a round-about for this is calling context menu commands through message reply. Just simply reply the command name or alias to the target message or user to call on the corresponding context menu command.
-## A. Creating onReply method
-Create a onReply method for the command which accepts one parameter which is an instance of `Message` class of `discord.js`.
-```js
-async onReply(message) {
-  await message.channel.send("Pong");
-}
-```
-## B. Receiving commands
-This will find the matching command and execute the onReply method.
-```js
-client.on('messageCreate', async message => {
-  await handler.handleMessage(message);
-});
-```
-
-## V. Contributing
+## III. Contributing
 ## A. Issues
 This project uses GitHub Issues to track bugs and feature requests. Please search the existing issues before filing new issues to avoid duplicates. For new issues, file your bug or feature request as a new issue.
 
