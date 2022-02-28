@@ -1,47 +1,27 @@
 #!node
 
 import dotenv from "dotenv";
-import help from "./help";
-import getCommand from "./get-command";
-import chalk from "chalk";
-import deleteCommand from "./delete-command";
-import compareCommand from "./compare-command";
-import { postCommand } from "./post-command";
-import { syncCommands } from "./sync-command";
+
+import { red } from "chalk";
+
+import CLIClient from "./structures/client";
 
 dotenv.config();
 
 async function main() {
+  const appID = process.env.APP_ID;
+  const botToken = process.env.BOT_TOKEN;
+  const commandsFolder = process.env.COMMANDS_FOLDER;
+
+  if(!appID) return console.log(red("APP_ID not defined in .env file\n"));
+  if(!botToken) return console.log(red("BOT_TOKEN not defined in .env file\n"));
+  if(!commandsFolder) return console.log(red("COMMANDS_FOLDER not defined in .env file\n"));
+
+  const client = new CLIClient(appID, botToken, commandsFolder);
   const commandName = process.argv?.[2]?.toString()?.toLowerCase();
-  switch(commandName) {
-    case "help":
-      help();
-      break;
-
-    case "sc":
-      await syncCommands();
-      break;
-      
-    case "gc":
-      await getCommand();
-      break;
-
-    case "dc":
-      await deleteCommand();
-      break;
-
-    case "cc":
-      await compareCommand();
-      break;
-
-    case "pc":
-      await postCommand();
-      break;
-    
-    default:
-      help();
-      if(commandName) console.log(chalk.red(`Command "${commandName}" Not Identified. Please refer to help above. \n`))
-  }
+  const args = process.argv.slice(3);
+  const command = client.commands.get(commandName) || client.commands.get("help")!;
+  await command.execute(args);
 }
 
 main();

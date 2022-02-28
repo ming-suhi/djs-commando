@@ -1,4 +1,4 @@
-import { ContextMenuInteraction, Message } from "discord.js";
+import { ContextMenuInteraction } from "discord.js";
 import ContextMenuCommand from "./menu-command";
 
 /**

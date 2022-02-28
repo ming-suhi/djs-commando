@@ -10,7 +10,7 @@ describe("File System Service", () => {
   })
 
   test("getFilePath function", () => {
-    expect(FileSystemService.getFilePaths(path)).toEqual([`${resolve(path, "sample.js")}`, `${resolve(path, "sample.ts")}`]);
+    expect(FileSystemService.getFilePaths(path)).toEqual([`${resolve(path, "sample.js")}`]);
   })
 
   test("deleteCache function", () => {

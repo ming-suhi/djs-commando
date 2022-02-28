@@ -1,5 +1,5 @@
 import { readdirSync, lstatSync } from "fs";
-import { resolve } from "path";
+import { resolve, extname } from "path";
 
 /**
  * File system related functions.
@@ -16,7 +16,7 @@ export default class FileSystemService {
       const isDirectory = lstatSync(contentPath).isDirectory();
       if(isDirectory) folders.push(contentPath);
     }
-  return folders;
+    return folders;
   }
 
   /**
@@ -28,8 +28,8 @@ export default class FileSystemService {
     const files = [];
     for (let content of readdirSync(path)) {
       const contentPath = resolve(path, content);
-      const isDirectory = lstatSync(contentPath).isDirectory();
-      if ((content.endsWith('.ts') || content.endsWith('.js')) && (!isDirectory)) files.push(contentPath);
+      const isFile = lstatSync(contentPath).isFile();
+      if ((extname(content) == ".js") && isFile) files.push(contentPath);
     }
     return files;
   }
