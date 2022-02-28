@@ -12,6 +12,9 @@
 /.gitignore
 /.github
 
+# VSCode
+/.vscode
+
 # Config files
 /tsconfig.json
 /jest.config.js

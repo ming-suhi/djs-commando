@@ -11,5 +11,10 @@
     "skipLibCheck": true,                           
     "forceConsistentCasingInFileNames": true,
     "declaration": true
-  }
+  },
+  "exclude": [
+    "src/mocks",
+    "**/*.test.ts",
+    "./dist"
+  ]
 }
