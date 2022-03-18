@@ -12,7 +12,7 @@ import CLICommand from "../structures/cli-command";
  * @param local Map of local commands
  * @param database Map of database commands
  */
-export function compareCommands(local: CommandsMap, database: CommandsMap) {
+function compareCommands(local: CommandsMap, database: CommandsMap) {
   const localOnly = local.rawData.map(command => command.name).filter(name => !database.get(name));
   const databaseOnly = database.rawData.map(command => command.name).filter(name => !local.get(name));
   const modified = local.rawData.filter(command => database.get(command.name)).filter(command => JSON.stringify(command) != JSON.stringify(database.get(command.name)!.rawData)).map(command => command.name);

@@ -2,11 +2,23 @@ import { green } from "chalk";
 
 import CommandsAPIService from "../../services/commands-api";
 import MakeCommandService from "../../services/make-command";
+import CommandsMap from "../../structures/commands-map";
 import { InteractionsHandler } from "../../structures/interactions-handler";
 
 import CLICommand from "../structures/cli-command";
 
-import { compareCommands } from "./compare-command";
+/**
+ * Compare the local branch and the database branch. 
+ * @param local Map of local commands
+ * @param database Map of database commands
+ */
+function compareCommands(local: CommandsMap, database: CommandsMap) {
+  const localOnly = local.rawData.map(command => command.name).filter(name => !database.get(name));
+  const databaseOnly = database.rawData.map(command => command.name).filter(name => !local.get(name));
+  const modified = local.rawData.filter(command => database.get(command.name)).filter(command => JSON.stringify(command) != JSON.stringify(database.get(command.name)!.rawData)).map(command => command.name);
+  return {localOnly, databaseOnly, modified};
+}
+
 
 module.exports = class extends CLICommand {
   name = "syncCommand";
