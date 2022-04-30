@@ -7,10 +7,6 @@ jobs:
   Publish:
     runs-on: ubuntu-latest 
     
-    permissions: 
-      contents: read
-      packages: write 
-      
     steps:
       - uses: actions/checkout@v2
       
@@ -28,14 +24,3 @@ jobs:
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          
-      - name: Setup Node for Github Registry
-        uses: actions/setup-node@v2
-        with:
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@ming-suhi'
-          
-      - name: Publish to Github Registry
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.PAT_TOKEN }}

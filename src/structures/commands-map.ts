@@ -9,7 +9,7 @@ export default class CommandsMap extends Map<string, ApplicationCommandType>{
    * Get an array of raw data of all commands.
    */
   get rawData() {
-    return Array.from(this.entries()).map(([index, value]) => value.rawData);
+    return Array.from(this.entries()).map(([, value]) => value.rawData);
   }
   /**
    * Get command by name.

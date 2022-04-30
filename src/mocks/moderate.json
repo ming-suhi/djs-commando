@@ -1,0 +1,39 @@
+{
+  "description": "server moderation commands",
+  "name": "moderate",
+  "options": [
+    {
+      "description": "member moderation commands",
+      "name": "member",
+      "options": [
+        {
+          "description": "timeout a member",
+          "name": "timeout",
+          "type": 1,
+          "options": []
+        }
+      ],
+      "type": 2
+    },
+    {
+      "description": "channel moderation commands",
+      "name": "channel",
+      "options": [
+        {
+          "description": "locks the current channel",
+          "name": "lock",
+          "type": 1,
+          "options": []
+        },
+        {
+          "description": "unlocks the current channel",
+          "name": "unlock",
+          "type": 1,
+          "options": []
+        }
+      ],
+      "type": 2
+    }
+  ],
+  "type": 1
+}
