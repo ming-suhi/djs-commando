@@ -1,48 +1,38 @@
 /** 
  * Interface for field choices.
  */
-export interface choice { 
+ export interface choice { 
   /**
    * The name of the choice
    */
-   name: string, 
-   /**
-    * The value to pass when choice is selected
-    */
-   value: string | number
+  name: string, 
+  /**
+   * The value to pass when choice is selected
+   */
+  value: string | number
 };
 
 /**
- * Interface for field creation.
+ * Managed field structure for creating field types.
  */
-export default interface Field {
+ export default abstract class FieldBuilder {
   /**
    * The type of field.
    */
-  type: number;
+  abstract type: number;
   /**
-   * The name of the field.
+   * @param name The name of the field
+   * @param description The description of the field
+   * @param required If field is required
+   * @param choices The choices for the field
    */
-  name: string;
-  /**
-   * The description of the field.
-   */
-  description: string;
-  /**
-   * If field is required.
-   */
-  required: boolean;
-  /**
-   * The choices for the field.
-   */
-  choices: choice[];
-}
-
-/**
- * Base field structure.
- * Do not use for creating fields.
- */
-export default class Field {
+  constructor(
+    readonly name: string,
+    readonly description: string,
+    readonly required: boolean = false,
+    readonly choices: choice[] = []
+  ) {
+  }
   /**
    * The raw object for field data. Used to interact with discord.
    */
@@ -56,3 +46,47 @@ export default class Field {
     })
   }
 }
+
+/** String Field */
+export class StringField extends FieldBuilder {
+  readonly type = 3;
+};
+
+/** Integer Field */
+export class IntegerField extends FieldBuilder {
+  readonly type = 4;
+};
+
+/** Boolean Field */
+export class BooleanField extends FieldBuilder {
+  readonly type = 5;
+};
+
+/** User Field */
+export class UserField extends FieldBuilder {
+  readonly type = 6;
+};
+
+/** Channel Field */
+export class ChannelField extends FieldBuilder {
+  readonly type = 7;
+};
+
+/** Role Field */
+export class RoleField extends FieldBuilder {
+  readonly type = 8;
+};
+
+/** Mentionable Field */
+export class MentionableField extends FieldBuilder {
+  readonly type = 9;
+};
+
+/** Number Field */
+export class NumberField extends FieldBuilder {
+  readonly type = 10;
+};
+
+/** Field Types */
+export type FieldType = StringField | IntegerField | BooleanField | UserField |
+  ChannelField | RoleField | MentionableField | NumberField;
