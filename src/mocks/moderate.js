@@ -1,4 +1,4 @@
-const { Command, SubcommandGroup, Subcommand } = require("../structures");
+const { Command, SubcommandGroup, Subcommand } = require("..");
 
 const timeout = new class extends Subcommand {
   constructor() {
