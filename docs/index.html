@@ -58,23 +58,23 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<p align="center">
-					<img src="https://raw.githubusercontent.com/ming-suhi/ming-suhi/master/djs-commando.svg" width="100" align="center" />
-				</p>
-				<p align="center">
-					<a href="https://github.com/ming-suhi/djs-commando" target="_blank">
-						<strong>@ming-suhi/djs-commando</strong>
-					</a>
-				</p>
-				<p align="center">
+				<p align="right">
 					<a href="https://discord.com/invite/P3UMxQCEaY" target="_blank">
 						<img src="https://discordapp.com/api/guilds/753818535440023593/widget.png?style=shield" alt="Discord Server">
 					</a>
 				</p>
+				<p align="right">
+					<a href="https://discord.com/invite/P3UMxQCEaY" target="_blank">
+						<text>Join Support Server | Meet Developer</text>
+					</a>
+				</p>
+				<a href="#ming-suhidjs-commando" id="ming-suhidjs-commando" style="color: inherit; text-decoration: none;">
+					<h1><strong><a href="https://github.com/ming-suhi/djs-commando">@ming-suhi/djs-commando</a></strong></h1>
+				</a>
 				<a href="#i-about" id="i-about" style="color: inherit; text-decoration: none;">
 					<h2>I. About</h2>
 				</a>
-				<p>A discord.js extension for easily creating and managing your Discord Slash Commands. For an in-depth documentation visit the <a href="https://ming-suhi.github.io/djs-commando/" target="_blank">documentation website</a>. Or join the <a href="https://discord.com/invite/P3UMxQCEaY" target="_blank">support server</a> to meet the developer. Please note that this package is not associated with discord.js.</p>
+				<p>A discord.js extension for easily structuring and managing your Discord Slash Commands. For an in-depth documentation visit the <a href="https://ming-suhi.github.io/djs-commando/" target="_blank">documentation website</a>. Or join the <a href="https://discord.com/invite/P3UMxQCEaY" target="_blank">support server</a> to talk with the developer. Please note that this package is not affiliated with discord.js.</p>
 				<a href="#ii-quick-start" id="ii-quick-start" style="color: inherit; text-decoration: none;">
 					<h2>II. Quick Start</h2>
 				</a>
@@ -86,26 +86,13 @@
 				</a>
 				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">install</span><span style="color: #000000"> @</span><span style="color: #001080">ming</span><span style="color: #000000">-</span><span style="color: #001080">suhi</span><span style="color: #000000">/</span><span style="color: #001080">djs</span><span style="color: #000000">-</span><span style="color: #001080">commando</span>
 </code></pre>
-				<a href="#b-setting-environment" id="b-setting-environment" style="color: inherit; text-decoration: none;">
-					<h2>B. Setting Environment</h2>
+				<a href="#b-creating-a-command" id="b-creating-a-command" style="color: inherit; text-decoration: none;">
+					<h2>B. Creating a Command</h2>
 				</a>
-				<p>Create a <code>.env</code> file in the project root directory. Create a folder to hold command files. Store the folder path from project root as <code>COMMANDS_FOLDER</code>. Store discord application id as <code>APP_ID</code>, and bot token as <code>BOT_TOKEN</code>. </p>
-				<pre><code><span style="color: #0070C1">APP_ID</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;application id here&quot;</span><span style="color: #000000"> </span>
-<span style="color: #0070C1">BOT_TOKEN</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;bot token here&quot;</span>
-<span style="color: #0070C1">COMMANDS_FOLDER</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;path/to/commands-folder&quot;</span>
-</code></pre>
-				<a href="#c-creating-a-command" id="c-creating-a-command" style="color: inherit; text-decoration: none;">
-					<h2>C. Creating a Command</h2>
-				</a>
-				<p>Start creating a command by making a file inside the designated folder. File name doesn&#39;t need to be command
-					name. Require/import the needed command class from <code>@ming-suhi/djs-commando</code>. Command classes include
-					<code>Command</code>, <code>Subcommand</code>, <code>SubcommandGroup</code>, <code>UserCommand</code> and <code>MessageCommand</code>. To create a command class make
-					a new instance of the chosen class and set its properties. Finally for command to be handled by the package,
-					export it with <code>module.exports</code>. Only export top commands(Command, UserCommand, MessageCommand). Do not export
-				command options such as Subcommand and SubcommandGroup(command options will be discussed below).</p>
+				<p>Start creating a command by making a file inside a designated folder. File name doesn&#39;t need to be command name. Require the needed command class from <code>@ming-suhi/djs-commando</code>. Command classes include
+				<code>Command</code>, <code>Subcommand</code>, <code>SubcommandGroup</code>, <code>UserCommand</code> and <code>MessageCommand</code>. To create a command class make a new instance of the chosen class and set its properties. Finally for command to be handled by the package, export it with <code>module.exports</code>. Files directly under the chosen folder should only export top commands(Command, UserCommand, MessageCommand) Do not export command options such as Subcommand and SubcommandGroup(command options will be discussed below).</p>
 				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">Command</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;@ming-suhi/djs-commando&#039;</span><span style="color: #000000">);</span>
 
-<span style="color: #008000">// 1st option for making command</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">command</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #0000FF">class</span><span style="color: #000000"> </span><span style="color: #0000FF">extends</span><span style="color: #000000"> </span><span style="color: #267F99">Command</span><span style="color: #000000"> {</span>
 <span style="color: #000000">  </span><span style="color: #0000FF">constructor</span><span style="color: #000000">() {</span>
 <span style="color: #000000">    </span><span style="color: #0000FF">super</span><span style="color: #000000">();</span>
@@ -118,34 +105,25 @@
 <span style="color: #000000">  }</span>
 <span style="color: #000000">}</span>
 
-<span style="color: #008000">// 2nd option for making command</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">command</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Command</span><span style="color: #000000">();</span>
-<span style="color: #001080">command</span><span style="color: #000000">.</span><span style="color: #001080">name</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;ping&quot;</span><span style="color: #000000">;</span>
-<span style="color: #001080">command</span><span style="color: #000000">.</span><span style="color: #001080">description</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;get ponged&quot;</span><span style="color: #000000">;</span>
-<span style="color: #001080">command</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000"> = </span><span style="color: #0000FF">async</span><span style="color: #000000">(</span><span style="color: #001080">interaction</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
-<span style="color: #000000">  </span><span style="color: #001080">interaction</span><span style="color: #000000">.</span><span style="color: #795E26">reply</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;pong&quot;</span><span style="color: #000000">);</span>
-<span style="color: #000000">}</span>
-
 <span style="color: #267F99">module</span><span style="color: #000000">.</span><span style="color: #267F99">exports</span><span style="color: #000000"> = </span><span style="color: #001080">command</span><span style="color: #000000">;</span>
 </code></pre>
-				<a href="#d-adding-command-options" id="d-adding-command-options" style="color: inherit; text-decoration: none;">
-					<h2>D. Adding Command Options</h2>
+				<a href="#c-adding-command-options" id="c-adding-command-options" style="color: inherit; text-decoration: none;">
+					<h2>C. Adding Command Options</h2>
 				</a>
-				<p>Require/import the needed command class from <code>@ming-suhi/djs-commando</code>. Command options include Subcommand,
-					SubcommandGroup, StringField, IntegerField, BooleanField, UserField, ChannelField, RoleField,
-				MentionableField, and NumberField. Create a new instance of the chosen class and pass it inside an array as an argument to it&#39;s parent&#39;s constructor.</p>
+				<p>Require the needed command class from <code>@ming-suhi/djs-commando</code>. Command options include <code>Subcommand</code>,
+					<code>SubcommandGroup</code>, <code>StringField</code>, <code>IntegerField</code>, <code>BooleanField</code>, <code>UserField</code>, <code>ChannelField</code>, <code>RoleField</code>,
+				<code>MentionableField</code>, and <code>NumberField</code>. Create a new instance of the chosen class and pass it inside an array as an argument to it&#39;s parent&#39;s constructor.</p>
 				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">StringField</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;@ming-suhi/djs-commando&#039;</span><span style="color: #000000">);</span>
 
 <span style="color: #008000">// Creation of field differs from subcommand and subcommand group</span>
 <span style="color: #008000">// Subcommand and subcommand group are created like Command, UserCommand and MessageCommand</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">message</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">StringField</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;message&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;message to echo&#039;</span><span style="color: #000000">, </span><span style="color: #0000FF">true</span><span style="color: #000000">);</span>
 
-<span style="color: #008000">// 1st option</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">command</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #0000FF">class</span><span style="color: #000000"> </span><span style="color: #0000FF">extends</span><span style="color: #000000"> </span><span style="color: #267F99">Command</span><span style="color: #000000"> {</span>
 <span style="color: #000000">  </span><span style="color: #0000FF">constructor</span><span style="color: #000000">() {</span>
 <span style="color: #000000">    </span><span style="color: #0000FF">super</span><span style="color: #000000">([</span><span style="color: #001080">message</span><span style="color: #000000">]); </span><span style="color: #008000">// pass all options inside an array</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">name</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;ping&quot;</span><span style="color: #000000">;</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">description</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;get ponged&quot;</span><span style="color: #000000">;</span>
+<span style="color: #000000">    </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">name</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;echo&quot;</span><span style="color: #000000">;</span>
+<span style="color: #000000">    </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">description</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;echo a message&quot;</span><span style="color: #000000">;</span>
 <span style="color: #000000">  }</span>
 
 <span style="color: #000000">  </span><span style="color: #0000FF">async</span><span style="color: #000000"> </span><span style="color: #795E26">execute</span><span style="color: #000000">(</span><span style="color: #001080">interaction</span><span style="color: #000000">) {</span>
@@ -153,42 +131,41 @@
 <span style="color: #000000">  }</span>
 <span style="color: #000000">}</span>
 
-<span style="color: #008000">// 2nd option</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">command</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Command</span><span style="color: #000000">([</span><span style="color: #001080">message</span><span style="color: #000000">]); </span><span style="color: #008000">// pass all options inside an array</span>
-<span style="color: #001080">command</span><span style="color: #000000">.</span><span style="color: #001080">name</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;ping&quot;</span><span style="color: #000000">;</span>
-<span style="color: #001080">command</span><span style="color: #000000">.</span><span style="color: #001080">description</span><span style="color: #000000"> = </span><span style="color: #A31515">&quot;get ponged&quot;</span><span style="color: #000000">;</span>
-<span style="color: #001080">command</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000"> = </span><span style="color: #0000FF">async</span><span style="color: #000000">(</span><span style="color: #001080">interaction</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
-<span style="color: #000000">  </span><span style="color: #001080">interaction</span><span style="color: #000000">.</span><span style="color: #795E26">reply</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;pong&quot;</span><span style="color: #000000">);</span>
-<span style="color: #000000">}</span>
-
 <span style="color: #267F99">module</span><span style="color: #000000">.</span><span style="color: #267F99">exports</span><span style="color: #000000"> = </span><span style="color: #001080">command</span><span style="color: #000000">; </span><span style="color: #008000">// only export top command</span>
 </code></pre>
-				<a href="#e-posting-commands" id="e-posting-commands" style="color: inherit; text-decoration: none;">
-					<h2>E. Posting Commands</h2>
+				<a href="#d-register-commands" id="d-register-commands" style="color: inherit; text-decoration: none;">
+					<h2>D. Register Commands</h2>
 				</a>
-				<p>For slash command to be executed by users from Discord, the data of the command needs to be posted first.
-				The package includes a CLI tool for posting from the command line. To access the main menu of the cli tool, open a terminal inside the project directory and run <code>npx djsc</code> or <code>npx djsc help</code>.</p>
-				<pre><code><span style="color: #001080">npx</span><span style="color: #000000"> </span><span style="color: #001080">djsc</span>
-</code></pre>
-				<p>The command line tool offers a command to automatically sync commands; this will post local commands not
-				posted to discord, and delete from discord commands that doesn&#39;t exist locally. To sync commands, run <code>npx djsc sc</code>.</p>
-				<pre><code><span style="color: #001080">npx</span><span style="color: #000000"> </span><span style="color: #001080">djsc</span><span style="color: #000000"> </span><span style="color: #001080">sc</span>
-</code></pre>
-				<p>The command line tool however also offers manual <code>post</code> and <code>delete</code> of command/s. To make manual
-					operations more easier, the command line tool also offers a <code>compare</code> command that compares the status
-				of commands locally and on Discord. Open CLI tool main menu for list of commands.</p>
-				<a href="#f-receiving-commands" id="f-receiving-commands" style="color: inherit; text-decoration: none;">
-					<h2>F. Receiving Commands</h2>
-				</a>
-				<p>Now that the commands are posted, users can now use the posted commands. Note that it may take up to one hour for commands to be available after posting. To receive commands, first require/import <code>InteractionsHandler</code> from <code>@ming-suhi/djs-commando</code>. Create new instance of <code>InteractionsHandler</code> and call <code>handleInteraction</code> method on <code>interactionCreate</code> event. Interactions handler
-				will manage getting the matching command and executing it when interaction is received.</p>
+				<p>Before receiving commands, load all commands. First, require <code>InteractionsHandler</code> from <code>@ming-suhi/djs-commando</code>. Create new instance of <code>InteractionsHandler</code> and call <code>loadCommands</code> method. The method requires one argument which is the path to the commands folder.</p>
 				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">InteractionsHandler</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;@ming-suhi/djs-commando&#039;</span><span style="color: #000000">);</span>
 
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">handler</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">InteractionsHandler</span><span style="color: #000000">();</span>
+<span style="color: #001080">handler</span><span style="color: #000000">.</span><span style="color: #795E26">loadCommands</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;ABSOLUTE/PATH/TO/COMMANDS/FOLDER&quot;</span><span style="color: #000000">);</span>
 
-<span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">on</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;interactionCreate&#039;</span><span style="color: #000000">, </span><span style="color: #0000FF">async</span><span style="color: #000000"> </span><span style="color: #001080">interaction</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+</code></pre>
+				<a href="#e-receiving-commands" id="e-receiving-commands" style="color: inherit; text-decoration: none;">
+					<h2>E. Receiving Commands</h2>
+				</a>
+				<p>To receive commands, call <code>handleInteraction</code> method on <code>interactionCreate</code> event. Interactions handler
+				will manage getting the matching command and executing it when interaction is received.</p>
+				<pre><code class="language-js"><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">on</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;interactionCreate&#039;</span><span style="color: #000000">, </span><span style="color: #0000FF">async</span><span style="color: #000000"> </span><span style="color: #001080">interaction</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
 <span style="color: #000000">  </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">handler</span><span style="color: #000000">.</span><span style="color: #795E26">handleInteraction</span><span style="color: #000000">(</span><span style="color: #001080">interaction</span><span style="color: #000000">);</span>
 <span style="color: #000000">});</span>
+</code></pre>
+				<a href="#f-posting-commands" id="f-posting-commands" style="color: inherit; text-decoration: none;">
+					<h2>F. Posting Commands</h2>
+				</a>
+				<p>Optionally, you can install <code>@ming-suhi/djsc-cli</code> to easily manage(post, delete, update) your commands from the command line. </p>
+				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">install</span><span style="color: #000000"> @</span><span style="color: #001080">ming</span><span style="color: #000000">-</span><span style="color: #001080">suhi</span><span style="color: #000000">/</span><span style="color: #001080">djsc</span><span style="color: #000000">-</span><span style="color: #001080">cli</span>
+</code></pre>
+				<pre><code class="language-js"><span style="color: #008000">//djsc.config.js</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">mapCommands</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;@ming-suhi/djs-commando&quot;</span><span style="color: #000000">);</span>
+
+<span style="color: #267F99">module</span><span style="color: #000000">.</span><span style="color: #267F99">exports</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">  </span><span style="color: #001080">appId:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;DISCORD_APP_ID&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">botToken:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;DISCORD_BOT_TOKEN&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #795E26">mapCommands</span><span style="color: #001080">:</span><span style="color: #000000"> () </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #795E26">mapCommands</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;ABSOLUTE/PATH/TO/COMMANDS/FOLDER&quot;</span><span style="color: #000000">)</span>
+<span style="color: #000000">}</span>
 </code></pre>
 				<a href="#iii-contributing" id="iii-contributing" style="color: inherit; text-decoration: none;">
 					<h2>III. Contributing</h2>
@@ -273,20 +250,14 @@
 					<li class=" tsd-kind-class">
 						<a href="classes/UserField.html" class="tsd-kind-icon">User<wbr>Field</a>
 					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="modules.html#ApplicationCommandType" class="tsd-kind-icon">Application<wbr>Command<wbr>Type</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="modules.html#CommandOptionType" class="tsd-kind-icon">Command<wbr>Option<wbr>Type</a>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/choice.html" class="tsd-kind-icon">choice</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="modules.html#FieldType" class="tsd-kind-icon">Field<wbr>Type</a>
 					</li>
-					<li class=" tsd-kind-variable">
-						<a href="modules.html#applicationCommandStructures" class="tsd-kind-icon">application<wbr>Command<wbr>Structures</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="modules.html#commandOptionStructures" class="tsd-kind-icon">command<wbr>Option<wbr>Structures</a>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#mapCommands" class="tsd-kind-icon">map<wbr>Commands</a>
 					</li>
 				</ul>
 			</nav>
@@ -306,6 +277,9 @@
 				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 			</ul>
 		</div>
 	</div>
