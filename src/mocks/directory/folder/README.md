@@ -1,1 +1,0 @@
-A mock directory for testing purposes

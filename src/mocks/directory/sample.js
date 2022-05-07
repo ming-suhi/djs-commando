@@ -1,1 +1,0 @@
-// A mock JS file for testing

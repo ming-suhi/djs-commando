@@ -1,39 +1,31 @@
-import * as MockCommand from "../mocks/commands/command";
+const moderate = require("../mocks/moderate.js");
+import moderateData from "../mocks/moderate.json";
 import CommandsMap from "./commands-map";
 
 describe("CommandsMap", () => {
 
-  const commands = new CommandsMap([[MockCommand.command.name, MockCommand.command]]);
-
-  test("rawData property", () => {
-    expect(commands.rawData).toEqual([MockCommand.command.rawData]);
-  });
+  const commands = new CommandsMap([[moderate.name, moderate]]);
 
   describe("getCommand function", () => {
     
     it("should return undefined", () => {
       const command = commands.getCommand(["doesnotexist", "doesnotexist", "doesnotexist"]);
-      expect(command).toBe(undefined);
+      expect(command).toEqual(undefined);
     });
 
     it("should get command", () => {
-      const command = commands.getCommand(["command"]);
-      expect(command).toBe(MockCommand.command);
+      const command = commands.getCommand(["moderate"]);
+      expect(command.rawData).toEqual(moderateData);
+    });
+
+    it("should get subcommand group", () => {
+      const command = commands.getCommand(["moderate", "member"]);
+      expect(command.rawData).toEqual(moderateData.options?.find(command => command.name == "member"));
     });
 
     it("should get subcommand", () => {
-      const command = commands.getCommand(["command", "subcommand"]);
-      expect(command).toBe(MockCommand.subcommand);
-    });
-
-    it("should get subcommandgroup", () => {
-      const command = commands.getCommand(["command", "subcommandgroup"]);
-      expect(command).toBe(MockCommand.subcommandgroup);
-    });
-
-    it("should get subcommand inside subcommandgroup", () => {
-      const command = commands.getCommand(["command", "subcommandgroup", "subcommand"]);
-      expect(command).toBe(MockCommand.subcommand);
+      const command = commands.getCommand(["moderate", "member", "timeout"]);
+      expect(command.rawData).toEqual(moderateData.options?.find(option => option.name == "member")?.options?.find(option => option.name == "timeout"));
     });
   });
 })

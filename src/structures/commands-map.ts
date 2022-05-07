@@ -1,15 +1,16 @@
-import { ApplicationCommandType } from "./application-commands";
+import { MessageCommand, UserCommand } from "./menu-command";
+import { Command } from "./slash-command";
 
 /**
  * Commands Map.
  * Extends Map to easily access commands; store and get commands.
  */
-export default class CommandsMap extends Map<string, ApplicationCommandType>{
+export default class CommandsMap extends Map<string, Command | UserCommand | MessageCommand>{
   /**
    * Get an array of raw data of all commands.
    */
   get rawData() {
-    return Array.from(this.entries()).map(([index, value]) => value.rawData);
+    return Array.from(this.entries()).map(([, value]) => value.rawData);
   }
   /**
    * Get command by name.

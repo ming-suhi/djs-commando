@@ -1,19 +1,21 @@
 import { resolve } from "path";
-import FileSystemService from "./file-system";
+import { getFilePaths, getFolderPaths, deleteCache } from "./file-system";
 
 describe("File System Service", () => {
 
-  const path = resolve(__dirname, "..", "mocks/directory");
+  const path = resolve(__dirname, "..");
 
   test("getFolderPaths function", () => {
-    expect(FileSystemService.getFolderPaths(path)).toEqual([`${resolve(path, "folder")}`])
+    const path = resolve(__dirname, "..");
+    expect(Array.from(getFolderPaths(path))).toEqual([`${resolve(path, "mocks")}`, `${resolve(path, "services")}`, `${resolve(path, "structures")}`])
   })
 
   test("getFilePath function", () => {
-    expect(FileSystemService.getFilePaths(path)).toEqual([`${resolve(path, "sample.js")}`]);
+    const path = resolve(__dirname, "..", "mocks");
+    expect(Array.from(getFilePaths(path))).toEqual([`${resolve(path, "moderate.js")}`]);
   })
 
   test("deleteCache function", () => {
-    FileSystemService.deleteCache(path);
+    deleteCache(path);
   })
 })
