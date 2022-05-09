@@ -17,7 +17,7 @@ export class InteractionsHandler {
    * @param interaction The interaction received
    */
   async handleInteraction(interaction: Discord.Interaction) {
-    if (interaction.isCommand() || interaction.isContextMenu()) {
+    if (interaction.isChatInputCommand() || interaction.isContextMenuCommand()) {
       let subcommand = undefinedOnError(() => (interaction.options as Discord.CommandInteractionOptionResolver)?.getSubcommand());
       let subcommandGroup = undefinedOnError(() => (interaction.options as Discord.CommandInteractionOptionResolver)?.getSubcommandGroup());
       const command = this.commands.getCommand([interaction.commandName, subcommandGroup, subcommand]);

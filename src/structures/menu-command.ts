@@ -1,4 +1,4 @@
-import { ContextMenuInteraction } from "discord.js";
+import { ContextMenuCommandInteraction } from "discord.js";
 
 /**
  * Interface for context menu command creation.
@@ -12,7 +12,7 @@ export default interface ContextMenuCommand {
    * The function to execute when command is called by context menu
    * @param interaction The context menu interaction object
    */
-  execute(interaction: ContextMenuInteraction): void
+  execute(interaction: ContextMenuCommandInteraction): void
 }
 
 /**

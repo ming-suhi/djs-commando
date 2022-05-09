@@ -1,4 +1,4 @@
-import { CommandInteraction } from "discord.js";
+import { ChatInputCommandInteraction } from "discord.js";
 import { FieldType } from "./field";
 
 /** 
@@ -17,7 +17,7 @@ export default interface SlashCommandBuilder<TOptions extends any[]> {
    * The function to execute when command is called
    * @param interaction The command interaction object
    */
-  execute(interaction: CommandInteraction): void;
+  execute(interaction: ChatInputCommandInteraction): void;
 }
 
 /**
