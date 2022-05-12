@@ -90,7 +90,7 @@
 					<h2>B. Creating a Command</h2>
 				</a>
 				<p>Start creating a command by making a file inside a designated folder. File name doesn&#39;t need to be command name. Require the needed command class from <code>@ming-suhi/djs-commando</code>. Command classes include
-				<code>Command</code>, <code>Subcommand</code>, <code>SubcommandGroup</code>, <code>UserCommand</code> and <code>MessageCommand</code>. To create a command class make a new instance of the chosen class and set its properties. Finally for command to be handled by the package, export it with <code>module.exports</code>. Files directly under the chosen folder should only export top commands(Command, UserCommand, MessageCommand) Do not export command options such as Subcommand and SubcommandGroup(command options will be discussed below).</p>
+				<code>Command</code>, <code>Subcommand</code>, <code>SubcommandGroup</code>, <code>UserCommand</code> and <code>MessageCommand</code>. To create a command class make a new instance of the chosen class and set its properties. Finally for command to be handled by the package, export it with <code>module.exports</code>. <code>module.exports</code> only top commands(Command, UserCommand, MessageCommand) not command options such as Subcommand and SubcommandGroup(command options will be discussed below).</p>
 				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">Command</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;@ming-suhi/djs-commando&#039;</span><span style="color: #000000">);</span>
 
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">command</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #0000FF">class</span><span style="color: #000000"> </span><span style="color: #0000FF">extends</span><span style="color: #000000"> </span><span style="color: #267F99">Command</span><span style="color: #000000"> {</span>
@@ -112,7 +112,7 @@
 				</a>
 				<p>Require the needed command class from <code>@ming-suhi/djs-commando</code>. Command options include <code>Subcommand</code>,
 					<code>SubcommandGroup</code>, <code>StringField</code>, <code>IntegerField</code>, <code>BooleanField</code>, <code>UserField</code>, <code>ChannelField</code>, <code>RoleField</code>,
-				<code>MentionableField</code>, and <code>NumberField</code>. Create a new instance of the chosen class and pass it inside an array as an argument to it&#39;s parent&#39;s constructor.</p>
+				<code>MentionableField</code>, <code>NumberField</code>, and <code>AttachmentField</code>. Create a new instance of the chosen class and pass it inside an array as an argument to it&#39;s parent&#39;s constructor.</p>
 				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">StringField</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;@ming-suhi/djs-commando&#039;</span><span style="color: #000000">);</span>
 
 <span style="color: #008000">// Creation of field differs from subcommand and subcommand group</span>
@@ -208,6 +208,9 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/AttachmentField.html" class="tsd-kind-icon">Attachment<wbr>Field</a>
+					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/BooleanField.html" class="tsd-kind-icon">Boolean<wbr>Field</a>
 					</li>
