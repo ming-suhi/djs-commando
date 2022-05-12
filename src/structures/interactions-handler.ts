@@ -3,6 +3,8 @@ import Discord from 'discord.js';
 import { getFilePaths, deleteCache } from "../services/file-system";
 import { undefinedOnError } from '../services/error-handling';
 import CommandsMap from './commands-map';
+import { Command } from './slash-command';
+import { MessageCommand, UserCommand } from './menu-command';
 
 /**
  * Main structure for managing commands and interactions.
@@ -33,7 +35,9 @@ export class InteractionsHandler {
     deleteCache(commandsDir);
     for (let commandPath of getFilePaths(commandsDir)) {
       const command = require(commandPath);
-      this.commands.set(command.name, command);
+      if(command instanceof Command || command instanceof UserCommand || command instanceof MessageCommand) {
+        this.commands.set(command.name, command);
+      }
     }
   }
 }

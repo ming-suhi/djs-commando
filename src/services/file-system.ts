@@ -19,11 +19,14 @@ export function* getFolderPaths(path: string) {
  * @param path A folder path
  */
 export function* getFilePaths(path: string) {
-  for (let content of readdirSync(path)) {
-    const contentPath = resolve(path, content);
-    const isFile = lstatSync(contentPath).isFile();
-    if ((extname(content) == ".js") && isFile) yield contentPath;
-  }
+  yield* (function* generator(path: string): Generator<any, any, any> {
+    for (let content of readdirSync(path)) {
+      const contentPath = resolve(path, content);
+      const file = lstatSync(contentPath).isFile();
+      if(!file) yield* generator(contentPath)
+      else if(extname(content) == ".js") yield contentPath;
+    }
+  })(path);
 }
 
 /**

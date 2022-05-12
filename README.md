@@ -26,7 +26,7 @@ npm install @ming-suhi/djs-commando
 
 ## B. Creating a Command
 Start creating a command by making a file inside a designated folder. File name doesn't need to be command name. Require the needed command class from `@ming-suhi/djs-commando`. Command classes include 
-`Command`, `Subcommand`, `SubcommandGroup`, `UserCommand` and `MessageCommand`. To create a command class make a new instance of the chosen class and set its properties. Finally for command to be handled by the package, export it with `module.exports`. Files directly under the chosen folder should only export top commands(Command, UserCommand, MessageCommand) Do not export command options such as Subcommand and SubcommandGroup(command options will be discussed below).
+`Command`, `Subcommand`, `SubcommandGroup`, `UserCommand` and `MessageCommand`. To create a command class make a new instance of the chosen class and set its properties. Finally for command to be handled by the package, export it with `module.exports`. `module.exports` only top commands(Command, UserCommand, MessageCommand) not command options such as Subcommand and SubcommandGroup(command options will be discussed below).
 
 ```js
 const { Command } = require('@ming-suhi/djs-commando');
@@ -50,7 +50,7 @@ module.exports = command;
 
 Require the needed command class from `@ming-suhi/djs-commando`. Command options include `Subcommand`,
 `SubcommandGroup`, `StringField`, `IntegerField`, `BooleanField`, `UserField`, `ChannelField`, `RoleField`,
-`MentionableField`, and `NumberField`. Create a new instance of the chosen class and pass it inside an array as an argument to it's parent's constructor.
+`MentionableField`, `NumberField`, and `AttachmentField`. Create a new instance of the chosen class and pass it inside an array as an argument to it's parent's constructor.
 
 ```js
 const { StringField } = require('@ming-suhi/djs-commando');
