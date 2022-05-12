@@ -87,6 +87,11 @@ export class NumberField extends FieldBuilder {
   readonly type = 10;
 };
 
+/** Attachment Field */
+export class AttachmentField extends FieldBuilder {
+  readonly type = 11;
+};
+
 /** Field Types */
 export type FieldType = StringField | IntegerField | BooleanField | UserField |
-  ChannelField | RoleField | MentionableField | NumberField;
+  ChannelField | RoleField | MentionableField | NumberField | AttachmentField;
