@@ -89,7 +89,7 @@ export class NumberField extends FieldBuilder {
 
 /** Attachment Field */
 export class AttachmentField extends FieldBuilder {
-  readonly type = 10;
+  readonly type = 11;
 };
 
 /** Field Types */
