@@ -1,6 +1,6 @@
 {
   "name": "@ming-suhi/djs-commando",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A package to easily create and manage your Discord Slash Commands.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
