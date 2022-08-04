@@ -3,7 +3,7 @@ import Discord from 'discord.js';
 import { getFilePaths, deleteCache } from "../services/file-system";
 import { undefinedOnError } from '../services/error-handling';
 import CommandsMap from './commands-map';
-import { Command } from './slash-command';
+import { SlashCommand } from './slash-command';
 import { MessageCommand, UserCommand } from './menu-command';
 
 /**
@@ -19,10 +19,14 @@ export class InteractionsHandler {
    * @param interaction The interaction received
    */
   async handleInteraction(interaction: Discord.Interaction) {
-    if (interaction.isCommand() || interaction.isContextMenu()) {
-      let subcommand = undefinedOnError(() => (interaction.options as Discord.CommandInteractionOptionResolver)?.getSubcommand());
-      let subcommandGroup = undefinedOnError(() => (interaction.options as Discord.CommandInteractionOptionResolver)?.getSubcommandGroup());
-      const command = this.commands.getCommand([interaction.commandName, subcommandGroup, subcommand]);
+    if (interaction.isCommand()) {
+      let subcommand = undefinedOnError(() => interaction.options.getSubcommand());
+      let subcommandGroup = undefinedOnError(() => interaction.options.getSubcommandGroup());
+      const command = this.commands.getSlashCommand([interaction.commandName, subcommandGroup, subcommand]);
+      if (command instanceof SlashCommand) await command.execute(interaction);
+    }
+    if(interaction.isContextMenu()) {
+      const command = this.commands.getContextMenuCommand(interaction.commandName);
       if (command) await command.execute(interaction);
     }
   }
@@ -35,7 +39,7 @@ export class InteractionsHandler {
     deleteCache(commandsDir);
     for (let commandPath of getFilePaths(commandsDir)) {
       const command = require(commandPath);
-      if(command instanceof Command || command instanceof UserCommand || command instanceof MessageCommand) {
+      if(command instanceof SlashCommand || command instanceof UserCommand || command instanceof MessageCommand) {
         this.commands.set(command.name, command);
       }
     }

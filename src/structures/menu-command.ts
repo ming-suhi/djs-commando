@@ -3,7 +3,7 @@ import { ContextMenuInteraction } from "discord.js";
 /**
  * Interface for context menu command creation.
  */
-export default interface ContextMenuCommand {
+interface ContextMenuCommandBuilder {
   /**
    * The name of the command
    */
@@ -18,20 +18,11 @@ export default interface ContextMenuCommand {
 /**
  * Managed class for creating context menu command types.
  */
-export default abstract class ContextMenuCommandBuilder {
+abstract class ContextMenuCommandBuilder {
   /**
    * The type of context menu command.
    */
   abstract type: number;
-  /**
-   * The raw object for context menu command data. Used to interact with discord.
-   */
-  get rawData() {
-    return ({
-      name: this.name,
-      type: this.type
-    })
-  }
 }
 
 /** Context menu user command */

@@ -10,7 +10,8 @@
     "esModuleInterop": true,                        
     "skipLibCheck": true,                           
     "forceConsistentCasingInFileNames": true,
-    "declaration": true
+    "declaration": true,
+    "experimentalDecorators": true
   },
   "exclude": [
     "src/mocks",

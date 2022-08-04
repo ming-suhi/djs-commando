@@ -1,8 +1,11 @@
-const { Command, SubcommandGroup, Subcommand } = require("..");
+const { SlashCommand, SubcommandGroup, Subcommand, UserField, ChannelField } = require("..");
+
+const targetMember = new UserField("member", "the target member", true);
+const targetChannel = new ChannelField("channel", "the target channel", true).setChannelTypes([0]);
 
 const timeout = new class extends Subcommand {
   constructor() {
-    super();
+    super([targetMember]);
     this.name = "timeout";
     this.description = "timeout a member";
   }
@@ -18,7 +21,7 @@ const member = new class extends SubcommandGroup {
 
 const lock = new class extends Subcommand {
   constructor() {
-    super();
+    super([targetChannel]);
     this.name = "lock";
     this.description = "locks the current channel";
   }
@@ -26,7 +29,7 @@ const lock = new class extends Subcommand {
 
 const unlock = new class extends Subcommand {
   constructor() {
-    super();
+    super([targetChannel]);
     this.name = "unlock";
     this.description = "unlocks the current channel";
   }
@@ -40,7 +43,7 @@ const channel = new class extends SubcommandGroup {
   }
 }
 
-const moderate = new class extends Command {
+const moderate = new class extends SlashCommand {
   constructor() {
     super([member, channel]);
     this.name = "moderate";

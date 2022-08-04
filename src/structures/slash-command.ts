@@ -4,7 +4,7 @@ import { FieldType } from "./field";
 /** 
  * Interface for slash command creation.
  */
-export default interface SlashCommandBuilder<TOptions extends any[]> {
+interface SlashCommandBuilder<TOptions extends any[]> {
   /**
    * The name of the command.
    */
@@ -23,32 +23,32 @@ export default interface SlashCommandBuilder<TOptions extends any[]> {
 /**
  * Managed slash command structure for creating slash command types(have options property).
  */
-export default abstract class SlashCommandBuilder<TOptions extends any[]> {
+abstract class SlashCommandBuilder<TOptions extends any[]> {
   /**
    * Type of command or option.
    */
   abstract type: number;
   /**
+   * Raw data of options
+   */
+  readonly options: any[];
+  /**
    * The mapped options.
    * Used for easily finding options using option name.
    */
-  readonly options: Map<string, TOptions[number]>
+  private _options!: any[];
   /**
    * @param _options The options for the command.
    */
-  constructor(readonly _options: TOptions | [] = []) {
-    this.options = new Map(_options.map(option => [option.name, option]));
-  }
+  constructor(_options: TOptions | [] = []) {
+    this.options = _options.map(option => ({...option}));
+    Object.defineProperty(this, "_options", { value: _options, enumerable: false });
+  };
   /**
    * The raw object for command data. Used to interact with discord.
    */
-  get rawData() {
-    return ({
-      name: this.name,
-      description: this.description,
-      options: this._options.map(option => option.rawData),
-      type: this.type
-    })
+  getOption(name: string): TOptions[number] {
+    return this._options.find(option => option.name == name);
   }
 }
 
@@ -63,6 +63,6 @@ export abstract class SubcommandGroup extends SlashCommandBuilder<Subcommand[]> 
 }
 
 /** Command */
-export abstract class Command extends SlashCommandBuilder<(SubcommandGroup | Subcommand)[] | FieldType[]> {
+export abstract class SlashCommand extends SlashCommandBuilder<(SubcommandGroup | Subcommand)[] | FieldType[]> {
   readonly type = 1;
 }
