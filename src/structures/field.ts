@@ -75,7 +75,7 @@ export class ChannelField extends FieldBuilder { readonly type = ApplicationComm
 export class RoleField extends FieldBuilder { readonly type = ApplicationCommandOptionType.Role };
 export class MentionableField extends FieldBuilder { readonly type = ApplicationCommandOptionType.Mentionable };
 export class NumberField extends FieldBuilder { readonly type = ApplicationCommandOptionType.Number };
-export class AttachmentField extends FieldBuilder { readonly type = 11 };
+export class AttachmentField extends FieldBuilder { readonly type = ApplicationCommandOptionType.Attachment };
 
 /**
  * Interface for setting special property values
