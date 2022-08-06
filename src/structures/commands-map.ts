@@ -10,7 +10,7 @@ export default class CommandsMap extends Map<string, SlashCommand | UserCommand 
    * Get an array of raw data of all commands.
    */
   get rawData() {
-    return Array.from(this.entries()).map(([, value]) => ({...value}));
+    return Array.from(this.values()).map((value) => ({...value}));
   }
   /**
    * Get a slash command by name.

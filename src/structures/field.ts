@@ -1,4 +1,4 @@
-import { ApplicationCommandOptionType, APIApplicationCommandOptionChoice, ChannelType } from "discord-api-types";
+import { ApplicationCommandOptionType, APIApplicationCommandOptionChoice, ChannelType } from "discord-api-types/v10";
 
 /**
  * Interface for creating field types
