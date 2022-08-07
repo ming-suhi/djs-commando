@@ -1,7 +1,6 @@
 import Discord from 'discord.js';
 
 import { getFilePaths, deleteCache } from "../services/file-system";
-import { undefinedOnError } from '../services/error-handling';
 import CommandsMap from './commands-map';
 import { SlashCommand } from './slash-command';
 import { MessageCommand, UserCommand } from './menu-command';
@@ -20,10 +19,10 @@ export class InteractionsHandler {
    */
   async handleInteraction(interaction: Discord.Interaction) {
     if (interaction.isCommand()) {
-      let subcommand = undefinedOnError(() => interaction.options.getSubcommand());
-      let subcommandGroup = undefinedOnError(() => interaction.options.getSubcommandGroup());
+      const subcommand = interaction.options.getSubcommand(false) || "";
+      const subcommandGroup = interaction.options.getSubcommandGroup(false) || "";
       const command = this.commands.getSlashCommand([interaction.commandName, subcommandGroup, subcommand]);
-      if (command instanceof SlashCommand) await command.execute(interaction);
+      if (command) await command.execute(interaction);
     }
     if(interaction.isContextMenu()) {
       const command = this.commands.getContextMenuCommand(interaction.commandName);
