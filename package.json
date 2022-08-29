@@ -1,6 +1,6 @@
 {
   "name": "@ming-suhi/djs-commando",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "A package to easily create and manage your Discord Slash Commands.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -25,12 +25,13 @@
   },
   "homepage": "https://github.com/ming-suhi/djs-commando#readme",
   "dependencies": {
-    "discord.js": "^13.4.0",
+    "discord.js": "^13.10.3",
     "dotenv": "^10.0.0"
   },
   "devDependencies": {
     "@types/jest": "^27.0.3",
     "@types/node": "^16.11.12",
+    "discord-api-types": "^0.37.0",
     "jest": "^27.0.6",
     "ts-jest": "^27.1.1",
     "typedoc": "^0.21.5",
