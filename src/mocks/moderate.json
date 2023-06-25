@@ -1,0 +1,62 @@
+{
+  "options": [
+    {
+      "options": [
+        {
+          "options": [
+            {
+              "name": "member",
+              "description": "the target member",
+              "required": true,
+              "type": 6
+            }
+          ],
+          "type": 1,
+          "name": "timeout",
+          "description": "timeout a member"
+        }
+      ],
+      "type": 2,
+      "name": "member",
+      "description": "member moderation commands"
+    },
+    {
+      "options": [
+        {
+          "options": [
+            {
+              "name": "channel",
+              "description": "the target channel",
+              "required": true,
+              "type": 7,
+              "channel_types": [ 0 ]
+            }
+          ],
+          "type": 1,
+          "name": "lock",
+          "description": "locks the current channel"
+        },
+        {
+          "options": [
+            {
+              "name": "channel",
+              "description": "the target channel",
+              "required": true,
+              "type": 7,
+              "channel_types": [ 0 ]
+            }
+          ],
+          "type": 1,
+          "name": "unlock",
+          "description": "unlocks the current channel"
+        }
+      ],
+      "type": 2,
+      "name": "channel",
+      "description": "channel moderation commands"
+    }
+  ],
+  "type": 1,
+  "name": "moderate",
+  "description": "server moderation commands"
+}

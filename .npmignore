@@ -1,0 +1,21 @@
+# Src
+/src
+
+# NPM
+/node_modules
+
+# Generated content
+/coverage
+/docs
+
+# Github
+/.gitignore
+/.github
+
+# VSCode
+/.vscode
+
+# Config files
+/tsconfig.json
+/jest.config.js
+/typedoc.json

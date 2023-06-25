@@ -1,0 +1,7 @@
+# NPM
+/node_modules
+
+# Generated content
+/dist
+/coverage
+/docs
